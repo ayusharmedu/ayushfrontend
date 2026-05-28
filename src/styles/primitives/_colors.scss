@@ -1,67 +1,275 @@
+@use 'sass:color';
+@use 'sass:list';
+@use 'sass:map';
+
+// Primitive color palettes are the foundation for theme and semantic tokens.
+// Existing CSS custom property names are preserved for UI compatibility.
+$neutral-palette: (
+  0: #ffffff,
+  25: #fcfdfe,
+  50: #f8fafc,
+  100: #f1f5f9,
+  150: #eef2f7,
+  200: #e2e8f0,
+  300: #cbd5e1,
+  400: #94a3b8,
+  500: #64748b,
+  600: #475569,
+  700: #334155,
+  800: #1e293b,
+  850: #172033,
+  900: #0f172a,
+  950: #020617
+);
+
+$indigo-palette: (
+  50: #eef2ff,
+  100: #e0e7ff,
+  200: #c7d2fe,
+  300: #a5b4fc,
+  400: #818cf8,
+  500: #6366f1,
+  600: #4f46e5,
+  700: #4338ca,
+  800: #3730a3,
+  900: #312e81,
+  950: #1e1b4b
+);
+
+$violet-palette: (
+  50: #f5f3ff,
+  100: #ede9fe,
+  200: #ddd6fe,
+  300: #c4b5fd,
+  400: #a78bfa,
+  500: #8b5cf6,
+  600: #7c3aed,
+  700: #6d28d9,
+  800: #5b21b6,
+  900: #4c1d95,
+  950: #2e1065
+);
+
+$emerald-palette: (
+  50: #ecfdf5,
+  100: #d1fae5,
+  200: #a7f3d0,
+  300: #6ee7b7,
+  400: #34d399,
+  500: #10b981,
+  600: #059669,
+  700: #047857,
+  800: #065f46,
+  900: #064e3b,
+  950: #022c22
+);
+
+$green-palette: (
+  50: #f0fdf4,
+  100: #dcfce7,
+  200: #bbf7d0,
+  300: #86efac,
+  400: #4ade80,
+  500: #22c55e,
+  600: #16a34a,
+  700: #15803d,
+  800: #166534,
+  900: #14532d,
+  950: #052e16
+);
+
+$amber-palette: (
+  50: #fffbeb,
+  100: #fef3c7,
+  200: #fde68a,
+  300: #fcd34d,
+  400: #fbbf24,
+  500: #f59e0b,
+  600: #d97706,
+  700: #b45309,
+  800: #92400e,
+  900: #78350f,
+  950: #451a03
+);
+
+$red-palette: (
+  50: #fef2f2,
+  100: #fee2e2,
+  200: #fecaca,
+  300: #fca5a5,
+  400: #f87171,
+  500: #ef4444,
+  600: #dc2626,
+  700: #b91c1c,
+  800: #991b1b,
+  900: #7f1d1d,
+  950: #450a0a
+);
+
+$sky-palette: (
+  50: #f0f9ff,
+  100: #e0f2fe,
+  200: #bae6fd,
+  300: #7dd3fc,
+  400: #38bdf8,
+  500: #0ea5e9,
+  600: #0284c7,
+  700: #0369a1,
+  800: #075985,
+  900: #0c4a6e,
+  950: #082f49
+);
+
+$rose-palette: (
+  50: #fff1f2,
+  100: #ffe4e6,
+  200: #fecdd3,
+  300: #fda4af,
+  400: #fb7185,
+  500: #ec4899,
+  600: #e11d48,
+  700: #be123c,
+  800: #9f1239,
+  900: #881337,
+  950: #4c0519
+);
+
+$orange-palette: (
+  50: #fff7ed,
+  100: #ffedd5,
+  200: #fed7aa,
+  300: #fdba74,
+  400: #fb923c,
+  500: #f97316,
+  600: #ea580c,
+  700: #c2410c,
+  800: #9a3412,
+  900: #7c2d12,
+  950: #431407
+);
+
+$teal-palette: (
+  50: #f0fdfa,
+  100: #ccfbf1,
+  200: #99f6e4,
+  300: #5eead4,
+  400: #2dd4bf,
+  500: #14b8a6,
+  600: #0d9488,
+  700: #0f766e,
+  800: #115e59,
+  900: #134e4a,
+  950: #042f2e
+);
+
+$zinc-palette: (
+  50: #fafafa,
+  100: #f4f4f5,
+  200: #e4e4e7,
+  300: #d4d4d8,
+  400: #a1a1aa,
+  500: #71717a,
+  600: #52525b,
+  700: #3f3f46,
+  800: #27272a,
+  900: #18181b,
+  950: #09090b
+);
+
+$color-palettes: (
+  neutral: $neutral-palette,
+  primary: $indigo-palette,
+  secondary: $violet-palette,
+  indigo: $indigo-palette,
+  violet: $violet-palette,
+  emerald: $emerald-palette,
+  green: $green-palette,
+  success: $emerald-palette,
+  warning: $amber-palette,
+  amber: $amber-palette,
+  danger: $red-palette,
+  error: $red-palette,
+  red: $red-palette,
+  info: $sky-palette,
+  sky: $sky-palette,
+  rose: $rose-palette,
+  orange: $orange-palette,
+  save: $teal-palette,
+  cancel: $red-palette,
+  edit: $amber-palette,
+  close: $zinc-palette
+);
+
+@function get-color($palette, $shade: 500) {
+  @if map.has-key($color-palettes, $palette) {
+    $palette-map: map.get($color-palettes, $palette);
+
+    @if map.has-key($palette-map, $shade) {
+      @return map.get($palette-map, $shade);
+    }
+  }
+
+  @error "Color '#{$palette}-#{$shade}' not found in color palettes";
+}
+
+@function color-alpha($color-value, $alpha) {
+  @return rgba($color-value, $alpha);
+}
+
+@function color-blend($color-a, $color-b, $weight: 50%) {
+  @return color.mix($color-a, $color-b, $weight);
+}
+
+@function color-contrast($color-value) {
+  @if color.channel($color-value, 'lightness', $space: hsl) > 50% {
+    @return get-color(neutral, 900);
+  }
+
+  @return get-color(neutral, 0);
+}
+
 :root {
-  --primitive-neutral-0: #ffffff;
-  --primitive-neutral-25: #fcfdfe;
-  --primitive-neutral-50: #f8fafc;
-  --primitive-neutral-100: #f1f5f9;
-  --primitive-neutral-150: #eef2f7;
-  --primitive-neutral-200: #e2e8f0;
-  --primitive-neutral-300: #cbd5e1;
-  --primitive-neutral-400: #94a3b8;
-  --primitive-neutral-500: #64748b;
-  --primitive-neutral-600: #475569;
-  --primitive-neutral-700: #334155;
-  --primitive-neutral-800: #1e293b;
-  --primitive-neutral-850: #172033;
-  --primitive-neutral-900: #0f172a;
-  --primitive-neutral-950: #020617;
+  @each $palette-name, $palette in $color-palettes {
+    @if not list.index((primary, secondary, success, warning, danger, error, info), $palette-name) {
+      @each $shade, $value in $palette {
+        --primitive-#{'' + $palette-name}-#{$shade}: #{$value};
+      }
+    }
+  }
 
-  --primitive-indigo-50: #eef2ff;
-  --primitive-indigo-100: #e0e7ff;
-  --primitive-indigo-200: #c7d2fe;
-  --primitive-indigo-300: #a5b4fc;
-  --primitive-indigo-400: #818cf8;
-  --primitive-indigo-500: #6366f1;
-  --primitive-indigo-600: #4f46e5;
-  --primitive-indigo-700: #4338ca;
-  --primitive-indigo-800: #3730a3;
-  --primitive-indigo-900: #312e81;
+  --primitive-white: #{get-color(neutral, 0)};
+  --primitive-indigo-500: #{get-color(indigo, 500)};
+  --primitive-indigo-600: #{get-color(indigo, 600)};
+  --primitive-violet-500: #{get-color(violet, 500)};
+  --primitive-violet-600: #{get-color(violet, 600)};
+  --primitive-emerald-500: #{get-color(emerald, 500)};
+  --primitive-emerald-600: #{get-color(emerald, 600)};
+  --primitive-green-600: #{get-color(green, 600)};
+  --primitive-amber-500: #{get-color(amber, 500)};
+  --primitive-red-500: #{get-color(red, 500)};
+  --primitive-red-600: #{get-color(red, 600)};
+  --primitive-sky-500: #{get-color(sky, 500)};
+  --primitive-rose-500: #{get-color(rose, 500)};
+  --primitive-orange-500: #{get-color(orange, 500)};
+  --primitive-light-overlay: #{color-alpha(get-color(neutral, 900), 0.55)};
+  --primitive-dark-overlay: #{color-alpha(get-color(neutral, 950), 0.70)};
+  --primitive-dark-surface-muted: #0b1426;
+  --primitive-dark-border-subtle: #1c2740;
+  --primitive-dark-border-default: #26334d;
 
-  --primitive-violet-50: #f5f3ff;
-  --primitive-violet-100: #ede9fe;
-  --primitive-violet-400: #a78bfa;
-  --primitive-violet-500: #8b5cf6;
-  --primitive-violet-600: #7c3aed;
-  --primitive-violet-700: #6d28d9;
+  --primitive-success-bg-dark: #{color-alpha(get-color(emerald, 500), 0.10)};
+  --primitive-success-border-dark: #{color-alpha(get-color(emerald, 300), 0.25)};
+  --primitive-warning-bg-dark: #{color-alpha(get-color(amber, 500), 0.10)};
+  --primitive-warning-border-dark: #{color-alpha(get-color(amber, 300), 0.25)};
+  --primitive-danger-bg-dark: #{color-alpha(get-color(red, 500), 0.10)};
+  --primitive-danger-border-dark: #{color-alpha(get-color(red, 300), 0.25)};
 
-  --primitive-emerald-50: #ecfdf5;
-  --primitive-emerald-400: #34d399;
-  --primitive-emerald-500: #10b981;
-  --primitive-emerald-600: #059669;
-  --primitive-emerald-700: #047857;
-
-  --primitive-green-50: #f0fdf4;
-  --primitive-green-400: #4ade80;
-  --primitive-green-500: #22c55e;
-  --primitive-green-600: #16a34a;
-  --primitive-green-700: #15803d;
-
-  --primitive-amber-50: #fffbeb;
-  --primitive-amber-300: #fcd34d;
-  --primitive-amber-500: #f59e0b;
-  --primitive-amber-600: #d97706;
-  --primitive-amber-700: #b45309;
-
-  --primitive-red-50: #fef2f2;
-  --primitive-red-300: #fca5a5;
-  --primitive-red-500: #ef4444;
-  --primitive-red-600: #dc2626;
-  --primitive-red-700: #b91c1c;
-
-  --primitive-sky-50: #f0f9ff;
-  --primitive-sky-300: #7dd3fc;
-  --primitive-sky-500: #0ea5e9;
-  --primitive-sky-700: #0369a1;
-
-  --primitive-rose-500: #ec4899;
-  --primitive-orange-500: #f97316;
+  --primitive-indigo-subtle-dark: #{color-alpha(get-color(indigo, 500), 0.12)};
+  --primitive-indigo-muted-dark: #{color-alpha(get-color(indigo, 500), 0.22)};
+  --primitive-violet-subtle-dark: #{color-alpha(get-color(violet, 500), 0.12)};
+  --primitive-violet-muted-dark: #{color-alpha(get-color(violet, 500), 0.22)};
+  --primitive-emerald-subtle-dark: #{color-alpha(get-color(emerald, 500), 0.12)};
+  --primitive-emerald-muted-dark: #{color-alpha(get-color(emerald, 500), 0.22)};
+  --primitive-green-subtle-dark: #{color-alpha(get-color(green, 500), 0.12)};
+  --primitive-green-muted-dark: #{color-alpha(get-color(green, 500), 0.22)};
 }

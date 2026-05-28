@@ -3,53 +3,53 @@
   --theme: 'light';
   color-scheme: light;
 
-  --color-surface-canvas: var(--primitive-neutral-50);
-  --color-surface-raised: var(--primitive-neutral-0);
-  --color-surface-sunken: var(--primitive-neutral-100);
-  --color-surface-muted: var(--primitive-neutral-50);
-  --color-surface-overlay: rgba(15, 23, 42, 0.55);
+  --color-surface-canvas: var(--semantic-light-surface-canvas);
+  --color-surface-raised: var(--semantic-light-surface-raised);
+  --color-surface-sunken: var(--semantic-light-surface-sunken);
+  --color-surface-muted: var(--semantic-light-surface-muted);
+  --color-surface-overlay: var(--semantic-light-surface-overlay);
 
-  --color-border-subtle: var(--primitive-neutral-150);
-  --color-border-default: var(--primitive-neutral-200);
-  --color-border-strong: var(--primitive-neutral-300);
+  --color-border-subtle: var(--semantic-light-border-subtle);
+  --color-border-default: var(--semantic-light-border-default);
+  --color-border-strong: var(--semantic-light-border-strong);
   --color-border-focus: var(--color-brand-accent);
 
-  --color-text-primary: var(--primitive-neutral-900);
-  --color-text-secondary: var(--primitive-neutral-600);
-  --color-text-tertiary: var(--primitive-neutral-500);
-  --color-text-muted: var(--primitive-neutral-400);
-  --color-text-on-accent: #ffffff;
+  --color-text-primary: var(--semantic-light-text-primary);
+  --color-text-secondary: var(--semantic-light-text-secondary);
+  --color-text-tertiary: var(--semantic-light-text-tertiary);
+  --color-text-muted: var(--semantic-light-text-muted);
+  --color-text-on-accent: var(--semantic-color-on-accent);
   --color-text-link: var(--color-brand-accent);
 
-  --color-success-fg: #047857;
-  --color-success-bg: #ecfdf5;
-  --color-success-border: #a7f3d0;
-  --color-success-dot: #10b981;
-  --color-warning-fg: var(--primitive-amber-700);
-  --color-warning-bg: var(--primitive-amber-50);
-  --color-warning-border: #fde68a;
-  --color-danger-fg: var(--primitive-red-700);
-  --color-danger-bg: var(--primitive-red-50);
-  --color-danger-border: #fecaca;
+  --color-success-fg: var(--semantic-light-success-fg);
+  --color-success-bg: var(--semantic-light-success-bg);
+  --color-success-border: var(--semantic-light-success-border);
+  --color-success-dot: var(--semantic-light-success-dot);
+  --color-warning-fg: var(--semantic-light-warning-fg);
+  --color-warning-bg: var(--semantic-light-warning-bg);
+  --color-warning-border: var(--semantic-light-warning-border);
+  --color-danger-fg: var(--semantic-light-danger-fg);
+  --color-danger-bg: var(--semantic-light-danger-bg);
+  --color-danger-border: var(--semantic-light-danger-border);
   --color-info-fg: var(--color-brand-accent);
   --color-info-bg: var(--color-brand-subtle);
   --color-info-border: var(--color-brand-muted);
 
-  --color-control-disabled-bg: var(--primitive-neutral-200);
-  --color-control-disabled-fg: var(--primitive-neutral-400);
+  --color-control-disabled-bg: var(--semantic-light-control-disabled-bg);
+  --color-control-disabled-fg: var(--semantic-light-control-disabled-fg);
 
-  --color-nav-bg: var(--primitive-neutral-0);
-  --color-nav-hover: var(--primitive-neutral-100);
-  --color-nav-fg: var(--primitive-neutral-600);
-  --color-nav-fg-muted: var(--primitive-neutral-400);
+  --color-nav-bg: var(--semantic-light-nav-bg);
+  --color-nav-hover: var(--semantic-light-nav-hover);
+  --color-nav-fg: var(--semantic-light-nav-fg);
+  --color-nav-fg-muted: var(--semantic-light-nav-fg-muted);
   --color-nav-fg-active: var(--color-brand-700);
-  --color-nav-border: var(--primitive-neutral-150);
+  --color-nav-border: var(--semantic-light-nav-border);
   --color-nav-active-bg: var(--color-brand-subtle);
   --color-nav-active-bar: var(--color-brand-accent);
 
-  --shadow-xs: 0 1px 1px rgba(15, 23, 42, 0.04), 0 0 0 1px rgba(15, 23, 42, 0.04);
-  --shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.06), 0 0 0 1px rgba(15, 23, 42, 0.05);
-  --shadow-md: 0 4px 12px -2px rgba(15, 23, 42, 0.08), 0 2px 4px -2px rgba(15, 23, 42, 0.06);
-  --shadow-lg: 0 20px 40px -12px rgba(15, 23, 42, 0.18), 0 4px 8px -4px rgba(15, 23, 42, 0.08);
-  --focus-ring-brand: 0 0 0 3px var(--color-brand-muted);
+  --shadow-xs: var(--semantic-light-shadow-xs);
+  --shadow-sm: var(--semantic-light-shadow-sm);
+  --shadow-md: var(--semantic-light-shadow-md);
+  --shadow-lg: var(--semantic-light-shadow-lg);
+  --focus-ring-brand: 0 0 0 var(--border-focus) var(--color-brand-muted);
 }

@@ -54,11 +54,11 @@
 }
 
 .dot-warning {
-  background: var(--primitive-amber-500);
+  background: var(--color-warning-dot);
 }
 
 .dot-danger {
-  background: var(--primitive-red-500);
+  background: var(--color-danger-dot);
 }
 
 .dot-neutral {
@@ -80,6 +80,6 @@
 }
 
 .tab-count-on-accent {
-  background: rgba(255, 255, 255, 0.25);
-  color: #ffffff;
+  background: var(--color-translucent-on-accent);
+  color: var(--color-on-translucent);
 }

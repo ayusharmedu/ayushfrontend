@@ -2,53 +2,53 @@
   --theme: 'dark';
   color-scheme: dark;
 
-  --color-surface-canvas: var(--primitive-neutral-950);
-  --color-surface-raised: var(--primitive-neutral-900);
-  --color-surface-sunken: var(--primitive-neutral-850);
-  --color-surface-muted: #0b1426;
-  --color-surface-overlay: rgba(2, 6, 23, 0.7);
+  --color-surface-canvas: var(--semantic-dark-surface-canvas);
+  --color-surface-raised: var(--semantic-dark-surface-raised);
+  --color-surface-sunken: var(--semantic-dark-surface-sunken);
+  --color-surface-muted: var(--semantic-dark-surface-muted);
+  --color-surface-overlay: var(--semantic-dark-surface-overlay);
 
-  --color-border-subtle: #1c2740;
-  --color-border-default: #26334d;
-  --color-border-strong: var(--primitive-neutral-700);
+  --color-border-subtle: var(--semantic-dark-border-subtle);
+  --color-border-default: var(--semantic-dark-border-default);
+  --color-border-strong: var(--semantic-dark-border-strong);
   --color-border-focus: var(--color-brand-accent);
 
-  --color-text-primary: var(--primitive-neutral-50);
-  --color-text-secondary: var(--primitive-neutral-300);
-  --color-text-tertiary: var(--primitive-neutral-400);
-  --color-text-muted: var(--primitive-neutral-500);
-  --color-text-on-accent: #ffffff;
+  --color-text-primary: var(--semantic-dark-text-primary);
+  --color-text-secondary: var(--semantic-dark-text-secondary);
+  --color-text-tertiary: var(--semantic-dark-text-tertiary);
+  --color-text-muted: var(--semantic-dark-text-muted);
+  --color-text-on-accent: var(--semantic-color-on-accent);
   --color-text-link: var(--color-brand-300);
 
-  --color-success-fg: #34d399;
-  --color-success-bg: rgba(16, 185, 129, 0.1);
-  --color-success-border: rgba(110, 231, 183, 0.25);
-  --color-success-dot: #10b981;
-  --color-warning-fg: #fbbf24;
-  --color-warning-bg: rgba(234, 179, 8, 0.1);
-  --color-warning-border: rgba(252, 211, 77, 0.25);
-  --color-danger-fg: #fca5a5;
-  --color-danger-bg: rgba(239, 68, 68, 0.1);
-  --color-danger-border: rgba(252, 165, 165, 0.25);
+  --color-success-fg: var(--semantic-dark-success-fg);
+  --color-success-bg: var(--semantic-dark-success-bg);
+  --color-success-border: var(--semantic-dark-success-border);
+  --color-success-dot: var(--semantic-dark-success-dot);
+  --color-warning-fg: var(--semantic-dark-warning-fg);
+  --color-warning-bg: var(--semantic-dark-warning-bg);
+  --color-warning-border: var(--semantic-dark-warning-border);
+  --color-danger-fg: var(--semantic-dark-danger-fg);
+  --color-danger-bg: var(--semantic-dark-danger-bg);
+  --color-danger-border: var(--semantic-dark-danger-border);
   --color-info-fg: var(--color-brand-300);
   --color-info-bg: var(--color-brand-subtle);
   --color-info-border: var(--color-brand-muted);
 
-  --color-control-disabled-bg: var(--primitive-neutral-800);
-  --color-control-disabled-fg: var(--primitive-neutral-500);
+  --color-control-disabled-bg: var(--semantic-dark-control-disabled-bg);
+  --color-control-disabled-fg: var(--semantic-dark-control-disabled-fg);
 
-  --color-nav-bg: var(--primitive-neutral-900);
-  --color-nav-hover: #172033;
-  --color-nav-fg: var(--primitive-neutral-400);
-  --color-nav-fg-muted: var(--primitive-neutral-500);
-  --color-nav-fg-active: #ffffff;
-  --color-nav-border: #1c2740;
+  --color-nav-bg: var(--semantic-dark-nav-bg);
+  --color-nav-hover: var(--semantic-dark-nav-hover);
+  --color-nav-fg: var(--semantic-dark-nav-fg);
+  --color-nav-fg-muted: var(--semantic-dark-nav-fg-muted);
+  --color-nav-fg-active: var(--semantic-dark-nav-fg-active);
+  --color-nav-border: var(--semantic-dark-nav-border);
   --color-nav-active-bg: var(--color-brand-subtle);
   --color-nav-active-bar: var(--color-brand-accent);
 
-  --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.4);
-  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4), 0 1px 1px rgba(0, 0, 0, 0.3);
-  --shadow-md: 0 4px 12px -2px rgba(0, 0, 0, 0.5), 0 2px 4px -1px rgba(0, 0, 0, 0.4);
-  --shadow-lg: 0 12px 32px -8px rgba(0, 0, 0, 0.55), 0 2px 8px -2px rgba(0, 0, 0, 0.4);
-  --focus-ring-brand: 0 0 0 3px var(--color-brand-muted);
+  --shadow-xs: var(--semantic-dark-shadow-xs);
+  --shadow-sm: var(--semantic-dark-shadow-sm);
+  --shadow-md: var(--semantic-dark-shadow-md);
+  --shadow-lg: var(--semantic-dark-shadow-lg);
+  --focus-ring-brand: 0 0 0 var(--border-focus) var(--color-brand-muted);
 }
