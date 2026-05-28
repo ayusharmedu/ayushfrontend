@@ -1,12 +1,12 @@
 .badge {
   display: inline-flex;
   align-items: center;
-  gap: 5px;
-  height: 22px;
+  gap: var(--size-inline-gap-xs);
+  height: var(--size-badge-height);
   padding: 0 var(--space-2);
   border-radius: var(--radius-full);
-  font-size: 11.5px;
-  font-weight: 500;
+  font-size: var(--text-ui-xs-size);
+  font-weight: var(--text-ui-medium-weight);
   border: var(--border-thin) solid transparent;
   white-space: nowrap;
 }   
@@ -43,9 +43,9 @@
 
 .dot {
   display: inline-block;
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
+  width: var(--size-dot-sm);
+  height: var(--size-dot-sm);
+  border-radius: var(--radius-full);
   flex-shrink: 0;
 }
 
@@ -69,13 +69,13 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-width: 20px;
-  height: 18px;
-  padding: 0 5px;
+  min-width: var(--size-count-min-width);
+  height: var(--size-count-height);
+  padding: 0 var(--size-inline-pad-xs);
   background: var(--color-surface-sunken);
   border-radius: var(--radius-full);
-  font-size: 11px;
-  font-weight: 600;
+  font-size: var(--text-micro-size);
+  font-weight: var(--text-ui-semibold-weight);
   color: var(--color-text-secondary);
 }
 

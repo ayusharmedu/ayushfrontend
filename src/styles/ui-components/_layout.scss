@@ -1,7 +1,9 @@
+@use '../tokens/semantic' as semantic;
+
 .app-frame {
   display: grid;
-  grid-template-columns: 256px 1fr;
-  height: 100vh;
+  grid-template-columns: var(--size-sidebar-width) 1fr;
+  height: var(--size-viewport-height);
   overflow: hidden;
   background: var(--color-surface-canvas);
 }
@@ -21,7 +23,7 @@
 }
 
 .main-content::-webkit-scrollbar {
-  width: 6px;
+  width: var(--size-scrollbar-md);
 }
 
 .main-content::-webkit-scrollbar-thumb,
@@ -41,12 +43,12 @@
 
 .page-title {
   font-size: var(--text-heading-lg-size);
-  font-weight: 800;
-  line-height: 1.1;
+  font-weight: var(--text-ui-heavy-weight);
+  line-height: var(--line-height-hero);
 }
 
 .page-desc {
-  font-size: 13px;
+  font-size: var(--text-body-sm-size);
   color: var(--color-text-secondary);
   margin-top: var(--space-1);
 }
@@ -84,11 +86,11 @@
   margin-left: auto;
 }
 
-@media (max-width: 1040px) {
+@media (max-width: semantic.$breakpoint-layout) {
   .app-frame {
     grid-template-columns: 1fr;
     height: auto;
-    min-height: 100vh;
+    min-height: var(--size-viewport-height);
   }
 
   .sidebar {
@@ -100,7 +102,7 @@
   }
 }
 
-@media (max-width: 760px) {
+@media (max-width: semantic.$breakpoint-md) {
   .page-header,
   .filter-row,
   .table-footer {

@@ -9,15 +9,15 @@
   display: flex;
   align-items: center;
   gap: var(--space-2);
-  height: 40px;
+  height: var(--size-control-lg);
   padding: 0 var(--space-4);
   color: var(--color-text-secondary);
   background: transparent;
   border: none;
-  font-size: 13px;
-  font-weight: 500;
+  font-size: var(--text-body-sm-size);
+  font-weight: var(--text-ui-medium-weight);
   cursor: pointer;
-  border-bottom: 2px solid transparent;
+  border-bottom: var(--border-thick) solid transparent;
   white-space: nowrap;
   border-radius: var(--radius-sm) var(--radius-sm) 0 0;
 }
@@ -39,14 +39,14 @@
 .filter-chip {
   display: inline-flex;
   align-items: center;
-  gap: 5px;
-  height: 28px;
+  gap: var(--size-inline-gap-xs);
+  height: var(--size-control-sm);
   padding: 0 var(--space-3);
   background: var(--color-surface-sunken);
   border: var(--border-thin) solid var(--color-border-default);
   border-radius: var(--radius-full);
-  font-size: 12.5px;
-  font-weight: 500;
+  font-size: var(--text-ui-sm-size);
+  font-weight: var(--text-ui-medium-weight);
   color: var(--color-text-secondary);
   cursor: pointer;
   white-space: nowrap;
@@ -67,13 +67,13 @@
   display: flex;
   align-items: center;
   gap: var(--space-2);
-  width: 280px;
-  height: 32px;
+  width: var(--size-filter-search-width);
+  height: var(--size-control-compact);
   padding: 0 var(--space-3);
   background: var(--color-surface-raised);
   border: var(--border-thin) solid var(--color-border-default);
   border-radius: var(--radius-md);
-  font-size: 13px;
+  font-size: var(--text-body-sm-size);
   color: var(--color-text-secondary);
 }
 
@@ -99,12 +99,12 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-width: 18px;
-  height: 18px;
-  padding: 0 5px;
+  min-width: var(--size-kbd-min-width);
+  height: var(--size-count-height);
+  padding: 0 var(--size-inline-pad-xs);
   font-family: var(--primitive-font-mono);
-  font-size: 10.5px;
-  font-weight: 600;
+  font-size: var(--text-ui-micro-size);
+  font-weight: var(--text-ui-semibold-weight);
   color: var(--color-text-tertiary);
   background: var(--color-surface-canvas);
   border: var(--border-thin) solid var(--color-border-subtle);

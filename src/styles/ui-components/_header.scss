@@ -1,5 +1,7 @@
+@use '../tokens/semantic' as semantic;
+
 .topbar {
-  height: 52px;
+  height: var(--size-topbar-height);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -16,7 +18,7 @@
   display: flex;
   align-items: center;
   gap: var(--space-2);
-  font-size: 13px;
+  font-size: var(--text-body-sm-size);
   min-width: 0;
 }
 
@@ -35,7 +37,7 @@
 
 .topbar-breadcrumb strong {
   color: var(--color-text-primary);
-  font-weight: 600;
+  font-weight: var(--text-ui-semibold-weight);
 }
 
 .topbar-actions {
@@ -44,10 +46,10 @@
   gap: var(--space-2);
 }
 
-@media (max-width: 760px) {
+@media (max-width: semantic.$breakpoint-md) {
   .topbar {
     height: auto;
-    min-height: 52px;
+    min-height: var(--size-topbar-height);
     align-items: flex-start;
     flex-direction: column;
     padding: var(--space-3) var(--space-4);

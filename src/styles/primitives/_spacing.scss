@@ -195,7 +195,7 @@ $elevation: (
   $dot: string.index($text, '.');
 
   @if $dot {
-    @return string.slice($text, 1, $dot - 1) + '-' + string.slice($text, $dot + 1);
+    @return string.slice($text, 1, $dot - 1)+'-'+string.slice($text, $dot + 1);
   }
 
   @return $text;

@@ -9,7 +9,7 @@
   font-family: var(--primitive-font-sans);
   font-size: var(--text-button-size);
   font-weight: var(--text-button-weight);
-  line-height: 1;
+  line-height: var(--line-height-control);
   cursor: pointer;
   transition: all var(--motion-fast);
   white-space: nowrap;
@@ -17,20 +17,20 @@
 }
 
 .btn-sm {
-  height: 28px;
+  height: var(--size-control-sm);
   padding: 0 var(--space-3);
-  font-size: 12.5px;
+  font-size: var(--text-ui-sm-size);
 }
 
 .btn-md {
-  height: 34px;
+  height: var(--size-control-md);
   padding: 0 var(--space-3);
 }
 
 .btn-lg {
-  height: 40px;
+  height: var(--size-control-lg);
   padding: 0 var(--space-4);
-  font-size: 14px;
+  font-size: var(--text-body-size);
 }
 
 .btn-primary,
@@ -74,23 +74,23 @@
 }
 
 .btn-danger {
-  background: var(--primitive-red-500);
-  color: #ffffff;
+  background: var(--color-danger-action);
+  color: var(--color-on-solid);
 }
 
 .btn-danger:hover {
-  background: var(--primitive-red-600);
+  background: var(--color-danger-action-hover);
 }
 
 .btn-upgrade {
-  height: 32px;
+  height: var(--size-control-compact);
   padding: 0 var(--space-3);
-  font-size: 12.5px;
+  font-size: var(--text-ui-sm-size);
 }
 
 .icon-btn {
-  width: 32px;
-  height: 32px;
+  width: var(--size-control-compact);
+  height: var(--size-control-compact);
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -110,24 +110,24 @@
 }
 
 .icon-btn-sm {
-  width: 28px;
-  height: 28px;
+  width: var(--size-control-sm);
+  height: var(--size-control-sm);
 }
 
 .badge-dot {
   position: absolute;
-  top: -1px;
-  right: -1px;
-  min-width: 15px;
-  height: 15px;
-  padding: 0 4px;
-  background: var(--primitive-red-500);
-  color: #ffffff;
-  font-size: 9px;
-  font-weight: 700;
+  top: var(--offset-badge-dot);
+  right: var(--offset-badge-dot);
+  min-width: var(--size-notification-dot);
+  height: var(--size-notification-dot);
+  padding: 0 var(--space-1);
+  background: var(--color-danger-dot);
+  color: var(--color-on-solid);
+  font-size: var(--text-notification-size);
+  font-weight: var(--text-ui-strong-weight);
   border-radius: var(--radius-full);
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 2px solid var(--color-surface-canvas);
+  border: var(--border-thick) solid var(--color-surface-canvas);
 }

@@ -1,23 +1,20 @@
+@use '../tokens/semantic' as semantic;
+
 .tweaks-panel {
   position: fixed;
   right: var(--space-4);
   bottom: var(--space-4);
   z-index: var(--z-modal);
-  width: 300px;
-  background: rgba(248, 250, 252, 0.85);
-  backdrop-filter: blur(20px) saturate(180%);
-  -webkit-backdrop-filter: blur(20px) saturate(180%);
-  border: 0.5px solid rgba(255, 255, 255, 0.6);
+  width: var(--size-panel-width);
+  background: var(--color-panel-glass-bg);
+  backdrop-filter: blur(var(--size-glass-blur)) saturate(var(--size-glass-saturate));
+  -webkit-backdrop-filter: blur(var(--size-glass-blur)) saturate(var(--size-glass-saturate));
+  border: var(--size-hairline-border) solid var(--color-panel-glass-border);
   border-radius: var(--radius-xl);
   box-shadow: var(--shadow-lg);
   font-family: var(--primitive-font-sans);
   overflow: hidden;
   color: var(--color-text-primary);
-}
-
-[data-theme="dark"] .tweaks-panel {
-  background: rgba(15, 23, 42, 0.85);
-  border-color: rgba(255, 255, 255, 0.08);
 }
 
 .tweaks-header {
@@ -29,8 +26,8 @@
 }
 
 .tweaks-title {
-  font-size: 12.5px;
-  font-weight: 700;
+  font-size: var(--text-ui-sm-size);
+  font-weight: var(--text-ui-strong-weight);
 }
 
 .tweaks-body {
@@ -43,13 +40,13 @@
 .tweaks-section {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: var(--space-2-5);
 }
 
 .tweaks-section-label {
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 0.08em;
+  font-size: var(--text-ui-xxs-size);
+  font-weight: var(--text-ui-strong-weight);
+  letter-spacing: var(--tracking-wide);
   text-transform: uppercase;
   color: var(--color-text-muted);
 }
@@ -57,7 +54,7 @@
 .tweaks-row {
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: var(--space-1-5);
 }
 
 .tweaks-color-chips {
@@ -66,17 +63,17 @@
 }
 
 .tweaks-color-chip {
-  width: 52px;
-  height: 44px;
+  width: var(--size-color-chip-width);
+  height: var(--size-color-chip-height);
   border-radius: var(--radius-md);
-  border: 2px solid transparent;
+  border: var(--border-thick) solid transparent;
   cursor: pointer;
   position: relative;
   box-shadow: var(--shadow-sm);
 }
 
 .tweaks-color-chip:hover {
-  transform: translateY(-2px);
+  transform: translateY(var(--offset-lift-md));
   box-shadow: var(--shadow-md);
 }
 
@@ -87,34 +84,34 @@
 
 .tweaks-color-chip svg {
   position: absolute;
-  top: 6px;
-  left: 6px;
-  width: 13px;
-  height: 13px;
+  top: var(--space-1-5);
+  left: var(--space-1-5);
+  width: var(--size-color-chip-icon);
+  height: var(--size-color-chip-icon);
 }
 
-.hue-indigo { background: var(--primitive-indigo-600); }
-.hue-violet { background: var(--primitive-violet-600); }
-.hue-emerald { background: var(--primitive-emerald-600); }
-.hue-green { background: var(--primitive-green-600); }
+.hue-indigo { background: var(--color-hue-indigo); }
+.hue-violet { background: var(--color-hue-violet); }
+.hue-emerald { background: var(--color-hue-emerald); }
+.hue-green { background: var(--color-hue-green); }
 
 .tweaks-mode-seg {
   display: flex;
   background: var(--color-surface-sunken);
   border-radius: var(--radius-sm);
-  padding: 3px;
-  gap: 2px;
+  padding: var(--offset-control-inset);
+  gap: var(--space-0-5);
 }
 
 .tweaks-mode-btn {
   flex: 1;
-  height: 26px;
+  height: calc(var(--size-control-sm) - var(--space-0-5));
   border: none;
   background: transparent;
   border-radius: var(--radius-xs);
   font-family: var(--primitive-font-sans);
-  font-size: 12.5px;
-  font-weight: 500;
+  font-size: var(--text-ui-sm-size);
+  font-weight: var(--text-ui-medium-weight);
   cursor: pointer;
   color: var(--color-text-secondary);
 }
@@ -130,9 +127,9 @@
   right: var(--space-4);
   bottom: var(--space-4);
   z-index: var(--z-modal);
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
+  width: var(--size-control-lg);
+  height: var(--size-control-lg);
+  border-radius: var(--radius-full);
   background: var(--color-brand-accent);
   color: var(--color-brand-on);
   border: none;
@@ -143,7 +140,7 @@
   justify-content: center;
 }
 
-@media (max-width: 560px) {
+@media (max-width: semantic.$breakpoint-sm) {
   .tweaks-panel {
     left: var(--space-3);
     right: var(--space-3);

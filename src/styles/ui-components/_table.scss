@@ -5,7 +5,7 @@
 
 .data-table {
   width: 100%;
-  min-width: 900px;
+  min-width: var(--size-table-min-width);
   border-collapse: collapse;
 }
 
@@ -16,16 +16,16 @@
   font-weight: var(--text-caption-weight);
   text-align: left;
   padding: 0 var(--space-4);
-  height: 36px;
+  height: var(--size-field-md);
   border-bottom: var(--border-thin) solid var(--color-border-default);
   white-space: nowrap;
-  letter-spacing: 0.03em;
+  letter-spacing: var(--tracking-label);
   text-transform: uppercase;
 }
 
 .data-table td {
   padding: 0 var(--space-4);
-  height: 52px;
+  height: var(--size-topbar-height);
   color: var(--color-text-primary);
   font-size: var(--text-body-sm-size);
   border-bottom: var(--border-thin) solid var(--color-border-subtle);
@@ -46,7 +46,7 @@
 }
 
 .table-checkbox-col {
-  width: 40px;
+  width: var(--size-control-lg);
 }
 
 .table-align-right {
@@ -70,7 +70,7 @@
 }
 
 .table-footer-primary {
-  font-weight: 700;
+  font-weight: var(--text-ui-strong-weight);
 }
 
 .empty-state {
@@ -79,8 +79,8 @@
 }
 
 .checkbox {
-  width: 16px;
-  height: 16px;
+  width: var(--size-checkbox);
+  height: var(--size-checkbox);
   border: var(--border-thin) solid var(--color-border-strong);
   border-radius: var(--radius-xs);
   background: var(--color-surface-raised);

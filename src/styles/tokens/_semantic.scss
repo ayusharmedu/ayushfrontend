@@ -9,6 +9,11 @@
 @use '../primitives/spacing' as space;
 @use '../primitives/icons';
 
+$breakpoint-sm: 560px;
+$breakpoint-md: 760px;
+$breakpoint-login: 900px;
+$breakpoint-layout: 1040px;
+
 // =============================================================================
 // COLOR SEMANTIC TOKENS
 // =============================================================================
@@ -361,16 +366,28 @@ $typography-tokens: (
 
 :root {
   --space-0: var(--primitive-space-0);
+  --space-px: var(--primitive-space-px);
+  --space-0-5: var(--primitive-space-0-5);
   --space-1: var(--primitive-space-1);
+  --space-1-5: var(--primitive-space-1-5);
   --space-2: var(--primitive-space-2);
+  --space-2-5: var(--primitive-space-2-5);
   --space-3: var(--primitive-space-3);
+  --space-3-5: var(--primitive-space-3-5);
   --space-4: var(--primitive-space-4);
   --space-5: var(--primitive-space-5);
   --space-6: var(--primitive-space-6);
+  --space-7: var(--primitive-space-7);
   --space-8: var(--primitive-space-8);
+  --space-9: var(--primitive-space-9);
   --space-10: var(--primitive-space-10);
+  --space-11: var(--primitive-space-11);
   --space-12: var(--primitive-space-12);
+  --space-13: var(--primitive-space-13);
+  --space-14: var(--primitive-space-14);
   --space-16: var(--primitive-space-16);
+  --space-20: var(--primitive-space-20);
+  --space-64: var(--primitive-space-64);
 
   --radius-none: var(--primitive-radius-none);
   --radius-xs: var(--primitive-radius-xs);
@@ -464,6 +481,85 @@ $typography-tokens: (
   --color-hue-violet: #{map.get($hue-colors, violet-accent)};
   --color-hue-emerald: #{map.get($hue-colors, emerald-accent)};
   --color-hue-green: #{map.get($hue-colors, green-accent)};
+  --color-scope-org: #{color.get-color(indigo, 500)};
+  --color-scope-dept: #{color.get-color(sky, 500)};
+  --color-scope-team: #{color.get-color(amber, 500)};
+
+  --size-control-xs: var(--space-6);
+  --size-control-compact: var(--space-8);
+  --size-control-sm: var(--space-7);
+  --size-control-md: calc(var(--space-8) + var(--space-0-5));
+  --size-control-lg: var(--space-10);
+  --size-control-xl: var(--space-11);
+  --size-field-md: var(--space-9);
+  --size-topbar-height: var(--space-13);
+  --size-sidebar-width: var(--space-64);
+  --size-viewport-height: 100vh;
+  --size-filter-search-width: calc(var(--space-64) + var(--space-6));
+  --size-table-min-width: 900px;
+  --size-login-panel-min: 420px;
+  --size-login-card-max: 420px;
+  --size-mobile-hero-min-height: 50vh;
+  --size-panel-width: 300px;
+  --size-avatar-sm: var(--space-6);
+  --size-avatar-md: var(--space-8);
+  --size-avatar-lg: var(--space-10);
+  --size-logo-sm: var(--space-7);
+  --size-logo-md: var(--space-9);
+  --size-checkbox: var(--space-4);
+  --size-dot-sm: var(--space-1-5);
+  --size-notification-dot: 15px;
+  --size-badge-height: calc(var(--space-5) + var(--space-0-5));
+  --size-count-height: calc(var(--space-4) + var(--space-0-5));
+  --size-count-min-width: var(--space-5);
+  --size-kbd-min-width: calc(var(--space-4) + var(--space-0-5));
+  --size-color-chip-width: var(--space-13);
+  --size-color-chip-height: var(--space-11);
+  --size-color-chip-icon: 13px;
+  --size-scrollbar-sm: var(--space-1);
+  --size-scrollbar-md: var(--space-1-5);
+  --size-strength-label-min: var(--space-13);
+  --size-strength-bar-thickness: 3px;
+  --size-strength-bar-gap: 3px;
+  --size-inline-gap-xs: 5px;
+  --size-inline-pad-xs: 5px;
+  --size-hairline-border: 0.5px;
+  --size-glass-blur: var(--space-5);
+  --size-glass-saturate: 180%;
+
+  --offset-badge-dot: calc(var(--space-px) * -1);
+  --offset-row-nudge: var(--space-px);
+  --offset-tight: var(--space-0-5);
+  --offset-control-inset: 3px;
+  --offset-lift-sm: calc(var(--space-px) * -1);
+  --offset-lift-md: calc(var(--space-0-5) * -1);
+
+  --text-ui-micro-size: 10.5px;
+  --text-notification-size: 9px;
+  --text-ui-xxs-size: 10px;
+  --text-ui-xs-size: 11.5px;
+  --text-ui-sm-size: 12.5px;
+  --text-ui-md-size: var(--text-body-sm-size);
+  --text-ui-lg-size: 13.5px;
+  --text-logo-size: var(--text-heading-xs-size);
+  --text-wordmark-size: 18px;
+  --text-card-heading-size: var(--text-metric-md-size);
+  --text-hero-size: clamp(26px, 3vw, 38px);
+  --text-ui-medium-weight: 500;
+  --text-ui-semibold-weight: 600;
+  --text-ui-strong-weight: 700;
+  --text-ui-heavy-weight: 800;
+
+  --motion-page-enter: 220ms var(--motion-enter);
+  --line-height-hero: var(--text-display-lh);
+  --line-height-control: 1;
+  --line-height-copy-relaxed: 1.6;
+
+  --tracking-tight: 0.02em;
+  --tracking-label: 0.03em;
+  --tracking-meta: 0.05em;
+  --tracking-section: 0.06em;
+  --tracking-wide: 0.08em;
 
   --semantic-light-surface-canvas: #{surface-color(canvas)};
   --semantic-light-surface-raised: #{surface-color(raised)};
@@ -498,6 +594,8 @@ $typography-tokens: (
   --semantic-light-shadow-sm: var(--primitive-shadow-light-sm);
   --semantic-light-shadow-md: var(--primitive-shadow-light-md);
   --semantic-light-shadow-lg: var(--primitive-shadow-light-lg);
+  --semantic-light-panel-glass-bg: #{color.color-alpha(color.get-color(neutral, 50), 0.85)};
+  --semantic-light-panel-glass-border: #{color.color-alpha(color.get-color(neutral, 0), 0.60)};
 
   --semantic-dark-surface-canvas: #{surface-color(canvas-dark)};
   --semantic-dark-surface-raised: #{surface-color(raised-dark)};
@@ -533,6 +631,8 @@ $typography-tokens: (
   --semantic-dark-shadow-sm: var(--primitive-shadow-dark-sm);
   --semantic-dark-shadow-md: var(--primitive-shadow-dark-md);
   --semantic-dark-shadow-lg: var(--primitive-shadow-dark-lg);
+  --semantic-dark-panel-glass-bg: #{color.color-alpha(color.get-color(neutral, 900), 0.85)};
+  --semantic-dark-panel-glass-border: #{color.color-alpha(color.get-color(neutral, 0), 0.08)};
 
   --semantic-brand-indigo-accent: #{map.get($hue-colors, indigo-accent)};
   --semantic-brand-indigo-hover: #{map.get($hue-colors, indigo-hover)};
