@@ -1,5 +1,364 @@
-// Semantic tokens are aliases over primitives. Keep hard-coded values in the
-// primitive layer only, so components consume stable purpose-driven names.
+// =============================================================================
+// SEMANTIC TOKENS - Design System Foundation
+// =============================================================================
+// Purpose-driven tokens that abstract primitive values into meaningful roles.
+
+@use 'sass:map';
+@use '../primitives/colors' as color;
+@use '../primitives/typography' as type;
+@use '../primitives/spacing' as space;
+@use '../primitives/icons';
+
+// =============================================================================
+// COLOR SEMANTIC TOKENS
+// =============================================================================
+
+$brand-colors: (
+  primary: color.get-color(primary, 600),
+  primary-hover: color.get-color(primary, 700),
+  primary-active: color.get-color(primary, 800),
+  primary-disabled: color.get-color(neutral, 300),
+  primary-dark: color.get-color(primary, 500),
+  primary-hover-dark: color.get-color(primary, 400),
+  primary-active-dark: color.get-color(primary, 300),
+  primary-disabled-dark: color.get-color(neutral, 600),
+  secondary: color.get-color(secondary, 600),
+  secondary-hover: color.get-color(secondary, 700),
+  secondary-active: color.get-color(secondary, 800),
+  secondary-disabled: color.get-color(neutral, 300),
+  secondary-dark: color.get-color(secondary, 500),
+  secondary-hover-dark: color.get-color(secondary, 400),
+  secondary-active-dark: color.get-color(secondary, 300),
+  secondary-disabled-dark: color.get-color(neutral, 600),
+  accent: color.get-color(primary, 600),
+  accent-hover: color.get-color(primary, 700),
+  accent-subtle: color.get-color(primary, 50),
+  accent-muted: color.get-color(primary, 100),
+  accent-subtle-dark: color.color-alpha(color.get-color(primary, 500), 0.12),
+  accent-muted-dark: color.color-alpha(color.get-color(primary, 500), 0.22),
+  on-accent: color.get-color(neutral, 0)
+);
+
+$semantic-colors: (
+  success: color.get-color(success, 500),
+  success-hover: color.get-color(success, 600),
+  success-fg: color.get-color(success, 700),
+  success-bg: color.get-color(success, 50),
+  success-border: color.get-color(success, 200),
+  success-dot: color.get-color(success, 500),
+  success-fg-dark: color.get-color(success, 400),
+  success-bg-dark: color.color-alpha(color.get-color(success, 500), 0.10),
+  success-border-dark: color.color-alpha(color.get-color(success, 300), 0.25),
+  warning: color.get-color(warning, 500),
+  warning-hover: color.get-color(warning, 600),
+  warning-fg: color.get-color(warning, 700),
+  warning-bg: color.get-color(warning, 50),
+  warning-border: color.get-color(warning, 200),
+  warning-dot: color.get-color(warning, 500),
+  warning-fg-dark: color.get-color(warning, 400),
+  warning-bg-dark: color.color-alpha(color.get-color(warning, 500), 0.10),
+  warning-border-dark: color.color-alpha(color.get-color(warning, 300), 0.25),
+  danger: color.get-color(error, 500),
+  danger-hover: color.get-color(error, 600),
+  danger-fg: color.get-color(error, 700),
+  danger-bg: color.get-color(error, 50),
+  danger-border: color.get-color(error, 200),
+  danger-dot: color.get-color(error, 500),
+  danger-fg-dark: color.get-color(error, 300),
+  danger-bg-dark: color.color-alpha(color.get-color(error, 500), 0.10),
+  danger-border-dark: color.color-alpha(color.get-color(error, 300), 0.25),
+  info: color.get-color(info, 500),
+  info-hover: color.get-color(info, 600),
+  info-bg: color.get-color(info, 50),
+  info-border: color.get-color(info, 200)
+);
+
+$action-colors: (
+  save: color.get-color(save, 500),
+  save-hover: color.get-color(save, 600),
+  save-active: color.get-color(save, 700),
+  save-disabled: color.get-color(neutral, 300),
+  cancel: color.get-color(cancel, 500),
+  cancel-hover: color.get-color(cancel, 600),
+  cancel-active: color.get-color(cancel, 700),
+  cancel-disabled: color.get-color(neutral, 300),
+  edit: color.get-color(edit, 500),
+  edit-hover: color.get-color(edit, 600),
+  edit-active: color.get-color(edit, 700),
+  edit-disabled: color.get-color(neutral, 300),
+  close: color.get-color(close, 500),
+  close-hover: color.get-color(close, 600),
+  close-active: color.get-color(close, 700),
+  close-disabled: color.get-color(neutral, 300)
+);
+
+$surface-colors: (
+  canvas: color.get-color(neutral, 50),
+  raised: color.get-color(neutral, 0),
+  sunken: color.get-color(neutral, 100),
+  muted: color.get-color(neutral, 50),
+  overlay: color.color-alpha(color.get-color(neutral, 900), 0.55),
+  canvas-dark: color.get-color(neutral, 950),
+  raised-dark: color.get-color(neutral, 900),
+  sunken-dark: color.get-color(neutral, 850),
+  muted-dark: #0b1426,
+  overlay-dark: color.color-alpha(color.get-color(neutral, 950), 0.70)
+);
+
+$text-colors: (
+  primary: color.get-color(neutral, 900),
+  secondary: color.get-color(neutral, 600),
+  tertiary: color.get-color(neutral, 500),
+  muted: color.get-color(neutral, 400),
+  disabled: color.get-color(neutral, 400),
+  inverse: color.get-color(neutral, 0),
+  primary-dark: color.get-color(neutral, 50),
+  secondary-dark: color.get-color(neutral, 300),
+  tertiary-dark: color.get-color(neutral, 400),
+  muted-dark: color.get-color(neutral, 500),
+  disabled-dark: color.get-color(neutral, 500),
+  inverse-dark: color.get-color(neutral, 900),
+  on-accent: color.get-color(neutral, 0)
+);
+
+$border-colors: (
+  subtle: color.get-color(neutral, 150),
+  default: color.get-color(neutral, 200),
+  strong: color.get-color(neutral, 300),
+  focus: map.get($brand-colors, accent),
+  subtle-dark: #1c2740,
+  default-dark: #26334d,
+  strong-dark: color.get-color(neutral, 700),
+  focus-dark: map.get($brand-colors, primary-dark)
+);
+
+$interactive-colors: (
+  hover: color.get-color(neutral, 100),
+  hover-dark: color.get-color(neutral, 850),
+  active-on-accent: color.color-alpha(color.get-color(neutral, 0), 0.25),
+  focus-ring: map.get($brand-colors, accent-muted)
+);
+
+$accent-colors: (
+  indigo: color.get-color(indigo, 600),
+  sky: color.get-color(sky, 500),
+  amber: color.get-color(amber, 500),
+  emerald: color.get-color(emerald, 500),
+  rose: color.get-color(rose, 500),
+  violet: color.get-color(violet, 500),
+  orange: color.get-color(orange, 500)
+);
+
+$hue-colors: (
+  indigo-accent: color.get-color(indigo, 600),
+  indigo-hover: color.get-color(indigo, 700),
+  indigo-subtle: color.get-color(indigo, 50),
+  indigo-muted: color.get-color(indigo, 100),
+  indigo-300: color.get-color(indigo, 300),
+  indigo-700: color.get-color(indigo, 700),
+  indigo-accent-dark: color.get-color(indigo, 500),
+  indigo-hover-dark: color.get-color(indigo, 400),
+  indigo-subtle-dark: color.color-alpha(color.get-color(indigo, 500), 0.12),
+  indigo-muted-dark: color.color-alpha(color.get-color(indigo, 500), 0.22),
+  violet-accent: color.get-color(violet, 600),
+  violet-hover: color.get-color(violet, 700),
+  violet-subtle: color.get-color(violet, 50),
+  violet-muted: color.get-color(violet, 100),
+  violet-300: color.get-color(violet, 400),
+  violet-700: color.get-color(violet, 700),
+  violet-accent-dark: color.get-color(violet, 500),
+  violet-hover-dark: color.get-color(violet, 400),
+  violet-subtle-dark: color.color-alpha(color.get-color(violet, 500), 0.12),
+  violet-muted-dark: color.color-alpha(color.get-color(violet, 500), 0.22),
+  emerald-accent: color.get-color(emerald, 600),
+  emerald-hover: color.get-color(emerald, 700),
+  emerald-subtle: color.get-color(emerald, 50),
+  emerald-muted: color.get-color(emerald, 200),
+  emerald-300: color.get-color(emerald, 400),
+  emerald-700: color.get-color(emerald, 700),
+  emerald-accent-dark: color.get-color(emerald, 500),
+  emerald-hover-dark: color.get-color(emerald, 400),
+  emerald-subtle-dark: color.color-alpha(color.get-color(emerald, 500), 0.12),
+  emerald-muted-dark: color.color-alpha(color.get-color(emerald, 500), 0.22),
+  green-accent: color.get-color(green, 600),
+  green-hover: color.get-color(green, 700),
+  green-subtle: color.get-color(green, 50),
+  green-muted: color.get-color(green, 200),
+  green-300: color.get-color(green, 400),
+  green-700: color.get-color(green, 700),
+  green-accent-dark: color.get-color(green, 500),
+  green-hover-dark: color.get-color(green, 400),
+  green-subtle-dark: color.color-alpha(color.get-color(green, 500), 0.12),
+  green-muted-dark: color.color-alpha(color.get-color(green, 500), 0.22)
+);
+
+// =============================================================================
+// COMPONENT SEMANTIC TOKENS
+// =============================================================================
+
+$button-tokens: (
+  primary-bg: map.get($brand-colors, accent),
+  primary-bg-hover: map.get($brand-colors, accent-hover),
+  primary-text: map.get($text-colors, on-accent),
+  danger-bg: map.get($action-colors, cancel),
+  danger-bg-hover: map.get($action-colors, cancel-hover),
+  border-radius: space.border-radius(md),
+  padding-sm: space.spacing(3),
+  padding-md: space.spacing(4),
+  font-size: type.typography-token(button, size),
+  font-weight: type.typography-token(button, weight)
+);
+
+$input-tokens: (
+  bg: map.get($surface-colors, raised),
+  border: map.get($border-colors, default),
+  border-focus: map.get($border-colors, focus),
+  text: map.get($text-colors, primary),
+  placeholder: map.get($text-colors, muted),
+  border-radius: space.border-radius(sm),
+  font-size: type.typography-token(body, size)
+);
+
+$card-tokens: (
+  bg: map.get($surface-colors, raised),
+  border: map.get($border-colors, default),
+  border-radius: space.border-radius(lg),
+  padding: space.spacing(4),
+  shadow: space.elevation(light-md)
+);
+
+$spacing-tokens: (
+  space-0: space.spacing(0),
+  space-1: space.spacing(1),
+  space-2: space.spacing(2),
+  space-3: space.spacing(3),
+  space-4: space.spacing(4),
+  space-5: space.spacing(5),
+  space-6: space.spacing(6),
+  space-8: space.spacing(8),
+  space-10: space.spacing(10),
+  space-12: space.spacing(12),
+  space-16: space.spacing(16)
+);
+
+$typography-tokens: (
+  font-family-primary: type.$font-family-primary,
+  font-family-mono: type.$font-family-mono,
+  body-size: type.typography-token(body, size),
+  body-weight: type.typography-token(body, weight),
+  body-line-height: type.typography-token(body, line-height),
+  button-size: type.typography-token(button, size),
+  button-weight: type.typography-token(button, weight),
+  label-size: type.typography-token(label, size),
+  label-weight: type.typography-token(label, weight),
+  caption-size: type.typography-token(caption, size),
+  caption-weight: type.typography-token(caption, weight)
+);
+
+// =============================================================================
+// HELPER FUNCTIONS FOR SEMANTIC TOKENS
+// =============================================================================
+
+@function brand-color($token) {
+  @if map.has-key($brand-colors, $token) {
+    @return map.get($brand-colors, $token);
+  }
+
+  @error "Brand color token '#{$token}' not found";
+}
+
+@function semantic-color($token) {
+  @if map.has-key($semantic-colors, $token) {
+    @return map.get($semantic-colors, $token);
+  }
+
+  @error "Semantic color token '#{$token}' not found";
+}
+
+@function action-color($token) {
+  @if map.has-key($action-colors, $token) {
+    @return map.get($action-colors, $token);
+  }
+
+  @error "Action color token '#{$token}' not found";
+}
+
+@function surface-color($token) {
+  @if map.has-key($surface-colors, $token) {
+    @return map.get($surface-colors, $token);
+  }
+
+  @error "Surface color token '#{$token}' not found";
+}
+
+@function text-color($token) {
+  @if map.has-key($text-colors, $token) {
+    @return map.get($text-colors, $token);
+  }
+
+  @error "Text color token '#{$token}' not found";
+}
+
+@function border-color($token) {
+  @if map.has-key($border-colors, $token) {
+    @return map.get($border-colors, $token);
+  }
+
+  @error "Border color token '#{$token}' not found";
+}
+
+@function interactive-color($token) {
+  @if map.has-key($interactive-colors, $token) {
+    @return map.get($interactive-colors, $token);
+  }
+
+  @error "Interactive color token '#{$token}' not found";
+}
+
+@function button-token($token) {
+  @if map.has-key($button-tokens, $token) {
+    @return map.get($button-tokens, $token);
+  }
+
+  @error "Button token '#{$token}' not found";
+}
+
+@function input-token($token) {
+  @if map.has-key($input-tokens, $token) {
+    @return map.get($input-tokens, $token);
+  }
+
+  @error "Input token '#{$token}' not found";
+}
+
+@function card-token($token) {
+  @if map.has-key($card-tokens, $token) {
+    @return map.get($card-tokens, $token);
+  }
+
+  @error "Card token '#{$token}' not found";
+}
+
+@function spacing-token($token) {
+  @if map.has-key($spacing-tokens, $token) {
+    @return map.get($spacing-tokens, $token);
+  }
+
+  @error "Spacing token '#{$token}' not found";
+}
+
+@function typography-component-token($token) {
+  @if map.has-key($typography-tokens, $token) {
+    @return map.get($typography-tokens, $token);
+  }
+
+  @error "Typography token '#{$token}' not found";
+}
+
+// =============================================================================
+// CSS CUSTOM PROPERTY EXPORTS
+// =============================================================================
+
 :root {
   --space-0: var(--primitive-space-0);
   --space-1: var(--primitive-space-1);
@@ -36,6 +395,8 @@
   --z-modal: var(--primitive-z-modal);
   --z-toast: var(--primitive-z-toast);
 
+  --font-sans: var(--primitive-font-sans);
+  --font-mono: var(--primitive-font-mono);
   --text-caption-size: var(--primitive-text-caption-size);
   --text-caption-weight: var(--primitive-text-caption-weight);
   --text-caption-lh: var(--primitive-text-caption-lh);
@@ -79,144 +440,141 @@
   --text-metric-md-weight: var(--primitive-text-metric-md-weight);
   --text-metric-md-lh: var(--primitive-text-metric-md-lh);
 
-  --semantic-color-on-accent: var(--primitive-white);
-  --font-sans: var(--primitive-font-sans);
-  --font-mono: var(--primitive-font-mono);
+  --semantic-color-on-accent: #{text-color(on-accent)};
   --color-on-solid: var(--semantic-color-on-accent);
   --color-on-translucent: var(--semantic-color-on-accent);
-  --color-translucent-on-accent: var(--primitive-light-overlay);
+  --color-translucent-on-accent: #{interactive-color(active-on-accent)};
 
-  --color-danger-action: var(--primitive-red-500);
-  --color-danger-action-hover: var(--primitive-red-600);
-  --color-danger-dot: var(--primitive-red-500);
-  --color-warning-dot: var(--primitive-amber-500);
-  --color-strength-danger: var(--primitive-red-500);
-  --color-strength-warning: var(--primitive-amber-500);
-  --color-strength-success: var(--primitive-emerald-500);
+  --color-danger-action: #{action-color(cancel)};
+  --color-danger-action-hover: #{action-color(cancel-hover)};
+  --color-danger-dot: #{semantic-color(danger-dot)};
+  --color-warning-dot: #{semantic-color(warning-dot)};
+  --color-strength-danger: #{semantic-color(danger)};
+  --color-strength-warning: #{semantic-color(warning)};
+  --color-strength-success: #{semantic-color(success)};
 
-  --color-accent-indigo: var(--primitive-indigo-600);
-  --color-accent-sky: var(--primitive-sky-500);
-  --color-accent-amber: var(--primitive-amber-500);
-  --color-accent-emerald: var(--primitive-emerald-500);
-  --color-accent-rose: var(--primitive-rose-500);
-  --color-accent-violet: var(--primitive-violet-500);
-  --color-accent-orange: var(--primitive-orange-500);
+  --color-accent-indigo: #{map.get($accent-colors, indigo)};
+  --color-accent-sky: #{map.get($accent-colors, sky)};
+  --color-accent-amber: #{map.get($accent-colors, amber)};
+  --color-accent-emerald: #{map.get($accent-colors, emerald)};
+  --color-accent-rose: #{map.get($accent-colors, rose)};
+  --color-accent-violet: #{map.get($accent-colors, violet)};
+  --color-accent-orange: #{map.get($accent-colors, orange)};
+  --color-hue-indigo: #{map.get($hue-colors, indigo-accent)};
+  --color-hue-violet: #{map.get($hue-colors, violet-accent)};
+  --color-hue-emerald: #{map.get($hue-colors, emerald-accent)};
+  --color-hue-green: #{map.get($hue-colors, green-accent)};
 
-  --color-hue-indigo: var(--primitive-indigo-600);
-  --color-hue-violet: var(--primitive-violet-600);
-  --color-hue-emerald: var(--primitive-emerald-600);
-  --color-hue-green: var(--primitive-green-600);
-
-  --semantic-light-surface-canvas: var(--primitive-neutral-50);
-  --semantic-light-surface-raised: var(--primitive-neutral-0);
-  --semantic-light-surface-sunken: var(--primitive-neutral-100);
-  --semantic-light-surface-muted: var(--primitive-neutral-50);
-  --semantic-light-surface-overlay: var(--primitive-light-overlay);
-  --semantic-light-border-subtle: var(--primitive-neutral-150);
-  --semantic-light-border-default: var(--primitive-neutral-200);
-  --semantic-light-border-strong: var(--primitive-neutral-300);
-  --semantic-light-text-primary: var(--primitive-neutral-900);
-  --semantic-light-text-secondary: var(--primitive-neutral-600);
-  --semantic-light-text-tertiary: var(--primitive-neutral-500);
-  --semantic-light-text-muted: var(--primitive-neutral-400);
-  --semantic-light-success-fg: var(--primitive-emerald-700);
-  --semantic-light-success-bg: var(--primitive-emerald-50);
-  --semantic-light-success-border: var(--primitive-emerald-200);
-  --semantic-light-success-dot: var(--primitive-emerald-500);
-  --semantic-light-warning-fg: var(--primitive-amber-700);
-  --semantic-light-warning-bg: var(--primitive-amber-50);
-  --semantic-light-warning-border: var(--primitive-amber-200);
-  --semantic-light-danger-fg: var(--primitive-red-700);
-  --semantic-light-danger-bg: var(--primitive-red-50);
-  --semantic-light-danger-border: var(--primitive-red-200);
-  --semantic-light-control-disabled-bg: var(--primitive-neutral-200);
-  --semantic-light-control-disabled-fg: var(--primitive-neutral-400);
-  --semantic-light-nav-bg: var(--primitive-neutral-0);
-  --semantic-light-nav-hover: var(--primitive-neutral-100);
-  --semantic-light-nav-fg: var(--primitive-neutral-600);
-  --semantic-light-nav-fg-muted: var(--primitive-neutral-400);
-  --semantic-light-nav-border: var(--primitive-neutral-150);
+  --semantic-light-surface-canvas: #{surface-color(canvas)};
+  --semantic-light-surface-raised: #{surface-color(raised)};
+  --semantic-light-surface-sunken: #{surface-color(sunken)};
+  --semantic-light-surface-muted: #{surface-color(muted)};
+  --semantic-light-surface-overlay: #{surface-color(overlay)};
+  --semantic-light-border-subtle: #{border-color(subtle)};
+  --semantic-light-border-default: #{border-color(default)};
+  --semantic-light-border-strong: #{border-color(strong)};
+  --semantic-light-text-primary: #{text-color(primary)};
+  --semantic-light-text-secondary: #{text-color(secondary)};
+  --semantic-light-text-tertiary: #{text-color(tertiary)};
+  --semantic-light-text-muted: #{text-color(muted)};
+  --semantic-light-success-fg: #{semantic-color(success-fg)};
+  --semantic-light-success-bg: #{semantic-color(success-bg)};
+  --semantic-light-success-border: #{semantic-color(success-border)};
+  --semantic-light-success-dot: #{semantic-color(success-dot)};
+  --semantic-light-warning-fg: #{semantic-color(warning-fg)};
+  --semantic-light-warning-bg: #{semantic-color(warning-bg)};
+  --semantic-light-warning-border: #{semantic-color(warning-border)};
+  --semantic-light-danger-fg: #{semantic-color(danger-fg)};
+  --semantic-light-danger-bg: #{semantic-color(danger-bg)};
+  --semantic-light-danger-border: #{semantic-color(danger-border)};
+  --semantic-light-control-disabled-bg: #{color.get-color(neutral, 200)};
+  --semantic-light-control-disabled-fg: #{text-color(disabled)};
+  --semantic-light-nav-bg: #{surface-color(raised)};
+  --semantic-light-nav-hover: #{interactive-color(hover)};
+  --semantic-light-nav-fg: #{text-color(secondary)};
+  --semantic-light-nav-fg-muted: #{text-color(muted)};
+  --semantic-light-nav-border: #{border-color(subtle)};
   --semantic-light-shadow-xs: var(--primitive-shadow-light-xs);
   --semantic-light-shadow-sm: var(--primitive-shadow-light-sm);
   --semantic-light-shadow-md: var(--primitive-shadow-light-md);
   --semantic-light-shadow-lg: var(--primitive-shadow-light-lg);
 
-  --semantic-dark-surface-canvas: var(--primitive-neutral-950);
-  --semantic-dark-surface-raised: var(--primitive-neutral-900);
-  --semantic-dark-surface-sunken: var(--primitive-neutral-850);
-  --semantic-dark-surface-muted: var(--primitive-dark-surface-muted);
-  --semantic-dark-surface-overlay: var(--primitive-dark-overlay);
-  --semantic-dark-border-subtle: var(--primitive-dark-border-subtle);
-  --semantic-dark-border-default: var(--primitive-dark-border-default);
-  --semantic-dark-border-strong: var(--primitive-neutral-700);
-  --semantic-dark-text-primary: var(--primitive-neutral-50);
-  --semantic-dark-text-secondary: var(--primitive-neutral-300);
-  --semantic-dark-text-tertiary: var(--primitive-neutral-400);
-  --semantic-dark-text-muted: var(--primitive-neutral-500);
-  --semantic-dark-success-fg: var(--primitive-emerald-400);
-  --semantic-dark-success-bg: var(--primitive-success-bg-dark);
-  --semantic-dark-success-border: var(--primitive-success-border-dark);
-  --semantic-dark-success-dot: var(--primitive-emerald-500);
-  --semantic-dark-warning-fg: var(--primitive-amber-400);
-  --semantic-dark-warning-bg: var(--primitive-warning-bg-dark);
-  --semantic-dark-warning-border: var(--primitive-warning-border-dark);
-  --semantic-dark-danger-fg: var(--primitive-red-300);
-  --semantic-dark-danger-bg: var(--primitive-danger-bg-dark);
-  --semantic-dark-danger-border: var(--primitive-danger-border-dark);
-  --semantic-dark-control-disabled-bg: var(--primitive-neutral-800);
-  --semantic-dark-control-disabled-fg: var(--primitive-neutral-500);
-  --semantic-dark-nav-bg: var(--primitive-neutral-900);
-  --semantic-dark-nav-hover: var(--primitive-neutral-850);
-  --semantic-dark-nav-fg: var(--primitive-neutral-400);
-  --semantic-dark-nav-fg-muted: var(--primitive-neutral-500);
-  --semantic-dark-nav-fg-active: var(--primitive-white);
-  --semantic-dark-nav-border: var(--primitive-dark-border-subtle);
+  --semantic-dark-surface-canvas: #{surface-color(canvas-dark)};
+  --semantic-dark-surface-raised: #{surface-color(raised-dark)};
+  --semantic-dark-surface-sunken: #{surface-color(sunken-dark)};
+  --semantic-dark-surface-muted: #{surface-color(muted-dark)};
+  --semantic-dark-surface-overlay: #{surface-color(overlay-dark)};
+  --semantic-dark-border-subtle: #{border-color(subtle-dark)};
+  --semantic-dark-border-default: #{border-color(default-dark)};
+  --semantic-dark-border-strong: #{border-color(strong-dark)};
+  --semantic-dark-text-primary: #{text-color(primary-dark)};
+  --semantic-dark-text-secondary: #{text-color(secondary-dark)};
+  --semantic-dark-text-tertiary: #{text-color(tertiary-dark)};
+  --semantic-dark-text-muted: #{text-color(muted-dark)};
+  --semantic-dark-success-fg: #{semantic-color(success-fg-dark)};
+  --semantic-dark-success-bg: #{semantic-color(success-bg-dark)};
+  --semantic-dark-success-border: #{semantic-color(success-border-dark)};
+  --semantic-dark-success-dot: #{semantic-color(success-dot)};
+  --semantic-dark-warning-fg: #{semantic-color(warning-fg-dark)};
+  --semantic-dark-warning-bg: #{semantic-color(warning-bg-dark)};
+  --semantic-dark-warning-border: #{semantic-color(warning-border-dark)};
+  --semantic-dark-danger-fg: #{semantic-color(danger-fg-dark)};
+  --semantic-dark-danger-bg: #{semantic-color(danger-bg-dark)};
+  --semantic-dark-danger-border: #{semantic-color(danger-border-dark)};
+  --semantic-dark-control-disabled-bg: #{color.get-color(neutral, 800)};
+  --semantic-dark-control-disabled-fg: #{text-color(disabled-dark)};
+  --semantic-dark-nav-bg: #{surface-color(raised-dark)};
+  --semantic-dark-nav-hover: #{interactive-color(hover-dark)};
+  --semantic-dark-nav-fg: #{text-color(tertiary-dark)};
+  --semantic-dark-nav-fg-muted: #{text-color(muted-dark)};
+  --semantic-dark-nav-fg-active: #{text-color(on-accent)};
+  --semantic-dark-nav-border: #{border-color(subtle-dark)};
   --semantic-dark-shadow-xs: var(--primitive-shadow-dark-xs);
   --semantic-dark-shadow-sm: var(--primitive-shadow-dark-sm);
   --semantic-dark-shadow-md: var(--primitive-shadow-dark-md);
   --semantic-dark-shadow-lg: var(--primitive-shadow-dark-lg);
 
-  --semantic-brand-indigo-accent: var(--primitive-indigo-600);
-  --semantic-brand-indigo-hover: var(--primitive-indigo-700);
-  --semantic-brand-indigo-subtle: var(--primitive-indigo-50);
-  --semantic-brand-indigo-muted: var(--primitive-indigo-100);
-  --semantic-brand-indigo-300: var(--primitive-indigo-300);
-  --semantic-brand-indigo-700: var(--primitive-indigo-700);
-  --semantic-brand-indigo-accent-dark: var(--primitive-indigo-500);
-  --semantic-brand-indigo-hover-dark: var(--primitive-indigo-400);
-  --semantic-brand-indigo-subtle-dark: var(--primitive-indigo-subtle-dark);
-  --semantic-brand-indigo-muted-dark: var(--primitive-indigo-muted-dark);
+  --semantic-brand-indigo-accent: #{map.get($hue-colors, indigo-accent)};
+  --semantic-brand-indigo-hover: #{map.get($hue-colors, indigo-hover)};
+  --semantic-brand-indigo-subtle: #{map.get($hue-colors, indigo-subtle)};
+  --semantic-brand-indigo-muted: #{map.get($hue-colors, indigo-muted)};
+  --semantic-brand-indigo-300: #{map.get($hue-colors, indigo-300)};
+  --semantic-brand-indigo-700: #{map.get($hue-colors, indigo-700)};
+  --semantic-brand-indigo-accent-dark: #{map.get($hue-colors, indigo-accent-dark)};
+  --semantic-brand-indigo-hover-dark: #{map.get($hue-colors, indigo-hover-dark)};
+  --semantic-brand-indigo-subtle-dark: #{map.get($hue-colors, indigo-subtle-dark)};
+  --semantic-brand-indigo-muted-dark: #{map.get($hue-colors, indigo-muted-dark)};
 
-  --semantic-brand-violet-accent: var(--primitive-violet-600);
-  --semantic-brand-violet-hover: var(--primitive-violet-700);
-  --semantic-brand-violet-subtle: var(--primitive-violet-50);
-  --semantic-brand-violet-muted: var(--primitive-violet-100);
-  --semantic-brand-violet-300: var(--primitive-violet-400);
-  --semantic-brand-violet-700: var(--primitive-violet-700);
-  --semantic-brand-violet-accent-dark: var(--primitive-violet-500);
-  --semantic-brand-violet-hover-dark: var(--primitive-violet-400);
-  --semantic-brand-violet-subtle-dark: var(--primitive-violet-subtle-dark);
-  --semantic-brand-violet-muted-dark: var(--primitive-violet-muted-dark);
+  --semantic-brand-violet-accent: #{map.get($hue-colors, violet-accent)};
+  --semantic-brand-violet-hover: #{map.get($hue-colors, violet-hover)};
+  --semantic-brand-violet-subtle: #{map.get($hue-colors, violet-subtle)};
+  --semantic-brand-violet-muted: #{map.get($hue-colors, violet-muted)};
+  --semantic-brand-violet-300: #{map.get($hue-colors, violet-300)};
+  --semantic-brand-violet-700: #{map.get($hue-colors, violet-700)};
+  --semantic-brand-violet-accent-dark: #{map.get($hue-colors, violet-accent-dark)};
+  --semantic-brand-violet-hover-dark: #{map.get($hue-colors, violet-hover-dark)};
+  --semantic-brand-violet-subtle-dark: #{map.get($hue-colors, violet-subtle-dark)};
+  --semantic-brand-violet-muted-dark: #{map.get($hue-colors, violet-muted-dark)};
 
-  --semantic-brand-emerald-accent: var(--primitive-emerald-600);
-  --semantic-brand-emerald-hover: var(--primitive-emerald-700);
-  --semantic-brand-emerald-subtle: var(--primitive-emerald-50);
-  --semantic-brand-emerald-muted: var(--primitive-emerald-200);
-  --semantic-brand-emerald-300: var(--primitive-emerald-400);
-  --semantic-brand-emerald-700: var(--primitive-emerald-700);
-  --semantic-brand-emerald-accent-dark: var(--primitive-emerald-500);
-  --semantic-brand-emerald-hover-dark: var(--primitive-emerald-400);
-  --semantic-brand-emerald-subtle-dark: var(--primitive-emerald-subtle-dark);
-  --semantic-brand-emerald-muted-dark: var(--primitive-emerald-muted-dark);
+  --semantic-brand-emerald-accent: #{map.get($hue-colors, emerald-accent)};
+  --semantic-brand-emerald-hover: #{map.get($hue-colors, emerald-hover)};
+  --semantic-brand-emerald-subtle: #{map.get($hue-colors, emerald-subtle)};
+  --semantic-brand-emerald-muted: #{map.get($hue-colors, emerald-muted)};
+  --semantic-brand-emerald-300: #{map.get($hue-colors, emerald-300)};
+  --semantic-brand-emerald-700: #{map.get($hue-colors, emerald-700)};
+  --semantic-brand-emerald-accent-dark: #{map.get($hue-colors, emerald-accent-dark)};
+  --semantic-brand-emerald-hover-dark: #{map.get($hue-colors, emerald-hover-dark)};
+  --semantic-brand-emerald-subtle-dark: #{map.get($hue-colors, emerald-subtle-dark)};
+  --semantic-brand-emerald-muted-dark: #{map.get($hue-colors, emerald-muted-dark)};
 
-  --semantic-brand-green-accent: var(--primitive-green-600);
-  --semantic-brand-green-hover: var(--primitive-green-700);
-  --semantic-brand-green-subtle: var(--primitive-green-50);
-  --semantic-brand-green-muted: var(--primitive-green-200);
-  --semantic-brand-green-300: var(--primitive-green-400);
-  --semantic-brand-green-700: var(--primitive-green-700);
-  --semantic-brand-green-accent-dark: var(--primitive-green-500);
-  --semantic-brand-green-hover-dark: var(--primitive-green-400);
-  --semantic-brand-green-subtle-dark: var(--primitive-green-subtle-dark);
-  --semantic-brand-green-muted-dark: var(--primitive-green-muted-dark);
+  --semantic-brand-green-accent: #{map.get($hue-colors, green-accent)};
+  --semantic-brand-green-hover: #{map.get($hue-colors, green-hover)};
+  --semantic-brand-green-subtle: #{map.get($hue-colors, green-subtle)};
+  --semantic-brand-green-muted: #{map.get($hue-colors, green-muted)};
+  --semantic-brand-green-300: #{map.get($hue-colors, green-300)};
+  --semantic-brand-green-700: #{map.get($hue-colors, green-700)};
+  --semantic-brand-green-accent-dark: #{map.get($hue-colors, green-accent-dark)};
+  --semantic-brand-green-hover-dark: #{map.get($hue-colors, green-hover-dark)};
+  --semantic-brand-green-subtle-dark: #{map.get($hue-colors, green-subtle-dark)};
+  --semantic-brand-green-muted-dark: #{map.get($hue-colors, green-muted-dark)};
 }
