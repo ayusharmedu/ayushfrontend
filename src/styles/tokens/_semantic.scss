@@ -497,6 +497,26 @@ $typography-tokens: (
   --size-viewport-height: 100vh;
   --size-filter-search-width: calc(var(--space-64) + var(--space-6));
   --size-table-min-width: 900px;
+  --size-table-checkbox-col: var(--space-10);
+  --size-table-actions-col: var(--space-20);
+  --size-table-row-height: var(--space-12);
+  --size-table-row-comfortable-height: 60px;
+  --size-table-row-spacious-height: var(--space-18);
+  --size-dashboard-page-title: 26px;
+  --size-dashboard-subtitle-max-width: 640px;
+  --size-dashboard-content-gap: 18px;
+  --size-dashboard-action-gap: var(--space-2);
+  --size-dashboard-card-padding: var(--space-3-5);
+  --size-dashboard-tab-offset: calc(var(--space-0-5) * -1);
+  --size-dashboard-tab-active-offset: calc(var(--space-px) * -1);
+  --size-dashboard-count-pad-y: var(--space-px);
+  --size-dashboard-count-pad-x: var(--space-1-5);
+  --size-dashboard-table-footer-pad-x: var(--space-5);
+  --size-dashboard-table-footer-pad-y: var(--space-2-5);
+  --size-density-toggle-pad: var(--space-0-5);
+  --size-density-toggle-gap: var(--space-px);
+  --size-density-toggle-button: calc(var(--space-6) + var(--space-0-5));
+  --size-dashboard-avatar: calc(var(--space-7) + var(--space-0-5));
   --size-login-panel-min: 420px;
   --size-login-card-max: 420px;
   --size-mobile-hero-min-height: 50vh;
@@ -507,6 +527,7 @@ $typography-tokens: (
   --size-logo-sm: var(--space-7);
   --size-logo-md: var(--space-9);
   --size-checkbox: var(--space-4);
+  --size-checkbox-border: 1.5px;
   --size-dot-sm: var(--space-1-5);
   --size-notification-dot: 15px;
   --size-badge-height: calc(var(--space-5) + var(--space-0-5));
@@ -541,6 +562,10 @@ $typography-tokens: (
   --text-ui-sm-size: 12.5px;
   --text-ui-md-size: var(--text-body-sm-size);
   --text-ui-lg-size: 13.5px;
+  --text-page-title-size: var(--size-dashboard-page-title);
+  --text-dashboard-subtitle-size: var(--text-ui-lg-size);
+  --text-dashboard-cell-size: var(--text-ui-lg-size);
+  --text-dashboard-meta-size: var(--text-body-xs-size);
   --text-logo-size: var(--text-heading-xs-size);
   --text-wordmark-size: 18px;
   --text-card-heading-size: var(--text-metric-md-size);
@@ -552,9 +577,13 @@ $typography-tokens: (
 
   --motion-page-enter: 220ms var(--motion-enter);
   --line-height-hero: var(--text-display-lh);
+  --line-height-page-title: 1.15;
   --line-height-control: 1;
+  --line-height-dashboard-copy: var(--text-body-lh);
   --line-height-copy-relaxed: 1.6;
 
+  --tracking-page-title: -0.5px;
+  --tracking-metric-value: -0.4px;
   --tracking-tight: 0.02em;
   --tracking-label: 0.03em;
   --tracking-meta: 0.05em;

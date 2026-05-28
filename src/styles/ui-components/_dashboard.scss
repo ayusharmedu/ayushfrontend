@@ -168,9 +168,9 @@
 }
 
 .avatar-md {
-  width: var(--size-avatar-md);
-  height: var(--size-avatar-md);
-  font-size: var(--text-body-xs-size);
+  width: var(--size-dashboard-avatar);
+  height: var(--size-dashboard-avatar);
+  font-size: var(--text-micro-size);
 }
 
 .avatar-lg {
@@ -190,14 +190,14 @@
 .scope-pill {
   display: inline-flex;
   align-items: center;
-  gap: var(--size-inline-gap-xs);
+  gap: var(--space-1-5);
   padding: 0 var(--space-2);
   height: var(--size-badge-height);
-  margin-top: var(--offset-control-inset);
+  margin-top: var(--space-1);
   border-radius: var(--radius-sm);
   background: var(--color-surface-sunken);
   border: var(--border-thin) solid var(--color-border-subtle);
-  font-size: var(--text-ui-xs-size);
+  font-size: var(--text-body-xs-size);
   font-weight: var(--text-ui-medium-weight);
   color: var(--color-text-secondary);
 }

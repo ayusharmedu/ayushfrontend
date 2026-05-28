@@ -1,7 +1,7 @@
 .badge {
   display: inline-flex;
   align-items: center;
-  gap: var(--size-inline-gap-xs);
+  gap: var(--space-1-5);
   height: var(--size-badge-height);
   padding: 0 var(--space-2);
   border-radius: var(--radius-full);
@@ -69,14 +69,16 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-width: var(--size-count-min-width);
-  height: var(--size-count-height);
-  padding: 0 var(--size-inline-pad-xs);
+  min-width: 0;
+  height: auto;
+  padding: var(--size-dashboard-count-pad-y) var(--size-dashboard-count-pad-x);
   background: var(--color-surface-sunken);
   border-radius: var(--radius-full);
-  font-size: var(--text-micro-size);
+  font-size: var(--text-ui-micro-size);
   font-weight: var(--text-ui-semibold-weight);
-  color: var(--color-text-secondary);
+  color: var(--color-text-muted);
+  line-height: var(--line-height-control);
+  font-variant-numeric: tabular-nums;
 }
 
 .tab-count-on-accent {

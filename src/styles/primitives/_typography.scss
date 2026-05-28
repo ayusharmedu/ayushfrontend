@@ -50,23 +50,6 @@ $line-heights: (
     display: 1.1
 );
 
-$typography: (
-    caption: (size: font-size(caption), weight: font-weight(semibold), line-height: line-height(normal)),
-    micro: (size: font-size(micro), weight: font-weight(medium), line-height: line-height(relaxed)),
-    body-xs: (size: font-size(body-xs), weight: font-weight(medium), line-height: line-height(relaxed)),
-    body-sm: (size: font-size(body-sm), weight: font-weight(regular), line-height: line-height(body)),
-    body: (size: font-size(body), weight: font-weight(regular), line-height: line-height(body)),
-    label: (size: font-size(label), weight: font-weight(medium), line-height: line-height(normal)),
-    button: (size: font-size(button), weight: font-weight(semibold), line-height: line-height(snug)),
-    row-name: (size: font-size(row-name), weight: font-weight(semibold), line-height: line-height(normal)),
-    heading-xs: (size: font-size(heading-xs), weight: font-weight(semibold), line-height: line-height(normal)),
-    heading-sm: (size: font-size(heading-sm), weight: font-weight(bold), line-height: line-height(snug)),
-    heading-md: (size: font-size(heading-md), weight: font-weight(bold), line-height: line-height(tight)),
-    heading-lg: (size: font-size(heading-lg), weight: font-weight(bold), line-height: line-height(tight)),
-    display: (size: font-size(display), weight: font-weight(bold), line-height: line-height(display)),
-    metric-md: (size: font-size(metric-md), weight: font-weight(bold), line-height: line-height(display))
-);
-
 @function font-weight($weight) {
     @if map.has-key($font-weights, $weight) {
         @return map.get($font-weights, $weight);
@@ -90,6 +73,23 @@ $typography: (
 
     @error "Line height '#{$height}' not found";
 }
+
+$typography: (
+    caption: (size: font-size(caption), weight: font-weight(semibold), line-height: line-height(normal)),
+    micro: (size: font-size(micro), weight: font-weight(medium), line-height: line-height(relaxed)),
+    body-xs: (size: font-size(body-xs), weight: font-weight(medium), line-height: line-height(relaxed)),
+    body-sm: (size: font-size(body-sm), weight: font-weight(regular), line-height: line-height(body)),
+    body: (size: font-size(body), weight: font-weight(regular), line-height: line-height(body)),
+    label: (size: font-size(label), weight: font-weight(medium), line-height: line-height(normal)),
+    button: (size: font-size(button), weight: font-weight(semibold), line-height: line-height(snug)),
+    row-name: (size: font-size(row-name), weight: font-weight(semibold), line-height: line-height(normal)),
+    heading-xs: (size: font-size(heading-xs), weight: font-weight(semibold), line-height: line-height(normal)),
+    heading-sm: (size: font-size(heading-sm), weight: font-weight(bold), line-height: line-height(snug)),
+    heading-md: (size: font-size(heading-md), weight: font-weight(bold), line-height: line-height(tight)),
+    heading-lg: (size: font-size(heading-lg), weight: font-weight(bold), line-height: line-height(tight)),
+    display: (size: font-size(display), weight: font-weight(bold), line-height: line-height(display)),
+    metric-md: (size: font-size(metric-md), weight: font-weight(bold), line-height: line-height(display))
+);
 
 @function typography-token($variant, $property) {
     @if map.has-key($typography, $variant) {
