@@ -1,0 +1,105 @@
+/* Admin Sidebar Component Styles */
+
+.ui-admin-sidenavbar-container {
+  @apply h-full overflow-hidden rounded-sm flex flex-col relative;
+  background-color: var(--p-surface-0);
+}
+
+.ui-admin-heading-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 12px; /* Compact */
+  border-bottom: 1px solid var(--p-surface-200);
+}
+
+.ui-admin-text {
+  font-size: 20px;
+  line-height: 1.3;
+  font-weight: var(--p-font-weight-semibold, 600);
+  color: var(--p-surface-900);
+}
+
+.ui-admin-sidebar-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+  padding: 12px; /* Compact */
+}
+
+.ui-admin-sidebar-main-content {
+  flex: 1;
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Hide section titles - all items together */
+.ui-admin-sidebar-section {
+  display: flex;
+  flex-direction: column;
+}
+
+.ui-admin-sidebar-section-title {
+  display: none; /* Hidden - items grouped together */
+}
+
+.ui-admin-sidebar-nav-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 4px; /* Tight */
+}
+
+.ui-admin-sidebar-item {
+  width: 100%;
+  min-height: 36px; /* Compact */
+  padding: 8px 12px; /* Compact */
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+  color: var(--p-surface-600); /* Inactive text */
+  text-align: left;
+}
+
+.ui-admin-sidebar-item:hover {
+  background-color: rgba(0, 0, 0, 0.04); /* Subtle hover */
+  color: var(--p-surface-900); /* Darker on hover */
+}
+
+/* Focus visible for accessibility */
+.ui-admin-sidebar-item:focus-visible {
+  outline: 2px solid var(--p-primary-500);
+  outline-offset: 2px;
+  border-radius: inherit;
+}
+
+/* Selected/Active Item State */
+.ui-admin-sidebar-item.active,
+.ui-admin-sidebar-item.selected,
+.ui-admin-sidebar-item.selected-item {
+  background-color: rgba(37, 99, 235, 0.08); /* Primary at 8% */
+  color: var(--p-primary-500); /* Primary color */
+}
+
+.ui-admin-sidebar-item.active .ui-admin-sidebar-item-icon,
+.ui-admin-sidebar-item.selected .ui-admin-sidebar-item-icon,
+.ui-admin-sidebar-item.selected-item .ui-admin-sidebar-item-icon {
+  color: var(--p-primary-500);
+}
+
+.ui-admin-sidebar-item-icon {
+  font-size: 16px; /* Compact */
+  flex-shrink: 0;
+  color: inherit;
+}
+
+.ui-admin-sidebar-item-text {
+  font-size: var(--p-font-size-sm, 14px);
+  font-weight: var(--p-font-weight-medium, 500);
+}

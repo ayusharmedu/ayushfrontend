@@ -1,0 +1,353 @@
+// =============================================================================
+// UI TAB COMPONENT - Semantic token-based tab styling using PrimeNG extensions
+// =============================================================================
+
+// Root element - p-tabs
+.ui-tabs {
+  @extend .p-tabs !optional;
+}
+
+// Tab list wrapper - p-tablist
+.ui-tablist {
+  @extend .p-tablist !optional;
+}
+
+// Tab list content - p-tablist-content
+.ui-tablist-content {
+  @extend .p-tablist-content !optional;
+}
+
+// Tab list element - p-tablist-tab-list
+.ui-tablist-tab-list {
+  @extend .p-tablist-tab-list !optional;
+}
+
+.ui-tabs {
+
+  .p-tab {
+    @extend .ui-tab !optional;
+  }
+
+  .p-tab-active {
+    @extend .ui-tab-active !optional;
+  }
+
+}
+
+.ui-tab-2{
+  @extend .p-tab !optional;
+  background-color: none !important;
+  color: var(--p-blue-700) !important;
+  border-color: none !important;
+}
+
+.ui-tab-active{
+  @extend .p-tab-active !optional;  
+}
+
+.ui-tab-active-2{
+  @extend .p-tab-active !optional;  
+  background-color: none !important;
+  color: var(--p-blue-700) !important;
+  border-color: none !important;
+}
+
+// Active ink bar element - p-tablist-active-bar
+.ui-tablist-active-bar {
+  @extend .p-tablist-active-bar !optional;
+}
+
+// Navigation buttons - p-tablist-nav-button
+.ui-tablist-nav-button {
+  @extend .p-tablist-nav-button !optional;
+}
+
+// Tab panels wrapper - p-tabpanels
+.ui-tabpanels {
+  @extend .p-tabpanels !optional;
+}
+
+// Individual tab panel - p-tabs-panel
+.ui-tabs-panel {
+  @extend .p-tabs-panel !optional;
+}
+
+// Tab Panel - Extending PrimeNG tab panel with design system tokens
+.ui-tab-panel {
+  @extend .p-tabview-panel !optional;
+  padding: var(--p-spacing-lg) !important;
+  background-color: var(--p-surface-0) !important;
+}
+
+// Tab Component - Extending PrimeNG tab view with design system tokens
+.ui-tab-component {
+  @extend .p-tabview !optional;
+  
+  background: var(--p-surface-0) !important;
+  border: 1px solid var(--p-surface-300) !important;
+  border-radius: var(--p-border-radius) !important;
+  display: flex !important;
+  flex-direction: column !important;
+
+  :host ::ng-deep & {
+    .p-tabview-nav {
+      @extend .p-tabview-nav !optional;
+      border-bottom: 1px solid var(--p-surface-300) !important;
+      background: var(--p-surface-50) !important;
+      border-radius: var(--p-border-radius) var(--p-border-radius) 0 0 !important;
+      padding: 0 !important;
+      margin-bottom: 0 !important;
+    }
+
+    .p-tabview-nav li {
+      margin-right: var(--p-spacing-xs) !important;
+      position: relative !important;
+
+      .p-tabview-nav-link {
+
+        // @extend .p-tabview-nav .p-tabview-nav-link !optional;
+
+        // @extend .p-tabview-nav .p-tabview-nav-link !optional;
+        // @extend .p-tabview-nav .p-tabview-nav-link !optional;
+        padding: var(--p-spacing-md) var(--p-spacing-lg) !important;
+        font-family: var(--p-font-family) !important;
+        font-size: var(--p-font-size-sm) !important;
+        font-weight: var(--p-font-weight-medium) !important;
+        color: var(--p-text-muted-color) !important;
+        border: 1px solid transparent !important;
+        border-bottom: 2px solid transparent !important;
+        border-radius: var(--p-border-radius) var(--p-border-radius) 0 0 !important;
+        transition: var(--p-transition-duration) var(--p-transition-timing) !important;
+        text-decoration: none !important;
+        position: relative !important;
+
+        &:hover {
+          color: var(--p-text-color) !important;
+          background-color: var(--p-surface-100) !important;
+          text-decoration: none !important;
+        }
+
+        &:focus {
+          z-index: 1 !important;
+          outline: 0 none !important;
+          box-shadow: inset 0 0 0 1px var(--p-focus-ring) !important;
+        }
+      }
+
+      &.p-highlight {
+        // @extend .p-tabview-nav .p-tabview-selected !optional;
+        // @extend .p-tabview-nav .p-tabview-selected !optional;
+        // @extend .p-tabview-nav .p-tabview-selected !optional;
+        
+        .p-tabview-nav-link {
+          color: var(--p-primary-color) !important;
+          background: var(--p-surface-0) !important;
+          border-color: var(--p-surface-300) !important;
+          border-bottom-color: transparent !important;
+        }
+        
+        &:hover {
+          .p-tabview-nav-link {
+            border-color: var(--p-surface-300) !important;
+            border-bottom-color: transparent !important;
+          }
+        }
+      }
+
+      &:not(.p-highlight):not(.p-disabled) {
+        .p-tabview-nav-link:hover {
+          // @extend .p-tabview-nav .p-tabview-nav-link:not(.p-disabled):hover !optional;
+          // @extend .p-tabview-nav .p-tabview-nav-link:not(.p-disabled):hover !optional;
+          // @extend .p-tabview-nav .p-tabview-nav-link:not(.p-disabled):hover !optional;
+          color: var(--p-text-color) !important;
+          background-color: var(--p-surface-100) !important;
+        }
+      }
+
+      &.p-disabled {
+        opacity: 0.6 !important;
+        cursor: not-allowed !important;
+      }
+    }
+
+    .p-tabview-panels {
+      @extend .p-tabview-panels !optional;
+      background: var(--p-surface-0) !important;
+      padding: var(--p-spacing-lg) 0 !important;
+      border: 1px solid var(--p-surface-300) !important;
+      border-top: 0 none !important;
+      border-radius: 0 0 var(--p-border-radius) var(--p-border-radius) !important;
+      flex: 1 1 auto !important;
+    }
+
+    .p-tabview-panel {
+      @extend .p-tabview-panel !optional;
+      padding: var(--p-spacing-md) !important;
+    }
+  }
+}
+
+// Alternative tab styles - Modern pill-style tabs
+.ui-tab-component--pill {
+  :host ::ng-deep & {
+    .p-tabview-nav li {
+      .p-tabview-nav-link {
+        border-radius: var(--p-border-radius-xl) !important;
+      }
+    }
+  }
+}
+
+// Alternative tab styles - Full width tabs
+.ui-tab-component--full {
+  :host ::ng-deep & {
+    .p-tabview-nav {
+      display: flex !important;
+    }
+    
+    .p-tabview-nav li {
+      flex: 1 !important;
+      text-align: center !important;
+    }
+  }
+}
+
+// Vertical tabs - For sidebar navigation
+.ui-tab-component--vertical {
+  :host ::ng-deep & {
+    display: flex !important;
+    
+    .p-tabview-nav {
+      flex-direction: column !important;
+      border-bottom: none !important;
+      border-right: 1px solid var(--p-surface-300) !important;
+      border-radius: var(--p-border-radius) 0 0 var(--p-border-radius) !important;
+    }
+    
+    .p-tabview-nav li {
+      margin-right: 0 !important;
+      margin-bottom: var(--p-spacing-xs) !important;
+      border-radius: var(--p-border-radius) !important;
+      
+      .p-tabview-nav-link {
+        border-radius: var(--p-border-radius) !important;
+      }
+    }
+    
+    .p-tabview-panels {
+      flex: 1 !important;
+      border-top: none !important;
+      border-left: 1px solid var(--p-surface-300) !important;
+      border-radius: 0 var(--p-border-radius) var(--p-border-radius) var(--p-border-radius) !important;
+    }
+  }
+}
+
+// =====================================
+// Base Tabs (Common for all variants)
+// =====================================
+
+.ui-tabs {
+
+  .p-tablist {
+    border-bottom: 1px solid var(--p-surface-300);
+  }
+
+  .p-tab {
+    font-weight: 500;
+    padding: 0.75rem 1.25rem;
+    background: transparent;
+    border: none;
+    color: var(--p-text-muted-color);
+    transition: all 0.2s ease;
+  }
+
+  .p-tab-active {
+    font-weight: 600;
+  }
+
+}
+
+
+// =====================================
+// Underline Tabs
+// =====================================
+
+.ui-tabs--underline {
+
+  .p-tab {
+    border-bottom: 2px solid transparent;
+  }
+
+  .p-tab-active {
+    color: var(--p-primary-color);
+    border-bottom: 2px solid var(--p-primary-color);
+    background: transparent;
+  }
+
+}
+
+
+// =====================================
+// Pill Tabs
+// =====================================
+
+.ui-tabs--pill {
+
+  .p-tablist {
+    border-bottom: none !important;
+  }
+
+  .p-tab {
+    border-radius: 999px;
+    margin-right: 0.5rem;
+    background: var(--p-surface-100);
+    border-bottom: none !important;
+  }
+
+  .p-tab-active {
+    background: var(--p-primary-color);
+    color: white;
+    border-bottom: none !important;
+  }
+
+}
+
+
+// =====================================
+// Boxed Tabs
+// =====================================
+
+.ui-tabs--boxed {
+
+  .p-tab {
+    border: 1px solid var(--p-surface-300);
+    border-bottom: none;
+    border-radius: 6px 6px 0 0;
+    margin-right: 4px;
+  }
+
+  .p-tab-active {
+    background: var(--p-surface-0);
+    border-color: var(--p-primary-color);
+    color: var(--p-primary-color);
+  }
+
+}
+
+
+// =====================================
+// Minimal Tabs
+// =====================================
+
+.ui-tabs--minimal {
+
+  .p-tablist {
+    border-bottom: none;
+  }
+
+  .p-tab-active {
+    color: var(--p-primary-color);
+  }
+
+}

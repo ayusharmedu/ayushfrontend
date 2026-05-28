@@ -1,0 +1,344 @@
+// =============================================================================
+// TAG COMPONENT - UI Component Styles
+// =============================================================================
+// Reusable tag styles using PrimeNG theme integration
+// Use these classes to create consistently styled tags across the application
+
+// Main tag container
+.ui-tag {
+  @extend .p-tag;
+  background: var(--color-surface-muted) !important;
+  color: var(--color-text-primary) !important;
+}
+
+.ui-tag-icon {
+  @extend .p-tag-icon;
+}
+
+.ui-tag-value {
+  @extend .p-tag-value;
+}
+
+// Tag with primary style
+.ui-tag-primary {
+  @extend .p-tag-primary;
+  background: var(--color-primary-subtle) !important;
+  color: var(--color-primary) !important;
+  border-color: var(--color-primary-muted) !important;
+}
+
+// Tag with secondary style
+.ui-tag-secondary {
+  @extend .p-tag-secondary;
+  background: var(--color-surface-muted) !important;
+  color: var(--color-text-primary) !important;
+}
+
+// Tag with success style
+.ui-tag-success {
+  @extend .p-tag-success;
+  background: var(--color-success-100) !important;
+  color: var(--color-success-700) !important;
+}
+
+// Tag with warning style
+.ui-tag-warning {
+  @extend .p-tag-warning;
+  background: var(--color-warning-100) !important;
+  color: var(--color-warning-700) !important;
+  border-color: var(--color-border-warning) !important;
+}
+
+// Tag with danger style
+.ui-tag-danger {
+  @extend .p-tag-danger;
+  background: var(--color-danger-100) !important;
+  color: var(--color-danger-700) !important;
+}
+
+// Tag with info style
+.ui-tag-info {
+  @extend .p-tag-info;
+  background: var(--color-info-100) !important;
+  color: var(--color-info-700) !important;
+
+}
+
+// Tag with outlined style
+.ui-tag-outlined {
+  @extend .p-tag-outlined;
+}
+
+// Tag with rounded style
+.ui-tag-rounded {
+  @extend .p-tag-rounded;
+}
+
+// Tag with large size
+.ui-tag-lg {
+  @extend .p-tag-lg;
+}
+
+// Tag with small size
+.ui-tag-sm {
+  @extend .p-tag-sm;
+}
+
+// Tag with no padding
+.ui-tag-nopad {
+  @extend .p-tag-nopad;
+}
+
+// Tag with emphasis
+.ui-tag-emphasis {
+  @extend .p-tag-emphasis;
+  @extend .ui-tag;
+  @extend .ui-tag-fixed;
+  @extend .ui-tag-action-def;
+  @extend .ui-tag;
+  @extend .ui-tag-fixed;
+  @extend .ui-tag-action-def;
+}
+
+// Tag with fixed width to prevent stretching
+.ui-tag-fixed {
+  width: fit-content !important;
+  min-width: auto !important;
+  max-width: fit-content !important;
+}
+
+// Tag with subtle background
+.ui-tag-subtle {
+  @extend .p-tag-subtle;
+}
+
+// Tag with custom padding sizes
+.ui-tag-padded {
+  padding: var(--p-spacing-xs) var(--p-spacing-sm) !important;
+}
+
+.ui-tag-padded-lg {
+  padding: var(--p-spacing-sm) var(--p-spacing-md) !important;
+}
+
+.ui-tag-padded-sm {
+  padding: var(--p-spacing-xxs) var(--p-spacing-xs) !important;
+}
+
+// Tag with icon on right
+.ui-tag-icon-right {
+  .ui-tag-icon {
+    order: 1 !important;
+    margin-left: var(--p-spacing-xs) !important;
+    margin-right: 0 !important;
+  }
+}
+
+// Tag with custom background colors
+.ui-tag-custom {
+  &.ui-tag-purple {
+    background-color: var(--p-purple-100) !important;
+    color: var(--p-purple-700) !important;
+    border: none !important;
+  }
+
+  &.ui-tag-teal {
+    background-color: var(--p-teal-100) !important;
+    color: var(--p-teal-700) !important;
+    border: none !important;
+  }
+
+  &.ui-tag-indigo {
+    background-color: var(--p-indigo-100) !important;
+    color: var(--p-indigo-700) !important;
+    border: none !important;
+  }
+}
+
+// Specialized tags for action definition
+.ui-tag-action-def {
+  &.ui-tag-system {
+    @extend .ui-tag-emphasis;
+    background-color: var(--color-success-100) !important;
+    color: var(--color-success-700) !important;
+    border: none !important;
+    font-size: var(--font-size-xs) !important;
+  }
+
+  &.ui-tag-user-defined {
+    @extend .ui-tag-emphasis;
+    background-color: var(--color-info-100) !important;
+    color: var(--color-info-700) !important;
+    border: none !important;
+    font-size: var(--font-size-xs) !important;
+    font-weight: var(--p-font-weight-semibold) !important;
+  }
+
+  &.ui-tag-id {
+    @extend .p-tag;
+    @extend .p-tag-info;
+    @extend .ui-tag;
+    @extend .ui-tag-emphasis;
+    @extend .ui-tag-fixed;
+    @extend .ui-tag-action-def;
+
+    font-size: 12px !important;
+    font-weight: 400 !important;
+
+    // Add icon as ::before
+    // &::before {
+    //   content: '\e9f1'; // PrimeIcons hashtag Unicode
+    //   font-family: 'primeicons' !important;
+    //   margin-right: 0.5rem;
+    //   font-size: 0.875rem;
+    // }
+  }
+}
+
+
+
+// Tag with custom text colors
+.ui-tag-text {
+  &.ui-tag-text-primary {
+    color: var(--color-primary) !important;
+  }
+
+  &.ui-tag-text-success {
+    color: var(--color-success-hover) !important;
+  }
+
+  &.ui-tag-text-warning {
+    color: var(--color-warning-hover) !important;
+  }
+
+  &.ui-tag-text-danger {
+    color: var(--color-error-hover) !important;
+  }
+
+  &.ui-tag-text-info {
+    color: var(--color-info-hover) !important;
+  }
+}
+
+// Tag with hover effects
+.ui-tag-hover {
+  transition: all var(--p-transition-duration) var(--p-transition-timing) !important;
+
+  &:hover {
+    transform: translateY(-1px) !important;
+    box-shadow: var(--p-shadow-md) !important;
+  }
+}
+
+// Tag with borderless style
+.ui-tag-borderless {
+  border: none !important;
+}
+
+// Tag with pill shape
+.ui-tag-pill {
+  border-radius: var(--p-border-radius-pill) !important;
+}
+
+// Tag with glow effect
+.ui-tag-glow {
+  box-shadow: 0 0 0 2px var(--p-focus-ring) !important;
+}
+
+// Tag variants for different use cases
+.ui-tag-status {
+  font-weight: var(--p-font-weight-bold) !important;
+  text-transform: uppercase !important;
+  letter-spacing: 1px !important;
+  font-size: var(--p-font-size-xxs) !important;
+}
+
+.ui-tag-badge {
+  border-radius: var(--p-border-radius-pill) !important;
+  padding: var(--p-spacing-xxs) var(--p-spacing-xs) !important;
+  font-size: var(--p-font-size-xxs) !important;
+  font-weight: var(--p-font-weight-bold) !important;
+}
+
+.ui-tag-chip {
+  border-radius: var(--p-border-radius-lg) !important;
+  padding: var(--p-spacing-xs) var(--p-spacing-sm) !important;
+  font-size: var(--p-font-size-xs) !important;
+  font-weight: var(--p-font-weight-medium) !important;
+}
+
+// Tag with inline display
+.ui-tag-inline {
+  display: inline !important;
+  margin: 0 var(--p-spacing-xs) !important;
+}
+
+// Responsive adjustments
+@media (max-width: 767px) {
+  .ui-tag {
+    font-size: var(--p-font-size-xs) !important;
+  }
+
+  .ui-tag-lg {
+    font-size: var(--p-font-size-sm) !important;
+    padding: var(--p-spacing-xs) var(--p-spacing-sm) !important;
+  }
+
+  .ui-tag-sm {
+    font-size: var(--p-font-size-xxs) !important;
+    padding: var(--p-spacing-xxs) var(--p-spacing-xs) !important;
+  }
+}
+
+
+// Tag variants for different use cases
+
+.ui-tag-indicator {
+  @extend .p-tag;
+
+  // font-weight: var(--font-weight-bold) !important;
+  // text-transform: uppercase !important;
+  // letter-spacing: 1px !important;
+  // font-size: var(--font-size-xxs) !important;
+
+  &.p-tag-success {
+    background: var(--color-success-100) !important;
+    color: var(--color-success-700) !important;
+    // color: red !important;
+    border: 1px solid var(--color-success-muted) !important;
+  }
+
+  &.p-tag-danger {
+    background: var(--color-error-100) !important;
+    color: var(--color-error-700) !important;
+    // color: red !important;
+    border: 1px solid var(--color-error-muted) !important;
+  }
+
+  &.p-tag-info {
+    background: var(--color-info-100) !important;
+    color: var(--color-info-700) !important;
+    // color: red !important;
+    border: 1px solid var(--color-info-muted) !important;
+  }
+
+  &.p-tag-warn {
+    background: var(--color-warning-100) !important;
+    color: var(--color-warning-700) !important;
+    // color: red !important;
+    border: 1px solid var(--color-warning-muted) !important;
+  }
+
+  &.p-tag-secondary {
+    background: var(--color-surface-subtle) !important;
+    color: var(--color-text-secondary) !important;
+    border: 1px solid var(--color-border-default) !important;
+  }
+
+  &.p-tag-primary {
+    background: var(--color-primary-subtle) !important;
+    color: var(--color-primary) !important;
+    // color: red !important;
+    border: 1px solid var(--color-primary-muted) !important;
+  }
+}

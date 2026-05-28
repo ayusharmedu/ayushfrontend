@@ -1,0 +1,63 @@
+@if (isVisible()) {
+  <section class="tweaks-panel" aria-label="Theme switcher">
+    <header class="tweaks-header">
+      <span class="tweaks-title">v3 tweaks</span>
+      <button class="icon-btn icon-btn-sm" type="button" aria-label="Hide theme switcher" (click)="isVisible.set(false)">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18" />
+          <line x1="6" y1="6" x2="18" y2="18" />
+        </svg>
+      </button>
+    </header>
+
+    <div class="tweaks-body">
+      <div class="tweaks-section">
+        <span class="tweaks-section-label">Theme</span>
+        <div class="tweaks-row">
+          <span class="text-body-sm text-secondary">Mode</span>
+          <div class="tweaks-mode-seg">
+            @for (mode of theme.modes; track mode) {
+              <button class="tweaks-mode-btn" type="button" [class.active]="theme.mode() === mode" (click)="setMode(mode)">
+                {{ mode === 'light' ? 'Light' : 'Dark' }}
+              </button>
+            }
+          </div>
+        </div>
+      </div>
+
+      <div class="tweaks-section">
+        <span class="tweaks-section-label">Brand Primary</span>
+        <div class="tweaks-row">
+          <span class="text-body-sm text-secondary">Hue</span>
+          <div class="tweaks-color-chips">
+            @for (hue of theme.hues; track hue) {
+              <button
+                class="tweaks-color-chip"
+                type="button"
+                [class.active]="theme.hue() === hue"
+                [class.hue-indigo]="hue === 'indigo'"
+                [class.hue-violet]="hue === 'violet'"
+                [class.hue-emerald]="hue === 'emerald'"
+                [class.hue-green]="hue === 'green'"
+                [attr.aria-label]="'Use ' + hue + ' brand color'"
+                (click)="setHue(hue)">
+                @if (theme.hue() === hue) {
+                  <svg viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                    <path d="M3 7.2L5.8 10L11 4.2" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" />
+                  </svg>
+                }
+              </button>
+            }
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+} @else {
+  <button class="theme-restore-btn" type="button" aria-label="Show theme switcher" (click)="isVisible.set(true)">
+    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="12" cy="12" r="3" />
+      <path d="M19.4 15a1.7 1.7 0 0 0 .34 1.88l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06A1.7 1.7 0 0 0 15 19.4a1.7 1.7 0 0 0-1 .6 1.7 1.7 0 0 0-.4 1.1V21a2 2 0 1 1-4 0v-.09A1.7 1.7 0 0 0 8.6 19.4a1.7 1.7 0 0 0-1.88.34l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.7 1.7 0 0 0 4.6 15a1.7 1.7 0 0 0-.6-1 1.7 1.7 0 0 0-1.1-.4H3a2 2 0 1 1 0-4h.09A1.7 1.7 0 0 0 4.6 8.6a1.7 1.7 0 0 0-.34-1.88l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.7 1.7 0 0 0 9 4.6a1.7 1.7 0 0 0 1-.6 1.7 1.7 0 0 0 .4-1.1V3a2 2 0 1 1 4 0v.09A1.7 1.7 0 0 0 15.4 4.6a1.7 1.7 0 0 0 1.88-.34l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.7 1.7 0 0 0 19.4 9c.3.16.62.25 1 .25H21a2 2 0 1 1 0 4h-.09A1.7 1.7 0 0 0 19.4 15Z" />
+    </svg>
+  </button>
+}

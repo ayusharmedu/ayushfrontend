@@ -1,0 +1,173 @@
+// =============================================================================
+// PANEL COMPONENT - UI Component Styles
+// =============================================================================
+// Reusable panel styles using PrimeNG theme integration
+// Use these classes to create consistently styled panels across the application
+
+// Main panel container
+.ui-panel {
+  @extend .p-panel;
+}
+
+.ui-panel-header {
+  @extend .p-panel-header;
+}
+
+.ui-panel-title {
+  @extend .p-panel-title;
+}
+
+.ui-panel-header-icon {
+  @extend .p-panel-header-icon;
+}
+
+.ui-panel-content {
+  @extend .p-panel-content;
+}
+
+.ui-panel-footer {
+  @extend .p-panel-footer;
+}
+
+.ui-panel-toggleable {
+  @extend .p-panel-toggleable;
+  
+  .ui-panel-header {
+    padding: var(--p-spacing-md) var(--p-spacing-lg);
+  }
+}
+
+.ui-panel-collapsed {
+  @extend .p-panel-collapsed;
+  
+  .ui-panel-content,
+  .ui-panel-footer {
+    display: none;
+  }
+}
+
+// Panel with no border
+.ui-panel-borderless {
+  border: none !important;
+  box-shadow: none !important;
+}
+
+// Panel with subtle background
+.ui-panel-subtle {
+  background-color: var(--p-surface-50) !important;
+}
+
+// Panel with emphasis border
+.ui-panel-emphasis {
+  border: 1px solid var(--p-surface-300) !important;
+  box-shadow: var(--p-shadow-md) !important;
+}
+
+// Panel with no padding
+.ui-panel-nopad {
+  .ui-panel-header,
+  .ui-panel-content,
+  .ui-panel-footer {
+    padding: 0 !important;
+  }
+}
+
+// Panel with custom padding sizes
+.ui-panel-sm {
+  .ui-panel-header,
+  .ui-panel-content,
+  .ui-panel-footer {
+    padding: var(--p-spacing-sm) !important;
+  }
+}
+
+.ui-panel-lg {
+  .ui-panel-header,
+  .ui-panel-content,
+  .ui-panel-footer {
+    padding: var(--p-spacing-lg) !important;
+  }
+}
+
+// Panel with centered content
+.ui-panel-centered {
+  .ui-panel-content {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+  }
+}
+
+// Panel with hover effect
+.ui-panel-hoverable {
+  transition: box-shadow var(--p-transition-duration) var(--p-transition-timing) !important;
+  
+  &:hover {
+    box-shadow: var(--p-shadow-md) !important;
+  }
+}
+
+// Panel header actions (for toggle buttons, etc.)
+.ui-panel-header-actions {
+  display: flex !important;
+  align-items: center !important;
+  gap: var(--p-spacing-2) !important;
+}
+
+.ui-panel-header-action {
+  width: 2rem !important;
+  height: 2rem !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  border-radius: var(--p-border-radius) !important;
+  color: var(--p-surface-500) !important;
+  transition: color var(--p-transition-duration) var(--p-transition-timing),
+              background-color var(--p-transition-duration) var(--p-transition-timing) !important;
+
+  &:hover {
+    color: var(--p-text-color) !important;
+    background-color: var(--p-hover-bg) !important;
+  }
+
+  &:focus {
+    outline: 2px solid var(--p-focus-ring) !important;
+    outline-offset: 2px !important;
+  }
+}
+
+// Panel subtitle (additional element)
+.ui-panel-subtitle {
+  font-family: var(--p-font-family) !important;
+  font-size: var(--p-font-size-sm) !important;
+  color: var(--p-text-muted-color) !important;
+  margin: var(--p-spacing-xs) 0 0 0 !important;
+}
+
+// Responsive adjustments
+@media (max-width: 767px) {
+  .ui-panel-header {
+    padding: var(--p-spacing-md) !important;
+  }
+  
+  .ui-panel-content,
+  .ui-panel-footer {
+    padding: var(--p-spacing-md) !important;
+  }
+}
+
+// Panel variants for different use cases
+.ui-panel-card {
+  border-radius: var(--p-border-radius-lg) !important;
+}
+
+.ui-panel-section {
+  border-left: 4px solid var(--p-primary-color) !important;
+}
+
+.ui-panel-well {
+  background-color: var(--p-surface-50) !important;
+  border-radius: var(--p-border-radius-lg) !important;
+}

@@ -1,0 +1,171 @@
+// =============================================================================
+// CHIP COMPONENT - UI Component Styles
+// =============================================================================
+// Reusable chip styles using PrimeNG theme integration
+// Use these classes to create consistently styled chips across the application
+
+// Main chip container
+.ui-chip {
+  @extend .p-chip;
+}
+
+.ui-chip-text {
+  @extend .p-chip-text;
+}
+
+.ui-chip-icon {
+  @extend .p-chip-icon;
+}
+
+// .ui-chip-removeable {
+//   @extend .p-chip-removeable;
+// }
+
+.ui-chip-remove-icon {
+  @extend .p-chip-remove-icon;
+}
+
+// Chip with primary style
+.ui-chip-primary {
+  // background-color: var(--color-primary) !important;
+  // color: var(--color-text-on-primary) !important;
+  // border: 1px solid var(--color-primary) !important;
+  font-size: var(--font-size-sm) !important;
+  background-color: transparent !important;
+}
+
+// Chip with secondary style
+.ui-chip-secondary {
+  background-color: var(--color-surface-muted) !important;
+  color: var(--color-text-primary) !important;
+  border: 1px solid var(--color-border-default) !important;
+}
+
+// Chip with success style
+.ui-chip-success {
+  background-color: var(--color-success-subtle) !important;
+  color: var(--color-success-700) !important;
+  border: 1px solid color-mix(in srgb, var(--color-success) 20%, transparent) !important;
+}
+
+// Chip with warning style
+.ui-chip-warning {
+  background-color: var(--color-warning-subtle) !important;
+  color: var(--color-warning-700) !important;
+  border: 1px solid color-mix(in srgb, var(--color-warning) 20%, transparent) !important;
+}
+
+// Chip with danger style
+.ui-chip-danger {
+  background-color: var(--color-error-subtle) !important;
+  color: var(--color-error-700) !important;
+  border: 1px solid var(--color-error-200) !important;
+}
+
+// Chip with info style
+.ui-chip-info {
+  background-color: var(--color-info-subtle) !important;
+  color: var(--color-info-700) !important;
+  border: 1px solid color-mix(in srgb, var(--color-info) 20%, transparent) !important;
+}
+
+// Chip with subtle background
+.ui-chip-subtle {
+  background-color: var(--color-surface-variant) !important;
+  color: var(--color-text-primary) !important;
+  border: 1px solid var(--color-border-subtle) !important;
+}
+
+// Chip with emphasis
+.ui-chip-emphasis {
+  font-weight: var(--font-weight-semibold) !important;
+}
+
+// Chip with rounded style
+.ui-chip-rounded {
+  border-radius: var(--border-radius-md) !important;
+}
+
+// Chip with large size
+.ui-chip-lg {
+  font-size: var(--font-size-lg) !important;
+  padding: var(--spacing-3) var(--spacing-4) !important;
+}
+
+// Chip with extra small size
+.ui-chip-xs {
+  font-size: var(--font-size-xs) !important;
+  padding: var(--spacing-1) var(--spacing-2) !important;
+  border-radius: var(--border-radius-sm) !important;
+  box-shadow: var(--shadow-sm) !important;
+}
+
+// Chip with small size
+.ui-chip-sm {
+  font-size: var(--font-size-xs) !important;
+  padding: var(--spacing-1) var(--spacing-2) !important;
+}
+
+// Chip with no padding
+.ui-chip-nopad {
+  padding: 0 !important;
+}
+
+// Chip with custom padding sizes
+.ui-chip-padded {
+  padding: var(--spacing-2) var(--spacing-3) !important;
+}
+
+// Chip with icon on right
+.ui-chip-icon-right {
+  .ui-chip-icon {
+    order: 1 !important;
+    margin-left: var(--spacing-1) !important;
+    margin-right: 0 !important;
+  }
+}
+
+// Chip with close button style
+.ui-chip-closable {
+  padding-right: calc(var(--spacing-3) + 1.5rem) !important;
+  position: relative !important;
+}
+
+.ui-chip-close-btn {
+  position: absolute !important;
+  right: var(--spacing-1) !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+  width: 1.5rem !important;
+  height: 1.5rem !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  border-radius: var(--border-radius-md) !important;
+  color: var(--color-text-tertiary) !important;
+  transition: color 0.2s ease, background-color 0.2s ease !important;
+
+  &:hover {
+    color: var(--color-text-primary) !important;
+    background-color: var(--color-hover) !important;
+  }
+
+  &:focus {
+    outline: 2px solid var(--color-border-focus) !important;
+    outline-offset: 2px !important;
+  }
+}
+
+// Responsive adjustments
+@media (max-width: 767px) {
+  .ui-chip {
+    font-size: var(--font-size-sm) !important;
+  }
+}
+
+// Chip variants for different use cases
+.ui-chip-card {
+  border-radius: var(--border-radius-lg) !important;
+  box-shadow: var(--shadow-sm) !important;
+}
+

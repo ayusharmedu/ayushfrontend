@@ -1,0 +1,112 @@
+.tab-bar {
+  display: flex;
+  gap: 0;
+  border-bottom: var(--border-thin) solid var(--color-border-default);
+  overflow-x: auto;
+}
+
+.tab-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  height: 40px;
+  padding: 0 var(--space-4);
+  color: var(--color-text-secondary);
+  background: transparent;
+  border: none;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  white-space: nowrap;
+  border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+}
+
+.tab-item:hover {
+  color: var(--color-text-primary);
+}
+
+.tab-item.active {
+  color: var(--color-brand-accent);
+  border-bottom-color: var(--color-brand-accent);
+}
+
+.tab-item.active .tab-count {
+  background: var(--color-brand-subtle);
+  color: var(--color-brand-accent);
+}
+
+.filter-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  height: 28px;
+  padding: 0 var(--space-3);
+  background: var(--color-surface-sunken);
+  border: var(--border-thin) solid var(--color-border-default);
+  border-radius: var(--radius-full);
+  font-size: 12.5px;
+  font-weight: 500;
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.filter-chip:hover {
+  border-color: var(--color-border-strong);
+  color: var(--color-text-primary);
+}
+
+.filter-chip.active {
+  background: var(--color-brand-subtle);
+  border-color: var(--color-brand-muted);
+  color: var(--color-brand-accent);
+}
+
+.filter-search {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  width: 280px;
+  height: 32px;
+  padding: 0 var(--space-3);
+  background: var(--color-surface-raised);
+  border: var(--border-thin) solid var(--color-border-default);
+  border-radius: var(--radius-md);
+  font-size: 13px;
+  color: var(--color-text-secondary);
+}
+
+.filter-search:focus-within,
+.filter-search:hover {
+  border-color: var(--color-border-strong);
+}
+
+.filter-search input {
+  flex: 1;
+  min-width: 0;
+  border: 0;
+  outline: 0;
+  color: var(--color-text-primary);
+  background: transparent;
+}
+
+.filter-search input::placeholder {
+  color: var(--color-text-muted);
+}
+
+.kbd {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 18px;
+  height: 18px;
+  padding: 0 5px;
+  font-family: var(--primitive-font-mono);
+  font-size: 10.5px;
+  font-weight: 600;
+  color: var(--color-text-tertiary);
+  background: var(--color-surface-canvas);
+  border: var(--border-thin) solid var(--color-border-subtle);
+  border-radius: var(--radius-xs);
+}

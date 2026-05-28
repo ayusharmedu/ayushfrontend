@@ -1,0 +1,275 @@
+// =============================================================================
+// UI DROPDOWN - p-dropdown / p-select Override
+// =============================================================================
+
+// --------------------------------------------------------------------------
+// HOST ELEMENT — block karo, width constrain karo
+// overflow: visible rakho — panel bahar render hoti hai
+// --------------------------------------------------------------------------
+
+
+p-dropdown,
+p-select {
+    display: block !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+    // overflow: hidden NAHI — panel clip ho jaati hai
+}
+
+// --------------------------------------------------------------------------
+// INTERNAL .p-select / .p-dropdown div
+// --------------------------------------------------------------------------
+
+.p-dropdown,
+p-dropdown .p-dropdown,
+p-select .p-select {
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    // overflow: hidden NAHI — panel clip ho jaati hai
+
+    height: var(--spacing-10) !important;
+    background-color: var(--input-background) !important;
+    border: var(--input-border-width) solid var(--color-border-default) !important;
+    border-radius: var(--input-border-radius) !important;
+
+    display: flex !important;
+    align-items: center !important;
+
+    transition: border-color 0.2s ease !important;
+
+    &:not(.p-disabled):hover {
+        border-color: var(--input-border-hover, var(--color-border-emphasis)) !important;
+    }
+
+    &.p-focus {
+        border-color: var(--input-border-focus) !important;
+        box-shadow: none !important;
+        outline: 3px solid color-mix(in srgb, var(--color-border-focus) 20%, transparent) !important;
+        outline-offset: 0px !important;
+    }
+
+    &.p-disabled {
+        background-color: var(--input-bg-disabled) !important;
+        border-color: var(--input-border-disabled, var(--color-border-subtle)) !important;
+        opacity: 1 !important;
+        cursor: not-allowed !important;
+    }
+
+    &.p-invalid,
+    &.ng-invalid.ng-touched,
+    &.ng-invalid.ng-dirty {
+        // Border ko explicitly Solid aur Red karo
+        // border: var(--input-border-width) solid var(--color-error) !important;
+        // Background ko halka laal (input jaisa)
+        background-color: color-mix(in srgb, var(--color-error) 5%, transparent) !important;
+        // 2. Focus hone par Lal shadow/glow dikhao
+
+        &.p-focus {
+            border: var(--input-border-width) solid var(--color-error) !important;
+            outline: none !important;
+            box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-error) 15%, transparent) !important;
+
+        }
+
+        // 3. Hover par bhi border red hi rehni chahiye
+
+        &:hover:not(.p-disabled) {
+            border: var(--input-border-width) solid var(--color-error) !important;
+
+        }
+
+
+    }
+}
+
+// --------------------------------------------------------------------------
+// UI DROPDOWN ABSTRACTION
+// Applications use .ui-dropdown
+// --------------------------------------------------------------------------
+
+.ui-dropdown {
+    @extend p-dropdown;
+    @extend .p-dropdown;
+}
+
+.ui-edit-dropdown {
+    &.ui-edit-dropdown--full-width {
+        width: 100% !important;
+        max-width: 100% !important;
+
+        .p-dropdown,
+        .p-select {
+            width: 100% !important;
+            max-width: 100% !important;
+            table-layout: fixed !important; // Constraint for internal layout if using table
+        }
+
+        .p-dropdown-label,
+        .p-select-label {
+            width: 100% !important;
+            max-width: calc(100% - 3rem) !important; // Leave space for trigger icon
+            display: block !important;
+            overflow: hidden !important;
+            text-overflow: ellipsis !important;
+            white-space: nowrap !important;
+        }
+    }
+}
+
+// --------------------------------------------------------------------------
+// LABEL — overflow fix sirf label pe, parent pe nahi
+// --------------------------------------------------------------------------
+
+.p-dropdown-label,
+.p-select-label {
+    flex: 1 1 0 !important;
+    min-width: 0 !important; // ← yahan critical — flex child
+    overflow: hidden !important; // ← sirf label clip hoga, panel nahi
+    text-overflow: ellipsis !important;
+    white-space: nowrap !important;
+
+    display: flex !important;
+    align-items: center !important;
+    height: 100% !important;
+
+    font-size: var(--font-size-sm) !important;
+    line-height: var(--ui-drawer-type-body-line-height) !important;
+    font-family: var(--font-family-primary) !important;
+    color: var(--input-text) !important;
+    padding: 0 var(--spacing-3) !important;
+    background: transparent !important;
+    border: none !important;
+
+    &.p-placeholder {
+        color: var(--input-placeholder) !important;
+    }
+}
+
+// --------------------------------------------------------------------------
+// TRIGGER ICON
+// --------------------------------------------------------------------------
+
+.p-dropdown-trigger,
+.p-select-dropdown {
+    flex-shrink: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 0 var(--spacing-3) !important;
+    color: var(--color-text-tertiary) !important;
+    background: transparent !important;
+    border: none !important;
+
+    &:hover {
+        color: var(--color-text-primary) !important;
+    }
+}
+
+// --------------------------------------------------------------------------
+// CLEAR BUTTON
+// --------------------------------------------------------------------------
+
+.p-dropdown-clear-icon,
+.p-select-clear-icon {
+    flex-shrink: 0 !important;
+    color: var(--color-text-tertiary) !important;
+
+    &:hover {
+        color: var(--color-text-primary) !important;
+    }
+}
+
+// --------------------------------------------------------------------------
+// PANEL — portal me render hoti hai, parent se independent
+// --------------------------------------------------------------------------
+
+.p-dropdown-panel,
+.p-select-overlay {
+    background: var(--color-surface) !important;
+    border: 1px solid var(--color-border-default) !important;
+    border-radius: var(--border-radius-md) !important;
+    box-shadow: var(--shadow-lg) !important;
+    padding: var(--spacing-1) 0 !important;
+
+    .p-dropdown-filter-container,
+    .p-select-filter {
+        padding: var(--spacing-1) var(--spacing-2) !important;
+
+        input {
+            width: 100% !important;
+            font-size: var(--input-font-size) !important;
+            font-family: var(--font-family-primary) !important;
+            color: var(--input-text) !important;
+            background: var(--input-background) !important;
+            border: var(--input-border-width) solid var(--color-border-default) !important;
+            border-radius: var(--input-border-radius) !important;
+            padding: var(--spacing-2) var(--spacing-3) !important;
+
+            &::placeholder {
+                color: var(--input-placeholder) !important;
+            }
+
+            &:focus {
+                border-color: var(--input-border-focus) !important;
+                outline: 3px solid color-mix(in srgb, var(--color-border-focus) 20%, transparent) !important;
+                outline-offset: 0 !important;
+                box-shadow: none !important;
+            }
+        }
+    }
+
+    .p-dropdown-items,
+    .p-select-list {
+        list-style: none !important;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+
+    .p-dropdown-item,
+    .p-select-option {
+        padding: var(--spacing-2) var(--spacing-3) !important;
+        font-size: var(--font-size-sm) !important;
+        font-family: var(--font-family-primary) !important;
+        color: var(--color-text-primary) !important;
+        cursor: pointer !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+        white-space: nowrap !important;
+        transition: background-color 0.15s ease !important;
+
+        &:hover,
+        &.p-focus {
+            background-color: var(--color-hover) !important;
+            color: var(--color-text-primary) !important;
+        }
+
+        &.p-highlight,
+        &[aria-selected="true"] {
+            background-color: var(--color-primary) !important;
+            color: var(--color-text-on-primary) !important;
+        }
+
+        &.p-disabled {
+            color: var(--color-text-disabled) !important;
+            cursor: not-allowed !important;
+        }
+    }
+
+    .p-dropdown-empty-message,
+    .p-select-empty-message {
+        padding: var(--spacing-2) var(--spacing-3) !important;
+        font-size: var(--font-size-sm) !important;
+        color: var(--color-text-secondary) !important;
+        font-family: var(--font-family-primary) !important;
+    }
+}
+
+
+
+
+.p-skeleton {
+    background: var(--skeleton-color-background) !important;
+}

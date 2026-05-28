@@ -1,0 +1,67 @@
+[data-hue="indigo"] {
+  --color-brand-accent: var(--primitive-indigo-600);
+  --color-brand-hover: var(--primitive-indigo-700);
+  --color-brand-subtle: var(--primitive-indigo-50);
+  --color-brand-muted: var(--primitive-indigo-100);
+  --color-brand-on: #ffffff;
+  --color-brand-300: var(--primitive-indigo-300);
+  --color-brand-700: var(--primitive-indigo-700);
+}
+
+[data-theme="dark"][data-hue="indigo"] {
+  --color-brand-accent: var(--primitive-indigo-500);
+  --color-brand-hover: var(--primitive-indigo-400);
+  --color-brand-subtle: rgba(99, 102, 241, 0.12);
+  --color-brand-muted: rgba(99, 102, 241, 0.22);
+}
+
+[data-hue="violet"] {
+  --color-brand-accent: var(--primitive-violet-600);
+  --color-brand-hover: var(--primitive-violet-700);
+  --color-brand-subtle: var(--primitive-violet-50);
+  --color-brand-muted: var(--primitive-violet-100);
+  --color-brand-on: #ffffff;
+  --color-brand-300: var(--primitive-violet-400);
+  --color-brand-700: var(--primitive-violet-700);
+}
+
+[data-theme="dark"][data-hue="violet"] {
+  --color-brand-accent: var(--primitive-violet-500);
+  --color-brand-hover: var(--primitive-violet-400);
+  --color-brand-subtle: rgba(139, 92, 246, 0.12);
+  --color-brand-muted: rgba(139, 92, 246, 0.22);
+}
+
+[data-hue="emerald"] {
+  --color-brand-accent: var(--primitive-emerald-600);
+  --color-brand-hover: var(--primitive-emerald-700);
+  --color-brand-subtle: var(--primitive-emerald-50);
+  --color-brand-muted: #a7f3d0;
+  --color-brand-on: #ffffff;
+  --color-brand-300: var(--primitive-emerald-400);
+  --color-brand-700: var(--primitive-emerald-700);
+}
+
+[data-theme="dark"][data-hue="emerald"] {
+  --color-brand-accent: var(--primitive-emerald-500);
+  --color-brand-hover: var(--primitive-emerald-400);
+  --color-brand-subtle: rgba(16, 185, 129, 0.12);
+  --color-brand-muted: rgba(16, 185, 129, 0.22);
+}
+
+[data-hue="green"] {
+  --color-brand-accent: var(--primitive-green-600);
+  --color-brand-hover: var(--primitive-green-700);
+  --color-brand-subtle: var(--primitive-green-50);
+  --color-brand-muted: #bbf7d0;
+  --color-brand-on: #ffffff;
+  --color-brand-300: var(--primitive-green-400);
+  --color-brand-700: var(--primitive-green-700);
+}
+
+[data-theme="dark"][data-hue="green"] {
+  --color-brand-accent: var(--primitive-green-500);
+  --color-brand-hover: var(--primitive-green-400);
+  --color-brand-subtle: rgba(34, 197, 94, 0.12);
+  --color-brand-muted: rgba(34, 197, 94, 0.22);
+}

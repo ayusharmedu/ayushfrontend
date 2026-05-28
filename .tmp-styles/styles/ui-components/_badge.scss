@@ -1,0 +1,61 @@
+/* Badge Component Styles - Extending PrimeNG */
+
+/* Base badge class extending PrimeNG's p-badge */
+.ui-badge {
+  @extend .p-badge;
+}
+
+/* Severity variants */
+.ui-badge-success {
+  @extend .p-badge-success;
+}
+
+.ui-badge-warning {
+  @extend .p-badge-warning;
+}
+
+.ui-badge-danger {
+  @extend .p-badge-danger;
+}
+
+.ui-badge-info {
+  @extend .p-badge-info;
+}
+
+.ui-badge-secondary {
+  @extend .p-badge-secondary;
+}
+
+/* Size variants */
+.ui-badge-sm {
+  @extend .p-badge-sm;
+}
+
+.ui-badge-lg {
+  @extend .p-badge-lg;
+}
+
+.ui-badge-xl {
+  @extend .p-badge-xl;
+}
+
+/* Dot badge variant */
+.ui-badge-dot {
+  @extend .p-badge-dot;
+}
+
+/* Overlay badge container */
+.ui-overlaybadge {
+  @extend .p-overlaybadge;
+}
+
+/* Overlay badge positioning (absolute positioning over parent element) - specifically for header */
+.ui-overlaybadge .ui-badge {
+  @extend .p-badge !optional;
+}
+
+/* Custom styling for overlay badge in header notifications */
+.ui-header-notification-badge {
+  @extend .p-badge;
+  background: var(--p-badge-danger-background) !important;
+}

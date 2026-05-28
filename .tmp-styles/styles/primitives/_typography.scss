@@ -1,0 +1,270 @@
+// =============================================================================
+// FONT FAMILIES
+// =============================================================================
+
+// Primary font family - Poppins (already available in assets/fonts)
+$font-family-primary: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+
+// Secondary font family - For code or monospace needs
+$font-family-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+
+// System font family - Fallback for performance-critical scenarios
+$font-family-system: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+
+// =============================================================================
+// FONT WEIGHTS
+// =============================================================================
+
+$font-weights: (
+  thin: 100,
+  extralight: 200,
+  light: 300,
+  regular: 400,
+  medium: 500,
+  semibold: 600,
+  bold: 700,
+  extrabold: 800,
+  black: 900
+);
+
+// Helper function to get font weight
+@function font-weight($weight) {
+  @if map-has-key($font-weights, $weight) {
+    @return map-get($font-weights, $weight);
+  }
+
+  @error "Font weight '#{$weight}' not found in font weights map";
+}
+
+// =============================================================================
+// FONT SIZES - Fluid Typography Scale
+// =============================================================================
+
+// Base font size for calculations
+$font-size-base: 16px;
+
+// Font size scale using modular scale approach
+$font-sizes: (
+  // want more smaller than xxs
+  mini: 0.5rem,
+  // 8px
+
+  // want more smaller than xxs
+  xxs: 0.625rem,
+  // 10px
+  xs: 0.75rem,
+  sm: 0.875rem,
+  base: 1rem,
+  md: 1.125rem,
+  lg: 1.25rem,
+  xl: 1.5rem,
+
+  "2xl": 1.875rem,
+  "3xl": 2.25rem,
+  "4xl": 3rem,
+  "5xl": 3.75rem,
+  "6xl": 4.5rem,
+  "7xl": 6rem,
+  "8xl": 8rem,
+  "9xl": 10rem
+);
+
+// Helper function to get font size
+@function font-size($size) {
+  @if map-has-key($font-sizes, $size) {
+    @return map-get($font-sizes, $size);
+  }
+
+  @error "Font size '#{$size}' not found in font sizes map";
+}
+
+// =============================================================================
+// LINE HEIGHTS
+// =============================================================================
+
+$line-heights: (
+  none: 1,
+  tight: 1.25,
+  snug: 1.375,
+  normal: 1.5,
+  relaxed: 1.625,
+  loose: 2
+);
+
+// Helper function to get line height
+@function line-height($height) {
+  @if map-has-key($line-heights, $height) {
+    @return map-get($line-heights, $height);
+  }
+
+  @error "Line height '#{$height}' not found in line heights map";
+}
+
+// =============================================================================
+// LETTER SPACING
+// =============================================================================
+
+$letter-spacings: (
+  tighter: -0.05em,
+  tight: -0.025em,
+  normal: 0,
+  wide: 0.025em,
+  wider: 0.05em,
+  widest: 0.1em
+);
+
+// Helper function to get letter spacing
+@function letter-spacing($spacing) {
+  @if map-has-key($letter-spacings, $spacing) {
+    @return map-get($letter-spacings, $spacing);
+  }
+
+  @error "Letter spacing '#{$spacing}' not found in letter spacings map";
+}
+
+// =============================================================================
+// SEMANTIC TYPOGRAPHY TOKENS
+// =============================================================================
+
+// Display typography - For hero sections and large headings
+$typography-display: (
+  '1': (font-size: font-size('9xl'),
+    font-weight: font-weight(extrabold),
+    line-height: line-height(none),
+    letter-spacing: letter-spacing(tight)),
+  '2': (font-size: font-size('8xl'),
+    font-weight: font-weight(extrabold),
+    line-height: line-height(none),
+    letter-spacing: letter-spacing(tight)),
+  '3': (font-size: font-size('7xl'),
+    font-weight: font-weight(bold),
+    line-height: line-height(none),
+    letter-spacing: letter-spacing(tight))
+);
+
+// Heading typography - For section headings
+$typography-headings: (
+  'h1': (font-size: font-size('5xl'),
+    font-weight: font-weight(bold),
+    line-height: line-height(tight),
+    letter-spacing: letter-spacing(tight)),
+  'h2': (font-size: font-size('4xl'),
+    font-weight: font-weight(bold),
+    line-height: line-height(tight),
+    letter-spacing: letter-spacing(tight)),
+  'h3': (font-size: font-size('3xl'),
+    font-weight: font-weight(semibold),
+    line-height: line-height(snug),
+    letter-spacing: letter-spacing(normal)),
+  'h4': (font-size: font-size('2xl'),
+    font-weight: font-weight(semibold),
+    line-height: line-height(snug),
+    letter-spacing: letter-spacing(normal)),
+  'h5': (font-size: font-size('xl'),
+    font-weight: font-weight(semibold),
+    line-height: line-height(snug),
+    letter-spacing: letter-spacing(normal)),
+  'h6': (font-size: font-size('lg'),
+    font-weight: font-weight(semibold),
+    line-height: line-height(snug),
+    letter-spacing: letter-spacing(normal))
+);
+
+// Body typography - For main content
+$typography-body: (
+  'large': (font-size: font-size('lg'),
+    font-weight: font-weight(regular),
+    line-height: line-height(relaxed),
+    letter-spacing: letter-spacing(normal)),
+  'medium': (font-size: font-size('base'),
+    font-weight: font-weight(regular),
+    line-height: line-height(normal),
+    letter-spacing: letter-spacing(normal)),
+  'small': (font-size: font-size('sm'),
+    font-weight: font-weight(regular),
+    line-height: line-height(normal),
+    letter-spacing: letter-spacing(normal))
+);
+
+// UI typography - For interface elements
+$typography-ui: (
+  'button': (font-size: font-size('sm'),
+    font-weight: font-weight(semibold),
+    line-height: line-height(none),
+    letter-spacing: letter-spacing(wide)),
+  'label': (font-size: font-size('sm'),
+    font-weight: font-weight(medium),
+    line-height: line-height(tight),
+    letter-spacing: letter-spacing(normal)),
+  'caption': (font-size: font-size('xs'),
+    font-weight: font-weight(regular),
+    line-height: line-height(tight),
+    letter-spacing: letter-spacing(wide)),
+  'overline': (font-size: font-size('xs'),
+    font-weight: font-weight(bold),
+    line-height: line-height(tight),
+    letter-spacing: letter-spacing(widest),
+    text-transform: uppercase)
+);
+
+// =============================================================================
+// TYPOGRAPHY MIXINS
+// =============================================================================
+
+// Apply typography preset
+@mixin apply-typography($category, $variant) {
+  $typography-map: null;
+
+  @if $category =='display' {
+    $typography-map: $typography-display;
+  }
+
+  @else if $category =='heading' {
+    $typography-map: $typography-headings;
+  }
+
+  @else if $category =='body' {
+    $typography-map: $typography-body;
+  }
+
+  @else if $category =='ui' {
+    $typography-map: $typography-ui;
+  }
+
+  @if $typography-map and map-has-key($typography-map, $variant) {
+    $styles: map-get($typography-map, $variant);
+
+    @each $property, $value in $styles {
+      #{$property}: #{$value};
+    }
+  }
+
+  @else {
+    @error "Typography variant '#{$category}-#{$variant}' not found";
+  }
+}
+
+// Responsive typography mixin
+@mixin responsive-typography($mobile, $desktop) {
+  @include apply-typography($mobile...);
+
+  @media (min-width: 768px) {
+    @include apply-typography($desktop...);
+  }
+}
+
+// Fluid typography mixin
+@mixin fluid-typography($min-size, $max-size, $min-width: 320px, $max-width: 1200px) {
+  font-size: clamp(#{$min-size},
+    #{$min-size} + #{strip-unit($max-size - $min-size)} * ((100vw - #{$min-width}) / #{strip-unit($max-width - $min-width)}),
+    #{$max-size});
+}
+
+// Strip unit helper function
+@function strip-unit($number) {
+  @if type-of($number)=='number' and not unitless($number) {
+    @return $number / ($number * 0 + 1);
+  }
+
+  @return $number;
+}

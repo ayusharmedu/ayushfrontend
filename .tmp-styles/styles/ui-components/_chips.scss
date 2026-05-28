@@ -1,0 +1,281 @@
+// =============================================================================
+// UI CHIPS COMPONENT - PrimeNG p-chips Override
+// =============================================================================
+// GOAL: p-inputchips-input (the container ul) ko EXACTLY p-inputtext jaisa
+//       dikhana hai — same border, background, color, font, focus ring.
+//       Andar ke chips (.p-inputchips-chip) bilkul nahi badlenge.
+//
+// p-inputtext tokens (primeng.scss se):
+//   border:            var(--input-border-width) solid var(--p-surface-300)  → var(--color-border-default)
+//   background:        var(--input-bg)                                        → var(--color-surface)
+//   color:             var(--input-text)                                      → var(--color-text-primary)
+//   font-size:         var(--input-font-size)
+//   font-weight:       var(--input-font-weight)
+//   padding:           var(--input-padding)
+//   height:            var(--input-height-lg)
+//   focus border:      var(--input-border-focus)
+//   focus shadow:      0 0 0 3px color-mix(in srgb, var(--color-border-focus) 20%, transparent)
+//   disabled bg:       var(--input-bg-disabled)
+//   disabled color:    var(--input-text-disabled)
+//   disabled border:   var(--input-border-disabled)
+//   placeholder:       var(--input-placeholder)
+//
+// DOM Structure:
+//   <p-chips class="ui-chips">
+//     <div class="p-inputchips p-component">
+//       <ul class="p-inputchips-input">           ← yeh p-inputtext jaisa hoga
+//         <li class="p-inputchips-chip-item">
+//           <p-chip class="p-inputchips-chip">    ← yeh same rahega
+//             <div class="p-chip-label">text</div>
+//             <span class="p-chip-remove-icon">
+//         <li class="p-inputchips-input-item">    ← input token
+//           <input ...>
+// =============================================================================
+
+.ui-chips {
+    display: inline-block;
+    width: 100%;
+
+    .p-inputchips {
+        width: 100%;
+    }
+
+    // ============================================================================
+    // UL CONTAINER — p-inputtext jaisa exactly
+    // ============================================================================
+
+    .p-inputchips-input {
+
+
+
+        // Layout — chips + input ko wrap karne ke liye flex chahiye
+        display: flex !important;
+        flex-wrap: wrap !important;
+        align-items: center !important;
+        align-content: flex-start !important;
+        gap: var(--spacing-1) !important;
+        width: 100% !important;
+        min-height: var(--input-height-lg) !important;
+        height: auto !important;
+
+        // ── p-inputtext se exactly same values ──────────────────────────────────
+        padding: 0 16px !important;
+        background-color: var(--input-bg) !important;
+        color: var(--input-text) !important;
+        border: var(--input-border-width) solid var(--color-border-default) !important;
+        border-radius: var(--input-border-radius) !important;
+        font-size: var(--input-font-size) !important;
+        font-weight: var(--input-font-weight) !important;
+        font-family: var(--font-family-primary) !important;
+        line-height: var(--input-line-height) !important;
+        // ────────────────────────────────────────────────────────────────────────
+
+        list-style: none !important;
+        margin: 0 !important;
+        cursor: text !important;
+        transition: border-color 0.2s ease, box-shadow 0.2s ease, outline 0.2s ease !important;
+
+        // Hover — p-inputtext ki tarah
+        &:hover:not(.p-focus):not(.p-disabled) {
+            border-color: var(--input-border-hover, var(--color-border-emphasis)) !important;
+        }
+
+        // Focus — p-inputtext ki tarah exactly
+        &.p-focus {
+            border-color: var(--input-border-focus) !important;
+            box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-border-focus) 20%, transparent) !important;
+            outline: none !important;
+        }
+
+        // Valid override — p-inputtext ki tarah (green border prevent karo)
+        &:valid {
+            border-color: var(--color-border-default) !important;
+        }
+
+        // Disabled — p-inputtext ki tarah exactly
+        &.p-disabled {
+            cursor: not-allowed !important;
+            opacity: 0.6 !important;
+            background: var(--input-bg-disabled) !important;
+            color: var(--input-text-disabled) !important;
+            border-color: var(--input-border-disabled) !important;
+        }
+    }
+
+    // ============================================================================
+    // CHIP ITEM — li wrapper, sirf spacing
+    // ============================================================================
+
+    .p-inputchips-chip-item {
+        display: inline-flex !important;
+        align-items: center !important;
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+
+    // ============================================================================
+    // CHIP — bilkul nahi badla, same as before
+    // ============================================================================
+
+    .p-inputchips-chip {
+        // display: inline-flex !important;
+        // align-items: center !important;
+        // gap: var(--spacing-1) !important;
+
+        // background-color: var(--color-surface-muted) !important;
+        // color: var(--color-text-primary) !important;
+        // border: 1px solid var(--color-border-default) !important;
+        // border-radius: var(--border-radius-sm) !important;
+        // box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.08) !important;
+        // padding: var(--spacing-1) var(--spacing-2) !important;
+
+        // font-size: var(--font-size-sm) !important;
+        // font-family: var(--font-family-primary) !important;
+        // font-weight: var(--input-font-weight, 400) !important;
+
+        background-color: var(--color-surface-muted) !important;
+        color: var(--color-text-primary) !important;
+        border: 1px solid var(--color-border-default) !important;
+        border-radius: var(--border-radius-sm) !important;
+        box-shadow: var(--shadow-sm) !important;
+        height: auto !important;
+        width: fit-content !important;
+        max-width: 200px !important;
+        padding: var(--spacing-1) var(--spacing-2) !important;
+        white-space: nowrap !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+        font-size: var(--font-size-sm) !important;
+        font-family: var(--font-family-primary) !important;
+
+        .p-chip-label {
+            // line-height: 1.4 !important;
+            color: inherit !important;
+
+            font-family: var(--font-family-primary) !important;
+            font-size: var(--ui-drawer-type-input-size) !important;
+            font-weight: var(--ui-drawer-type-input-weight) !important;
+            line-height: var(--ui-drawer-type-input-line-height) !important;
+            letter-spacing: 0 !important;
+        }
+
+        .p-chip-remove-icon {
+            display: inline-flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            cursor: pointer !important;
+            color: var(--color-text-tertiary) !important;
+            padding: 0 !important;
+            margin: 0 !important;
+            border: none !important;
+            background: none !important;
+            transition: color 0.15s ease !important;
+
+            &:hover {
+                color: var(--color-error) !important;
+            }
+
+            svg,
+            .p-chips-token-icon {
+                width: 12px !important;
+                height: 12px !important;
+                pointer-events: none !important;
+            }
+        }
+    }
+
+    // ============================================================================
+    // INPUT TOKEN — li jisme actual <input> hai
+    // ============================================================================
+
+    .p-inputchips-input-item {
+        display: inline-flex !important;
+        align-items: center !important;
+        flex: 1 0 60px !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        height: 100% !important;
+
+        input {
+            min-width: 60px !important;
+            width: 100% !important;
+            height: 100% !important;
+            border: none !important;
+            outline: none !important;
+            background: transparent !important;
+
+            // ── p-inputtext jaisa ─────────────────────────────────────────────────
+            font-family: var(--font-family-primary) !important;
+            font-size: var(--ui-drawer-type-input-size) !important;
+            font-weight: var(--ui-drawer-type-input-weight) !important;
+            line-height: var(--ui-drawer-type-input-line-height) !important;
+            letter-spacing: 0 !important;
+            // ──────────────────────────────────────────────────────────────────────
+
+            padding: 0 !important;
+            margin: 0 !important;
+            line-height: normal !important;
+
+            // Placeholder — p-inputtext jaisa
+            &::placeholder {
+                color: var(--input-placeholder) !important;
+                opacity: 1 !important;
+            }
+
+            // Disabled
+            &:disabled {
+                cursor: not-allowed !important;
+                color: var(--input-text-disabled) !important;
+            }
+        }
+    }
+
+    // ============================================================================
+    // INVALID STATE — p-inputtext ki error jaisi
+    // ============================================================================
+
+    &.ng-invalid.ng-touched,
+    &.p-invalid {
+        .p-inputchips-input {
+            border-color: var(--input-border-error) !important;
+            background: color-mix(in srgb, var(--color-error) 5%, var(--input-bg)) !important;
+
+            &.p-focus {
+                border-color: var(--input-border-error) !important;
+                box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-error) 20%, transparent) !important;
+                outline: none !important;
+            }
+
+            &:hover:not(.p-focus) {
+                border-color: var(--input-border-error) !important;
+            }
+        }
+    }
+
+    // ============================================================================
+    // DISABLED STATE on wrapper
+    // ============================================================================
+
+    &.p-disabled,
+    &[disabled] {
+        .p-inputchips-input {
+            cursor: not-allowed !important;
+            opacity: 0.6 !important;
+            background: var(--input-bg-disabled) !important;
+            color: var(--input-text-disabled) !important;
+            border-color: var(--input-border-disabled) !important;
+
+            input {
+                cursor: not-allowed !important;
+            }
+        }
+
+        .p-inputchips-chip {
+            opacity: 0.6 !important;
+
+            .p-chip-remove-icon {
+                pointer-events: none !important;
+            }
+        }
+    }
+}

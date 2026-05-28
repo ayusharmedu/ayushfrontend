@@ -1,0 +1,1104 @@
+// =============================================================================
+// SEMANTIC TOKENS - Design System Foundation
+// =============================================================================
+// Purpose-driven design tokens that abstract primitive values into meaningful roles
+
+@import "../primitives/colors";
+@import "../primitives/typography";
+@import "../primitives/spacing";
+@import "../primitives/icons";
+
+// =============================================================================
+// COLOR SEMANTIC TOKENS
+// =============================================================================
+
+// Brand Colors - Core brand identity
+$brand-colors: (
+  // Light theme brand colors
+  primary: get-color(primary, 600),
+  primary-hover: get-color(primary, 700),
+  primary-active: get-color(primary, 800),
+  primary-disabled: get-color(neutral, 300),
+  // Dark theme brand colors
+  primary-dark: get-color(primary, 400),
+  primary-hover-dark: get-color(primary, 300),
+  primary-active-dark: get-color(primary, 200),
+  primary-disabled-dark: get-color(neutral, 600),
+  secondary: get-color(secondary, 600),
+  secondary-hover: get-color(secondary, 700),
+  secondary-active: get-color(secondary, 800),
+  secondary-disabled: get-color(neutral, 300),
+  // Dark theme secondary colors
+  secondary-dark: get-color(secondary, 400),
+  secondary-hover-dark: get-color(secondary, 300),
+  secondary-active-dark: get-color(secondary, 200),
+  secondary-disabled-dark: get-color(neutral, 600),
+  accent: get-color(primary, 500),
+  accent-subtle: get-color(primary, 100),
+  accent-subtle-dark: get-color(primary, 950),
+  accent-muted-dark: get-color(primary, 900)
+);
+
+// Semantic State Colors
+$semantic-colors: (
+  success: get-color(success, 500),
+  success-hover: get-color(success, 600),
+  success-subtle: get-color(success, 50),
+  success-muted: get-color(success, 100),
+  warning: get-color(warning, 500),
+  warning-hover: get-color(warning, 600),
+  warning-dark: get-color(warning, 700),
+  warning-subtle: get-color(warning, 50),
+  warning-muted: get-color(warning, 100),
+  error: get-color(error, 500),
+  error-hover: get-color(error, 600),
+  error-subtle: get-color(error, 50),
+  error-muted: get-color(error, 100),
+  info: get-color(info, 500),
+  info-hover: get-color(info, 600),
+  info-subtle: get-color(info, 50),
+  info-muted: get-color(info, 100),
+);
+
+// Action Colors - Purpose-driven action colors
+$action-colors: (
+  save: get-color(save, 500),
+  save-hover: get-color(save, 600),
+  save-active: get-color(save, 700),
+  save-disabled: get-color(neutral, 300),
+  cancel: get-color(cancel, 500),
+  cancel-hover: get-color(cancel, 600),
+  cancel-active: get-color(cancel, 700),
+  cancel-disabled: get-color(neutral, 300),
+  edit: get-color(edit, 500),
+  edit-hover: get-color(edit, 600),
+  edit-active: get-color(edit, 700),
+  edit-disabled: get-color(neutral, 300),
+  close: get-color(close, 500),
+  close-hover: get-color(close, 600),
+  close-active: get-color(close, 700),
+  close-disabled: get-color(neutral, 300)
+);
+
+// Surface Colors - Background and container colors
+$surface-colors: (
+  // Light theme surfaces
+  background: get-color(neutral, 0),
+  surface: get-color(neutral, 0),
+  surface-variant: get-color(neutral, 50),
+  surface-subtle: get-color(neutral, 100),
+  surface-muted: get-color(neutral, 100),
+  // #f5f5f5 - Restored original
+  surface-disabled: get-color(neutral, 200),
+  // #e5e5e5 - NEW: For disabled inputs
+  surface-emphasis: get-color(neutral, 900),
+  surface-inverse: get-color(neutral, 900),
+  // Dark theme surfaces
+  background-dark: get-color(neutral, 950),
+  surface-dark: get-color(neutral, 900),
+  surface-variant-dark: get-color(neutral, 800),
+  surface-subtle-dark: get-color(neutral, 850),
+  surface-muted-dark: get-color(neutral, 800),
+  surface-disabled-dark: get-color(neutral, 700),
+  // NEW: For disabled inputs in dark mode
+  surface-emphasis-dark: get-color(neutral, 50),
+  surface-inverse-dark: get-color(neutral, 50)
+);
+
+// Text Colors - Typography color roles
+$text-colors: (
+  // Light theme text colors
+  primary: get-color(neutral, 900),
+  secondary: get-color(neutral, 600),
+  tertiary: get-color(neutral, 500),
+  disabled: get-color(neutral, 400),
+  placeholder: get-color(neutral, 400),
+  inverse: get-color(neutral, 0),
+  // Dark theme text colors
+  primary-dark: get-color(neutral, 50),
+  secondary-dark: get-color(neutral, 300),
+  tertiary-dark: get-color(neutral, 400),
+  disabled-dark: get-color(neutral, 500),
+  placeholder-dark: get-color(neutral, 500),
+  inverse-dark: get-color(neutral, 900),
+  // Text on colored backgrounds (light theme)
+  on-primary: get-color(neutral, 0),
+  on-secondary: get-color(neutral, 0),
+  on-success: get-color(neutral, 900),
+  on-warning: get-color(neutral, 900),
+  on-error: get-color(neutral, 0),
+  on-info: get-color(neutral, 0),
+  // Text on colored backgrounds (dark theme)
+  on-primary-dark: get-color(neutral, 900),
+  on-secondary-dark: get-color(neutral, 900),
+  on-success-dark: get-color(neutral, 900),
+  on-warning-dark: get-color(neutral, 900),
+  on-error-dark: get-color(neutral, 0),
+  on-info-dark: get-color(neutral, 900)
+);
+
+// Border Colors - For outlines and dividers
+$border-colors: (
+  // Light theme borders - Enhanced visibility for better UX
+  default: get-color(neutral, 300),
+  // #a3a3a3 - Clear, professional, highly visible
+  subtle: get-color(neutral, 300),
+  // #d4d4d4 - Visible even when disabled
+  emphasis: get-color(neutral, 500),
+  // #737373 - Strong emphasis
+  strong: get-color(neutral, 600),
+  // #525252 - Very strong contrast
+  inverse: get-color(neutral, 700),
+  // Dark theme borders
+  default-dark: get-color(neutral, 700),
+  subtle-dark: get-color(neutral, 800),
+  emphasis-dark: get-color(neutral, 600),
+  strong-dark: get-color(neutral, 500),
+  inverse-dark: get-color(neutral, 300),
+  // Interactive borders (light theme)
+  focus: get-color(primary, 500),
+  error: get-color(error, 500),
+  success: get-color(success, 500),
+  warning: get-color(warning, 500),
+  // Interactive borders (dark theme)
+  focus-dark: get-color(primary, 400),
+  error-dark: get-color(error, 400),
+  success-dark: get-color(success, 400),
+  warning-dark: get-color(warning, 400),
+  skeleton-dark: get-color(neutral, 700),
+  skeleton-light: get-color(neutral, 300)
+);
+
+// Interactive Colors - For hover, active, focus states
+$interactive-colors: (
+  hover: color-alpha(get-color(neutral, 900), 0.04),
+  active: color-alpha(get-color(neutral, 900), 0.08),
+  focus: color-alpha(get-color(primary, 500), 0.12),
+  disabled: color-alpha(get-color(neutral, 500), 0.12),
+
+  // Highlight/Selection colors - Light theme
+  highlight-bg: get-color(primary, 100),
+  highlight-bg-focus: get-color(primary, 200),
+  highlight-text: get-color(primary, 800),
+  highlight-text-focus: get-color(primary, 900),
+
+  // Highlight/Selection colors - Dark theme
+  highlight-bg-dark: get-color(primary, 950),
+  highlight-bg-focus-dark: get-color(primary, 900),
+  highlight-text-dark: get-color(primary, 100),
+  highlight-text-focus-dark: get-color(primary, 50),
+
+  // Overlay colors
+  overlay: color-alpha(get-color(neutral, 900), 0.6),
+  backdrop: color-alpha(get-color(neutral, 900), 0.8),
+
+  // light theme specific
+  view-button-hover-bg: get-color(neutral, 300),
+  view-button-hover-text: get-color(neutral, 900),
+  edit-button-hover-bg: get-color(primary, 700),
+  edit-button-hover-text: get-color(neutral, 100),
+
+  // dark theme specific
+  view-button-hover-bg-dark: get-color(neutral, 700),
+  view-button-hover-text-dark: get-color(neutral, 50),
+  edit-button-hover-bg-dark: get-color(primary, 300),
+  edit-button-hover-text-dark: get-color(neutral, 900)
+);
+
+// =============================================================================
+// COMPONENT SEMANTIC TOKENS
+// =============================================================================
+
+// Button Tokens
+$button-tokens: (
+  // Primary button
+  primary-bg: map-get($brand-colors, primary),
+  primary-bg-hover: map-get($brand-colors, primary-hover),
+  primary-bg-active: map-get($brand-colors, primary-active),
+  primary-bg-disabled: map-get($brand-colors, primary-disabled),
+  primary-text: map-get($text-colors, on-primary),
+  primary-text-disabled: map-get($text-colors, disabled),
+  // Secondary button
+  secondary-bg: map-get($surface-colors, surface-muted),
+  secondary-bg-hover: map-get($interactive-colors, hover),
+  secondary-bg-active: map-get($interactive-colors, active),
+  secondary-border: map-get($border-colors, default),
+  secondary-border-hover: map-get($border-colors, emphasis),
+  secondary-text: map-get($text-colors, primary),
+  secondary-text-disabled: map-get($text-colors, disabled),
+  // Text button
+  text-bg-hover: map-get($interactive-colors, hover),
+  text-bg-active: map-get($interactive-colors, active),
+  text-color: map-get($brand-colors, primary),
+  text-color-hover: map-get($brand-colors, primary-hover),
+  text-color-disabled: map-get($text-colors, disabled),
+  // Layout tokens
+  border-radius: border-radius(md),
+  padding-vertical: spacing(3),
+  padding-horizontal: spacing(5),
+  shadow-default: shadow(sm),
+  shadow-hover: shadow(md),
+  shadow-secondary: shadow(none),
+  // Typography tokens
+  font-size: font-size(sm),
+  font-weight: font-weight(semibold)
+);
+
+$border-radius-tokens: (
+  xxs: 2px,
+  xs: 4px,
+  sm: 6px,
+  md: 8px,
+  lg: 12px,
+  xl: 16px,
+  full: 9999px
+);
+
+$interaction-tokens: (
+  hover-lift: translateY(-1px),
+  hover-shadow-elevation: 4px 12px,
+  focus-ring-width: 3px,
+  focus-ring-opacity: 0.2,
+  focus-ring-color-alpha: color-alpha(get-color(primary, 500), 0.2),
+  // For focus box-shadow
+  transition-standard: all 0.2s ease,
+  transition-enhanced: all 0.3s ease
+);
+
+$feedback-tokens: (
+  loading-spinner-size: 1rem,
+  validation-icon-size: 14px,
+  error-indicator-width: 3px
+);
+
+$layout-semantic-tokens: (
+  component-padding-compact: spacing(2),
+  component-padding-comfortable: spacing(3),
+  component-padding-spacious: spacing(4),
+  component-border-subtle: border-width-token(thin),
+  component-border-emphasis: border-width-token(critical),
+  component-border-strong: border-width-token(thick)
+);
+
+// Input Tokens
+$input-tokens: (
+  bg: map-get($surface-colors, surface),
+  bg-disabled: map-get($surface-colors, surface-muted),
+  bg-readonly: map-get($surface-colors, surface-variant),
+  border: map-get($border-colors, default),
+  border-hover: map-get($border-colors, emphasis),
+  border-focus: map-get($border-colors, focus),
+  border-error: map-get($border-colors, error),
+  border-disabled: map-get($border-colors, subtle),
+  text: map-get($text-colors, primary),
+  text-disabled: map-get($text-colors, disabled),
+  placeholder: map-get($text-colors, placeholder),
+  label: map-get($text-colors, secondary),
+  label-disabled: map-get($text-colors, disabled),
+  helper: map-get($text-colors, tertiary),
+  error: map-get($semantic-colors, error),
+  // Layout tokens
+  border-radius: border-radius(md),
+  padding-vertical: spacing(3),
+  padding-horizontal: spacing(4),
+  // Typography tokens
+  font-size: font-size(base),
+  // Input field font size (16px)
+  font-weight: font-weight(regular),
+  label-font-size: font-size(sm),
+  // Label font size (14px) - used by tooltips too
+  label-font-weight: font-weight(medium)
+);
+
+// Card Tokens
+$card-tokens: (
+  bg: map-get($surface-colors, surface),
+  bg-hover: map-get($surface-colors, surface-variant),
+  border: map-get($border-colors, subtle),
+  border-hover: map-get($border-colors, default),
+  shadow: shadow(sm),
+  shadow-hover: shadow(md),
+  // Layout tokens
+  border-radius: border-radius(lg),
+  padding: spacing(9)
+);
+
+// Navigation Tokens
+$nav-tokens: (
+  bg: map-get($surface-colors, surface),
+  border: map-get($border-colors, subtle),
+  item-text: map-get($text-colors, secondary),
+  item-text-hover: map-get($text-colors, primary),
+  item-text-active: map-get($brand-colors, primary),
+  item-bg-hover: map-get($interactive-colors, hover),
+  item-bg-active: color-alpha(map-get($brand-colors, primary), 0.08),
+  divider: map-get($border-colors, subtle),
+);
+
+// Dialog/Modal Tokens
+$dialog-tokens: (
+  bg: map-get($surface-colors, surface),
+  border: map-get($border-colors, default),
+  border-radius: border-radius(lg),
+  padding: spacing(6),
+  shadow: shadow(xl),
+);
+
+// Component Height Tokens (from backup requirements)
+$component-height-tokens: (
+  input-sm: 24px,
+  input-md: 32px,
+  // From backup: $input-height: 30px
+  input-lg: 36px,
+  input-optimized: 40px,
+  input-xl: 44px,
+  // Apple HIG: 44px minimum touch target (WCAG accessibility standard)
+  // input-backup: 30px,     // Exact backup requirement
+  button-sm: 32px,
+  button-md: 40px,
+  button-optimized: 40px,
+  button-lg: 48px,
+  // button-backup: 40px,    // Exact backup requirement
+  icon-sm: 14px,
+  icon-md: 16px,
+  // From backup: $icon-size: 16px
+  icon-lg: 24px,
+  // icon-backup: 16px,      // Exact backup requirement
+
+  card-sm: 140px,
+);
+
+// Border Width Tokens (from backup requirements)
+$border-width-tokens: (
+  thin: 1px,
+  normal: 1.5px,
+  // From backup: critical 1.5px border
+  critical: 1.5px,
+  // Critical backup requirement
+  thick: 2px,
+  focus: 3px,
+  // For focus rings
+);
+
+// Line Height Tokens (from backup requirements)
+$line-height-tokens: (
+  tight: 1.2,
+  normal: 1.4,
+  // From backup: key line-height
+  relaxed: 1.5,
+  loose: 1.6,
+);
+
+// Component Font Size Tokens (Tailwind CSS Standard)
+// Maps to Tailwind's text-* utility classes for consistency
+$component-font-tokens: (
+  input-sm: 13px,
+  input-optimized: 14px,
+  input-md: 15px,
+  // From backup: --p-font-size-md
+  input-lg: 16px,
+  input-xl: 18px,
+  // input-backup: 15px,     // Exact backup requirement
+  button-sm: 13px,
+  button-md: 14px,
+  button-lg: 16px,
+  button-xl: 18px,
+  button-base: 16px,
+  // button-backup: 14px,    // Exact backup requirement
+  tooltip-sm: 12px,
+  tooltip-md: 13px,
+  tooltip-lg: 14px,
+  // tooltip-backup: 13px,   // Exact backup requirement
+);
+
+// Drawer typography tokens
+// Mirrors the optimized drawer type hierarchy while staying centralized.
+$drawer-typography-tokens: (
+  title-size: 17px,
+  title-weight: font-weight(bold),
+  title-line-height: 1.3,
+  section-label-size: 11px,
+  section-label-weight: font-weight(semibold),
+  section-label-line-height: 1.4,
+  body-size: font-size(sm),
+  body-weight: font-weight(regular),
+  body-line-height: 1.55,
+  body-sm-size: 13px,
+  body-sm-weight: font-weight(regular),
+  body-sm-line-height: 1.55,
+  label-size: 13px,
+  label-weight: font-weight(medium),
+  label-line-height: 1.4,
+  caption-size: 11px,
+  caption-weight: font-weight(semibold),
+  caption-line-height: 1.4,
+  chip-size: 10.5px,
+  chip-weight: font-weight(semibold),
+  chip-line-height: 1,
+  input-size: font-size(sm),
+  input-weight: font-weight(regular),
+  input-line-height: 1.55,
+  code-size: font-size(xs),
+  code-weight: font-weight(medium),
+  code-line-height: 1.4
+);
+
+// Toast Tokens
+$toast-tokens: (
+  border-radius: border-radius(lg),
+  padding: spacing(4),
+  shadow: shadow(lg),
+  margin: spacing(2),
+);
+
+// Form Tokens
+$form-tokens: (
+  field-no-margin-bottom: spacing(0),
+  field-margin-bottom-sm: spacing(5),
+  field-margin-bottom: spacing(6),
+  field-margin-bottom-lg: spacing(8),
+  // create variable for spacing 5 for form field margin-bottom
+
+  label-margin-bottom: spacing(2),
+  group-gap: spacing(4),
+);
+
+// Checkbox/Radio Tokens
+$checkbox-tokens: (
+  border-radius: border-radius(sm),
+  size: spacing(5),
+);
+
+
+// Toggle specific semantic tokens
+$toggle-tokens: (
+  track-bg: get-color(neutral, 200),
+  track-bg-hover: get-color(neutral, 300),
+
+  track-bg-dark: get-color(neutral, 700),
+  track-bg-hover-dark: get-color(neutral, 600)
+);
+
+// Dropdown Tokens
+$dropdown-tokens: (
+  border-radius: border-radius(md),
+  item-padding-vertical: spacing(3),
+  item-padding-horizontal: spacing(4),
+  panel-shadow: shadow(lg),
+);
+
+// Autocomplete Tokens
+$autocomplete-tokens: (
+  item-padding-vertical: spacing(2),
+  item-padding-horizontal: spacing(3),
+  chip-border-radius: border-radius(sm),
+  chip-padding-vertical: spacing(1),
+  chip-padding-horizontal: spacing(2),
+  chip-gap: spacing(1),
+);
+// Table Tokens - Material Design 3 Data Table Specs
+// Reference: https://m3.material.io/components/data-tables/specs
+$table-tokens: (
+  // Row heights (MD3: dense 36px, default 52px, comfortable 64px)
+  row-height-dense: spacing(9),
+  // 36px
+  row-height-default: spacing(18),
+  // 68px
+  row-height-comfortable: spacing(16),
+  // 64px
+
+  // Cell padding
+  cell-padding-horizontal: spacing(4),
+  // 16px
+  cell-padding-vertical: spacing(3),
+  // 12px
+
+  // Typography (MD3: 14px for both header and body)
+  header-font-size: font-size(sm),
+  // 14px
+  body-font-size: font-size(sm),
+  // 14px
+  header-font-weight: font-weight(medium),
+  // 500 (MD3 Title Small)
+  body-font-weight: font-weight(regular),
+  // 400
+
+  // Action icons (MD3: 24px icons)
+  action-icon-size: 24px,
+
+  // Touch targets (MD3: 48px, Apple HIG: 44px)
+  touch-target-size: spacing(12),
+  // 48px
+  touch-target-size-mobile: spacing(11),
+  // 44px
+
+  // Column widths
+  selection-column-width: spacing(12),
+  // 48px
+  action-column-width: 160px,
+  // 48px × 3 + gaps
+
+  // Spacing
+  action-gap: spacing(1),
+  // 4px between touch targets
+
+  // Border
+  border-width: border-width-token(thin),
+  // 1px - MD3 standard table borders
+
+  // Pagination
+  paginator-dropdown-min-width: spacing(20),
+  // 80px
+  disabled-opacity: 0.4,
+  // Disabled state opacity
+  focus-ring-width: map-get($interaction-tokens, focus-ring-width),
+  // 3px from interaction-tokens
+);
+
+// Tooltip Tokens
+// NOTE: Tooltip font size matches form label font size for visual consistency
+$tooltip-tokens: (
+  delay-short: 200,
+  // Quick tooltip for simple hints
+  delay-normal: 500,
+  // Standard tooltip delay
+  delay-long: 1000,
+  // Delayed tooltip for less critical info
+  bg: map-get($surface-colors, surface-emphasis),
+  text: map-get($text-colors, inverse),
+  padding-vertical: spacing(2),
+  // 8px
+  padding-horizontal: spacing(3),
+  // 12px
+  border-radius: border-radius(md),
+  shadow: shadow(md),
+  font-size: map-get($input-tokens, label-font-size),
+  // 14px - matches .ui-form-label
+  font-weight: map-get($input-tokens, label-font-weight),
+  // medium - matches .ui-form-label
+  max-width: 300px,
+  line-height: line-height(normal),
+);
+
+// =============================================================================
+// TYPOGRAPHY SEMANTIC TOKENS
+// =============================================================================
+
+$typography-tokens: (
+  // font families - Use Poppins from primitives/_typography.scss
+  font-family-primary: $font-family-primary,
+  font-family-mono: $font-family-mono,
+
+  // font sizes
+
+  font-size-mini: font-size("mini"),
+  font-size-xxs: font-size("xxs"),
+  font-size-xs: font-size("xs"),
+  font-size-sm: font-size("sm"),
+  font-size-base: font-size("base"),
+  font-size-md: font-size("md"),
+  font-size-lg: font-size("lg"),
+  font-size-xl: font-size("xl"),
+
+  font-size-2xl: font-size("2xl"),
+  font-size-3xl: font-size("3xl"),
+  font-size-4xl: font-size("4xl"),
+  font-size-5xl: font-size("5xl"),
+  font-size-6xl: font-size("6xl"),
+  font-size-7xl: font-size("7xl"),
+
+  // font weights
+  font-weight-regular: font-weight(regular),
+  font-weight-medium: font-weight(medium),
+  font-weight-semibold: font-weight(semibold),
+  font-weight-bold: font-weight(bold),
+
+  // // Page hierarchy
+  // page-title:
+  //   (
+  //     font-size: font-size("4xl"),
+  //     font-weight: font-weight(bold),
+  //     line-height: line-height(tight),
+  //     color: map-get($text-colors, primary),
+  //   ),
+
+  // section-title: (
+  //   font-size: font-size("2xl"),
+  //   font-weight: font-weight(semibold),
+  //   line-height: line-height(snug),
+  //   color: map-get($text-colors, primary),
+  // ),
+
+  // card-title: (
+  //   font-size: font-size("lg"),
+  //   font-weight: font-weight(semibold),
+  //   line-height: line-height(snug),
+  //   color: map-get($text-colors, primary),
+  // ),
+
+  // // Body text
+  // body-large:
+  //   (
+  //     font-size: font-size("lg"),
+  //     font-weight: font-weight(regular),
+  //     line-height: line-height(relaxed),
+  //     color: map-get($text-colors, primary),
+  //   ),
+
+  // body-medium: (
+  //   font-size: font-size("base"),
+  //   font-weight: font-weight(regular),
+  //   line-height: line-height(normal),
+  //   color: map-get($text-colors, primary),
+  // ),
+
+  // body-small: (
+  //   font-size: font-size("sm"),
+  //   font-weight: font-weight(regular),
+  //   line-height: line-height(normal),
+  //   color: map-get($text-colors, secondary),
+  // ),
+
+  // // UI text
+  // button-text:
+  //   (
+  //     font-size: font-size("sm"),
+  //     font-weight: font-weight(semibold),
+  //     line-height: line-height(none),
+  //     letter-spacing: letter-spacing(wide),
+  //   ),
+
+  // label-text: (
+  //   font-size: font-size("sm"),
+  //   font-weight: font-weight(medium),
+  //   line-height: line-height(tight),
+  //   color: map-get($text-colors, secondary),
+  // ),
+
+  // caption-text: (
+  //   font-size: font-size("xs"),
+  //   font-weight: font-weight(regular),
+  //   line-height: line-height(tight),
+  //   color: map-get($text-colors, tertiary),
+  // ),
+
+
+);
+
+
+
+$dialog-feedback-tokens: (
+  // ── Warning (Discard dialog) ─────────────────────────────────────────────
+  // Light: warm amber tints from warning-palette
+  warning-bg: get-color(warning, 50),
+  // #fffbeb
+  warning-border: get-color(warning, 200),
+  // #fde68a
+  warning-fg: get-color(warning, 700),
+  // #b45309
+
+  // Dark: semi-transparent amber for dark surfaces
+  warning-bg-dark: color-alpha(get-color(warning, 500), 0.12),
+  warning-border-dark: color-alpha(get-color(warning, 300), 0.25),
+  warning-fg-dark: get-color(warning, 300),
+  // #fcd34d
+
+  // ── Danger (Delete dialog) ───────────────────────────────────────────────
+  // Light: soft red tints from error-palette
+  danger-bg: get-color(error, 50),
+  // #fef2f2
+  danger-border: get-color(error, 200),
+  // #fecaca
+  danger-fg: get-color(error, 600),
+  // #dc2626
+
+  // Dark: semi-transparent red for dark surfaces
+  danger-bg-dark: color-alpha(get-color(error, 500), 0.12),
+  danger-border-dark: color-alpha(get-color(error, 300), 0.30),
+  danger-fg-dark: get-color(error, 300),
+  // #fca5a5
+
+  // ── Dialog overlay ───────────────────────────────────────────────────────
+  overlay-dim-light: color-alpha(get-color(neutral, 900), 0.50),
+  overlay-dim-dark: color-alpha(get-color(neutral, 950), 0.65),
+);
+
+
+
+// =============================================================================
+// SPACING SEMANTIC TOKENS
+// =============================================================================
+
+$spacing-tokens: (
+  // Component internal spacing
+  component-padding-sm: spacing(3),
+  // 12px
+  component-padding-md: spacing(4),
+  // 16px
+  component-padding-lg: spacing(6),
+  // 24px
+  // Component heights - corrected values following size suffix pattern
+  input-height-sm: spacing(6),
+  // 24px - small input
+  input-height-md: spacing(8),
+  // 32px - standard input ✅
+  input-height-lg: spacing(10),
+  // 40px - large input
+  button-height-sm: spacing(7),
+  // 28px - small button
+  button-height-md: spacing(9),
+  // 36px - standard button
+  button-height-lg: spacing(11),
+  // 44px - large button
+  // Icon sizes - following size suffix pattern
+  icon-size-xs: spacing(2.5),
+  // 10px
+  icon-size-sm: spacing(3),
+  // 12px
+  icon-size-md: spacing(4),
+  // 16px
+  icon-size-lg: spacing(5),
+  // 20px
+  icon-size-xl: spacing(6),
+  // 24px
+  // Focus ring widths - using proper spacing system
+  focus-ring-width-sm: spacing(0.5),
+  // 2px
+  focus-ring-width-md: spacing(1),
+  // 4px ✅
+  focus-ring-width-lg: spacing(1.5),
+  // 6px
+  // Element spacing
+  element-gap-sm: spacing(2),
+  // 8px
+  element-gap-md: spacing(4),
+  // 16px
+  element-gap-lg: spacing(6),
+  // 24px
+  // Layout spacing
+  layout-section-sm: spacing(8),
+  // 32px
+  layout-section-md: spacing(12),
+  // 48px
+  layout-section-lg: spacing(16),
+  // 64px
+  // Form spacing
+  form-element-gap: spacing(4),
+  // 16px
+  form-group-gap: spacing(6),
+  // 24px
+  form-section-gap: spacing(8),
+  // 32px
+  // Card spacing
+  card-padding-sm: spacing(4),
+  // 16px
+  card-padding-md: spacing(6),
+  // 24px
+  card-padding-lg: spacing(8),
+  // 32px
+  card-gap: spacing(4),
+  // 16px
+
+  tooltip-padding-sm: spacing(2),
+  // 8px
+
+  tooltip-padding: spacing(3),
+  // 12px
+
+  tooltip-padding-lg: spacing(4),
+  // 16px
+
+  spacing-1: spacing(1),
+  // 4px
+  spacing-0-5: spacing(0.5),
+  // 2px
+  spacing-1-5: spacing(1.5),
+  // 6px
+  spacing-2: spacing(2),
+  // 8px
+  spacing-3: spacing(3),
+  // 12px
+  spacing-4: spacing(4),
+  // 16px
+  spacing-5: spacing(5),
+  // 20px
+  spacing-6: spacing(6),
+  // 24px
+  spacing-7: spacing(7),
+  // 28px
+  spacing-8: spacing(8),
+  // 32px
+  spacing-9: spacing(9),
+  // 36px
+  spacing-10: spacing(10),
+  // 40px
+);
+
+$icons-sizes: (
+  xs: 10px,
+  sm: 12px,
+  md: 16px,
+  lg: 20px,
+  xl: 24px,
+);
+
+// =============================================================================
+// HELPER FUNCTIONS FOR SEMANTIC TOKENS
+// =============================================================================
+
+@function icon-size-token($size) {
+  @if map-has-key($icons-sizes, $size) {
+    @return map-get($icons-sizes, $size);
+  }
+
+  @error "Icon size token '#{$size}' not found";
+}
+
+@function spacing-component-token($token) {
+  @if map-has-key($spacing-tokens, $token) {
+    @return map-get($spacing-tokens, $token);
+  }
+
+  @error "Spacing token '#{$token}' not found";
+}
+
+@function brand-color($token) {
+  @if map-has-key($brand-colors, $token) {
+    @return map-get($brand-colors, $token);
+  }
+
+  @error "Brand color token '#{$token}' not found";
+}
+
+@function semantic-color($token) {
+  @if map-has-key($semantic-colors, $token) {
+    @return map-get($semantic-colors, $token);
+  }
+
+  @error "Semantic color token '#{$token}' not found";
+}
+
+@function surface-color($token) {
+  @if map-has-key($surface-colors, $token) {
+    @return map-get($surface-colors, $token);
+  }
+
+  @error "Surface color token '#{$token}' not found";
+}
+
+@function text-color($token) {
+  @if map-has-key($text-colors, $token) {
+    @return map-get($text-colors, $token);
+  }
+
+  @error "Text color token '#{$token}' not found";
+}
+
+@function border-color($token) {
+  @if map-has-key($border-colors, $token) {
+    @return map-get($border-colors, $token);
+  }
+
+  @error "Border color token '#{$token}' not found";
+}
+
+@function interactive-color($token) {
+  @if map-has-key($interactive-colors, $token) {
+    @return map-get($interactive-colors, $token);
+  }
+
+  @error "Interactive color token '#{$token}' not found";
+}
+
+@function spacing-token($token) {
+  @if map-has-key($spacing-tokens, $token) {
+    @return map-get($spacing-tokens, $token);
+  }
+
+  @error "Spacing token '#{$token}' not found";
+}
+
+@function button-token($token) {
+  @if map-has-key($button-tokens, $token) {
+    @return map-get($button-tokens, $token);
+  }
+
+  @error "Button token '#{$token}' not found";
+}
+
+@function border-radius-token($token) {
+  @if map-has-key($border-radius-tokens, $token) {
+    @return map-get($border-radius-tokens, $token);
+  }
+
+  @error "Border radius token '#{$token}' not found";
+}
+
+@function input-token($token) {
+  @if map-has-key($input-tokens, $token) {
+    @return map-get($input-tokens, $token);
+  }
+
+  @error "Input token '#{$token}' not found";
+}
+
+@function card-token($token) {
+  @if map-has-key($card-tokens, $token) {
+    @return map-get($card-tokens, $token);
+  }
+
+  @error "Card token '#{$token}' not found";
+}
+
+@function dialog-token($token) {
+  @if map-has-key($dialog-tokens, $token) {
+    @return map-get($dialog-tokens, $token);
+  }
+
+  @error "Dialog token '#{$token}' not found";
+}
+
+// Helper function to access these tokens
+@function toggle-token($token) {
+  @if map-has-key($toggle-tokens, $token) {
+    @return map-get($toggle-tokens, $token);
+  }
+
+  @error "Toggle token '#{$token}' not found";
+}
+
+@function toast-token($token) {
+  @if map-has-key($toast-tokens, $token) {
+    @return map-get($toast-tokens, $token);
+  }
+
+  @error "Toast token '#{$token}' not found";
+}
+
+@function form-token($token) {
+  @if map-has-key($form-tokens, $token) {
+    @return map-get($form-tokens, $token);
+  }
+
+  @error "Form token '#{$token}' not found";
+}
+
+@function checkbox-token($token) {
+  @if map-has-key($checkbox-tokens, $token) {
+    @return map-get($checkbox-tokens, $token);
+  }
+
+  @error "Checkbox token '#{$token}' not found";
+}
+
+@function dropdown-token($token) {
+  @if map-has-key($dropdown-tokens, $token) {
+    @return map-get($dropdown-tokens, $token);
+  }
+
+  @error "Dropdown token '#{$token}' not found";
+}
+
+@function autocomplete-token($token) {
+  @if map-has-key($autocomplete-tokens, $token) {
+    @return map-get($autocomplete-tokens, $token);
+  }
+
+  @error "Autocomplete token '#{$token}' not found";
+}
+
+@function table-token($token) {
+  @if map-has-key($table-tokens, $token) {
+    @return map-get($table-tokens, $token);
+  }
+
+  @error "Table token '#{$token}' not found";
+}
+
+@function action-color($token) {
+  @if map-has-key($action-colors, $token) {
+    @return map-get($action-colors, $token);
+  }
+
+  @error "Action color token '#{$token}' not found";
+}
+
+@function interaction-token($token) {
+  @if map-has-key($interaction-tokens, $token) {
+    @return map-get($interaction-tokens, $token);
+  }
+
+  @error "Interaction token '#{$token}' not found";
+}
+
+// =============================================================================
+// NEW TOKEN FUNCTIONS - For backup styling requirements
+// =============================================================================
+
+@function component-height($size) {
+  @if map-has-key($component-height-tokens, $size) {
+    @return map-get($component-height-tokens, $size);
+  }
+
+  @error "Component height '#{$size}' not found";
+}
+
+@function border-width-token($width) {
+  @if map-has-key($border-width-tokens, $width) {
+    @return map-get($border-width-tokens, $width);
+  }
+
+  @error "Border width '#{$width}' not found";
+}
+
+@function line-height-token($height) {
+  @if map-has-key($line-height-tokens, $height) {
+    @return map-get($line-height-tokens, $height);
+  }
+
+  @error "Line height '#{$height}' not found";
+}
+
+@function component-font($size) {
+  @if map-has-key($component-font-tokens, $size) {
+    @return map-get($component-font-tokens, $size);
+  }
+
+  @error "Component font size '#{$size}' not found";
+}
+
+@function drawer-type-token($token) {
+  @if map-has-key($drawer-typography-tokens, $token) {
+    @return map-get($drawer-typography-tokens, $token);
+  }
+
+  @error "Drawer typography token '#{$token}' not found";
+}
+
+@function typography-component-token($token) {
+  @if map-has-key($typography-tokens, $token) {
+    @return map-get($typography-tokens, $token);
+  }
+
+  @error "Typography token '#{$token}' not found";
+}
+
+
+
+:root {
+  @each $token, $value in $typography-tokens {
+    --#{$token}: #{$value};
+  }
+
+  @each $token, $value in $drawer-typography-tokens {
+    --ui-drawer-type-#{$token}: #{$value};
+  }
+}
+
+@function dialog-feedback-token($token) {
+  @if map-has-key($dialog-feedback-tokens, $token) {
+    @return map-get($dialog-feedback-tokens, $token);
+  }
+
+  @error "Dialog feedback token '#{$token}' not found in $dialog-feedback-tokens";
+}

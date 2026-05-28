@@ -1,0 +1,207 @@
+.input-base {
+  width: 100%;
+  height: 36px;
+  padding: 0 var(--space-3);
+  background: var(--color-surface-raised);
+  border: var(--border-thin) solid var(--color-border-default);
+  border-radius: var(--radius-sm);
+  color: var(--color-text-primary);
+  font-family: var(--primitive-font-sans);
+  font-size: var(--text-body-size);
+  outline: none;
+  box-sizing: border-box;
+}
+
+.input-base::placeholder {
+  color: var(--color-text-muted);
+}
+
+.input-base:focus {
+  border-color: var(--color-brand-accent);
+  box-shadow: var(--focus-ring-brand);
+}
+
+.input-base.input-error {
+  border-color: var(--color-danger-fg);
+}
+
+.input-has-icon {
+  padding-right: var(--space-10);
+}
+
+.input-with-suffix {
+  display: flex;
+  align-items: center;
+  border: var(--border-thin) solid var(--color-border-default);
+  border-radius: var(--radius-sm);
+  background: var(--color-surface-raised);
+  overflow: hidden;
+}
+
+.input-with-suffix:focus-within {
+  border-color: var(--color-brand-accent);
+  box-shadow: var(--focus-ring-brand);
+}
+
+.input-with-suffix input {
+  flex: 1;
+  min-width: 0;
+  height: 36px;
+  padding: 0 var(--space-3);
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(--color-text-primary);
+  font-family: var(--primitive-font-sans);
+  font-size: var(--text-body-size);
+}
+
+.input-suffix {
+  padding: 0 var(--space-3);
+  color: var(--color-text-muted);
+  font-size: var(--text-body-sm-size);
+  border-left: var(--border-thin) solid var(--color-border-default);
+  white-space: nowrap;
+  background: var(--color-surface-sunken);
+  height: 36px;
+  display: flex;
+  align-items: center;
+}
+
+.input-with-icon {
+  position: relative;
+  display: block;
+}
+
+.input-status-icon {
+  position: absolute;
+  right: var(--space-3);
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.form-label {
+  font-size: var(--text-label-size);
+  font-weight: var(--text-label-weight);
+  color: var(--color-text-secondary);
+  line-height: var(--text-label-lh);
+}
+
+.form-label.required::after {
+  content: ' *';
+  color: var(--color-danger-fg);
+}
+
+.form-helper {
+  font-size: 12px;
+  color: var(--color-text-tertiary);
+}
+
+.form-label-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+}
+
+.pw-field {
+  position: relative;
+}
+
+.pw-field .input-base {
+  padding-right: var(--space-10);
+}
+
+.pw-toggle {
+  position: absolute;
+  right: var(--space-2);
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--color-text-muted);
+  display: flex;
+  align-items: center;
+  padding: var(--space-1);
+}
+
+.pw-toggle:hover {
+  color: var(--color-text-secondary);
+}
+
+.strength-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin-top: var(--space-2);
+}
+
+.strength-bars {
+  display: flex;
+  gap: 3px;
+  flex: 1;
+}
+
+.strength-bar {
+  height: 3px;
+  border-radius: var(--radius-full);
+  flex: 1;
+  background: var(--color-border-default);
+  overflow: hidden;
+  position: relative;
+}
+
+.strength-bar-fill {
+  display: block;
+  height: 100%;
+  border-radius: var(--radius-full);
+  transition: width var(--motion-base), background var(--motion-base);
+}
+
+.strength-bar-fill.tone-danger {
+  background: var(--primitive-red-500);
+}
+
+.strength-bar-fill.tone-warning {
+  background: var(--primitive-amber-500);
+}
+
+.strength-bar-fill.tone-success {
+  background: var(--primitive-emerald-500);
+}
+
+.strength-label {
+  min-width: 52px;
+  text-align: right;
+  font-weight: 600;
+}
+
+.criteria-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-1) var(--space-4);
+  margin-top: var(--space-1);
+}
+
+.criterion {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 11.5px;
+  font-weight: 500;
+}
+
+.criterion.met {
+  color: var(--color-success-fg);
+}
+
+.criterion.unmet {
+  color: var(--color-text-muted);
+}

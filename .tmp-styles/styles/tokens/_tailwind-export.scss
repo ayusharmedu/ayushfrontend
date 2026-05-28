@@ -1,0 +1,88 @@
+// =============================================================================
+// TAILWIND EXPORT TOKENS - Design System to Tailwind/PrimeNG Integration
+// =============================================================================
+// Export design system primitives for JavaScript/TypeScript consumption
+// Used by: tailwind-tokens.js, themes/primeng-tokens.ts
+
+@import '../primitives/colors';
+@import '../primitives/typography';
+@import '../primitives/spacing';
+
+:export {
+  // ---------------------------------------------------------------------------
+  // PRIMARY PALETTE - from $primary-palette
+  // ---------------------------------------------------------------------------
+  @each $shade, $color in $primary-palette {
+    primary#{$shade}: #{$color};
+  }
+
+  // ---------------------------------------------------------------------------
+  // SECONDARY PALETTE - from $secondary-palette
+  // ---------------------------------------------------------------------------
+  @each $shade, $color in $secondary-palette {
+    secondary#{$shade}: #{$color};
+  }
+
+  // ---------------------------------------------------------------------------
+  // NEUTRAL PALETTE - from $neutral-palette
+  // ---------------------------------------------------------------------------
+  @each $shade, $color in $neutral-palette {
+    neutral#{$shade}: #{$color};
+  }
+
+  // ---------------------------------------------------------------------------
+  // SUCCESS PALETTE - from $success-palette
+  // ---------------------------------------------------------------------------
+  @each $shade, $color in $success-palette {
+    success#{$shade}: #{$color};
+  }
+
+  // ---------------------------------------------------------------------------
+  // WARNING PALETTE - from $warning-palette
+  // ---------------------------------------------------------------------------
+  @each $shade, $color in $warning-palette {
+    warning#{$shade}: #{$color};
+  }
+
+  // ---------------------------------------------------------------------------
+  // ERROR PALETTE - from $error-palette
+  // ---------------------------------------------------------------------------
+  @each $shade, $color in $error-palette {
+    error#{$shade}: #{$color};
+  }
+
+  // ---------------------------------------------------------------------------
+  // INFO PALETTE - from $info-palette
+  // ---------------------------------------------------------------------------
+  @each $shade, $color in $info-palette {
+    info#{$shade}: #{$color};
+  }
+
+  // ---------------------------------------------------------------------------
+  // SAVE PALETTE - from $save-palette
+  // ---------------------------------------------------------------------------
+  @each $shade, $color in $save-palette {
+    save#{$shade}: #{$color};
+  }
+
+  // ---------------------------------------------------------------------------
+  // CANCEL PALETTE - from $cancel-palette
+  // ---------------------------------------------------------------------------
+  @each $shade, $color in $cancel-palette {
+    cancel#{$shade}: #{$color};
+  }
+
+  // ---------------------------------------------------------------------------
+  // EDIT PALETTE - from $edit-palette
+  // ---------------------------------------------------------------------------
+  @each $shade, $color in $edit-palette {
+    edit#{$shade}: #{$color};
+  }
+
+  // ---------------------------------------------------------------------------
+  // CLOSE PALETTE - from $close-palette
+  // ---------------------------------------------------------------------------
+  @each $shade, $color in $close-palette {
+    close#{$shade}: #{$color};
+  }
+}

@@ -1,0 +1,285 @@
+// =============================================================================
+// COLOR PRIMITIVES - Design System Foundation
+// =============================================================================
+// Material Design 3 inspired color system with brand customization
+
+// Primary Brand Palette - Teal/Emerald (Main brand identity)
+$primary-palette: (
+  50: #eff6ff,
+  100: #dbeafe,
+  200: #bfdbfe,
+  300: #93c5fd,
+  400: #60a5fa,
+  500: #3b82f6,
+  // Main blue brand color
+  600: #2563eb,
+  // Primary action blue
+  700: #1d4ed8,
+  800: #1e40af,
+  900: #1e3a8a,
+  950: #172554
+);
+
+
+// Secondary Brand Palette - Blue (Supporting brand color)
+$secondary-palette: (
+  50: #eff6ff,
+  100: #dbeafe,
+  200: #bfdbfe,
+  300: #93c5fd,
+  400: #60a5fa,
+  500: #3b82f6,
+  // Secondary brand color
+  600: #2563eb,
+  // Secondary action color
+  700: #1d4ed8,
+  800: #1e40af,
+  900: #1e3a8a,
+  950: #172554
+);
+
+// Neutral Color Scale - Comprehensive grayscale
+$neutral-palette: (
+  0: #ffffff,
+  // Pure white
+  25: #fcfcfc,
+  // Almost white (for subtle surfaces)
+  50: #fafafa,
+  // Lightest gray
+  100: #f5f5f5,
+  // Very light gray
+  200: #e5e5e5,
+  // Light gray
+  300: #d4d4d4,
+  // Medium light gray
+  400: #a3a3a3,
+  // Medium gray
+  500: #737373,
+  // True gray
+  600: #525252,
+  // Medium dark gray
+  700: #404040,
+  // Dark gray
+  800: #262626,
+  // Very dark gray
+  850: #1f1f1f,
+  // Dark intermediate (for dark theme)
+  900: #171717,
+  // Near black
+  950: #0a0a0a // Almost black
+);
+
+// Success Color Palette - Green
+$success-palette: (
+  50: #f0fdf4,
+  100: #dcfce7,
+  200: #bbf7d0,
+  300: #86efac,
+  400: #4ade80,
+  500: #22c55e,
+  // Success color
+  600: #16a34a,
+  700: #15803d,
+  800: #166534,
+  900: #14532d,
+  950: #052e16
+);
+
+// Warning Color Palette - Amber/Orange
+$warning-palette: (
+  50: #fffbeb,
+  100: #fef3c7,
+  200: #fde68a,
+  300: #fcd34d,
+  400: #fbbf24,
+  500: #f59e0b,
+  // Warning color
+  600: #d97706,
+  700: #b45309,
+  800: #92400e,
+  900: #78350f,
+  950: #451a03
+);
+
+// Error Color Palette - Red
+$error-palette: (
+  50: #fef2f2,
+  100: #fee2e2,
+  200: #fecaca,
+  300: #fca5a5,
+  400: #f87171,
+  500: #ef4444,
+  // Error color
+  600: #dc2626,
+  700: #b91c1c,
+  800: #991b1b,
+  900: #7f1d1d,
+  950: #450a0a
+);
+
+// Info Color Palette - Sky Blue
+$info-palette: (
+  50: #f0f9ff,
+  100: #e0f2fe,
+  200: #bae6fd,
+  300: #7dd3fc,
+  400: #38bdf8,
+  500: #0ea5e9,
+  // Info color
+  600: #0284c7,
+  700: #0369a1,
+  800: #075985,
+  900: #0c4a6e,
+  950: #082f49
+);
+
+// Professional action palettes that complement primary blue (#2563eb)
+$save-palette: (
+  50: #f0fdfa,
+  // Lightest teal
+  100: #ccfbf1,
+  // Light teal
+  200: #99f6e4,
+  // Soft teal
+  300: #5eead4,
+  // Medium teal
+  400: #2dd4bf,
+  // Bright teal
+  500: #14b8a6,
+  // Professional teal (save)
+  600: #0d9488,
+  // Teal hover
+  700: #0f766e,
+  // Teal active  
+  800: #115e59,
+  // Dark teal
+  900: #134e4a,
+  // Very dark teal
+  950: #042f2e // Darkest teal
+);
+
+$cancel-palette: (
+  50: #fef2f2,
+  // Lightest red
+  100: #fee2e2,
+  // Light red
+  200: #fecaca,
+  // Soft red
+  300: #fca5a5,
+  // Medium red
+  400: #f87171,
+  // Bright red
+  500: #ef4444,
+  // Professional red (cancel)
+  600: #dc2626,
+  // Red hover
+  700: #b91c1c,
+  // Red active
+  800: #991b1b,
+  // Dark red
+  900: #7f1d1d,
+  // Very dark red
+  950: #450a0a // Darkest red
+);
+
+$edit-palette: (
+  50: #fffbf0,
+  // Lightest amber
+  100: #fef3c7,
+  // Light amber
+  200: #fde68a,
+  // Soft amber
+  300: #fcd34d,
+  // Medium amber
+  400: #fbbf24,
+  // Bright amber
+  500: #f59e0b,
+  // Professional amber (edit)
+  600: #d97706,
+  // Amber hover
+  700: #b45309,
+  // Amber active
+  800: #92400e,
+  // Dark amber
+  900: #78350f,
+  // Very dark amber
+  950: #451a03 // Darkest amber
+);
+
+$close-palette: (
+  50: #fafafa,
+  // Lightest gray
+  100: #f4f4f5,
+  // Light gray
+  200: #e4e4e7,
+  // Soft gray
+  300: #d4d4d8,
+  // Medium gray
+  400: #a1a1aa,
+  // Bright gray
+  500: #71717a,
+  // Professional gray (close)
+  600: #52525b,
+  // Gray hover
+  700: #3f3f46,
+  // Gray active
+  800: #27272a,
+  // Dark gray
+  900: #18181b,
+  // Very dark gray
+  950: #09090b // Darkest gray
+);
+
+// =============================================================================
+// COLOR SYSTEM UTILITIES
+// =============================================================================
+
+// Master color map for easy access
+$color-palettes: (
+  primary: $primary-palette,
+  secondary: $secondary-palette,
+  neutral: $neutral-palette,
+  success: $success-palette,
+  warning: $warning-palette,
+  error: $error-palette,
+  info: $info-palette,
+  save: $save-palette,
+  cancel: $cancel-palette,
+  edit: $edit-palette,
+  close: $close-palette
+);
+
+// Get color function - Primary way to access colors
+@function get-color($palette, $shade: 500) {
+  @if map-has-key($color-palettes, $palette) {
+    $palette-map: map-get($color-palettes, $palette);
+
+    @if map-has-key($palette-map, $shade) {
+      @return map-get($palette-map, $shade);
+    }
+  }
+
+  @error "Color #{$palette}-#{$shade} not found in color palettes";
+}
+
+// Color manipulation utilities
+@function color-alpha($color, $alpha) {
+  @return rgba($color, $alpha);
+}
+
+@function color-blend($color1, $color2, $percentage: 50%) {
+  @return mix($color1, $color2, $percentage);
+}
+
+// Color contrast utilities
+@function color-contrast($color) {
+  $lightness: lightness($color);
+
+  @if $lightness >50% {
+    @return get-color(neutral, 900);
+  }
+
+  @else {
+    @return get-color(neutral, 0);
+  }
+}

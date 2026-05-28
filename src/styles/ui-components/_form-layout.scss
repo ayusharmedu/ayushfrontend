@@ -1,0 +1,28 @@
+.divider-with-text {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  color: var(--color-text-muted);
+  font-size: 12px;
+}
+
+.divider-with-text::before,
+.divider-with-text::after {
+  content: '';
+  flex: 1;
+  border-top: var(--border-thin) solid var(--color-border-default);
+}
+
+.login-form-stack,
+.login-actions {
+  display: flex;
+  flex-direction: column;
+}
+
+.login-form-stack {
+  gap: var(--space-4);
+}
+
+.login-actions {
+  gap: var(--space-3);
+}

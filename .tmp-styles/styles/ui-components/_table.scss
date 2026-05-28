@@ -1,0 +1,903 @@
+// =============================================================================
+// TABLE COMPONENT - Material Design 3 Compliant Styles
+// =============================================================================
+// Uses CSS variables from design system tokens
+// Encapsulates PrimeNG classes within .ui-table-container for isolation
+
+// =============================================================================
+// MAIN TABLE CONTAINER
+// =============================================================================
+.ui-table-container {
+  background-color: var(--card-bg);
+  border-radius: var(--card-border-radius);
+  box-shadow: var(--card-shadow);
+  transition: box-shadow var(--p-transition-duration) var(--p-transition-timing);
+
+  &:hover {
+    box-shadow: var(--card-shadow-hover);
+  }
+
+  // ===========================================================================
+  // PRIMENG DATATABLE ENCAPSULATION
+  // ===========================================================================
+  // These styles override PrimeNG's internal structure while keeping them
+  // scoped within .ui-table-container to prevent class leakage
+
+  .p-datatable {
+    background-color: transparent;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+
+    // Table wrapper
+    .p-datatable-wrapper {
+      border-radius: var(--card-border-radius);
+    }
+
+    // Table element
+    .p-datatable-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-family: var(--p-font-family);
+      color: var(--p-text-color);
+    }
+
+    // Table header row
+    .p-datatable-thead>tr {
+      background-color: var(--color-surface-variant);
+      height: var(--table-row-height);
+
+      >th {
+        padding: var(--table-cell-padding-y) var(--table-cell-padding-x);
+        text-align: left;
+        font-size: var(--table-header-font-size);
+        font-weight: var(--table-header-font-weight);
+        color: var(--p-text-color);
+        background-color: var(--color-surface-variant);
+        border: none;
+        border-bottom: var(--table-border-width) solid var(--color-border-default);
+        height: var(--table-row-height);
+        vertical-align: middle;
+
+        &:first-child {
+          border-radius: var(--card-border-radius) 0 0 0;
+        }
+
+        &:last-child {
+          border-radius: 0 var(--card-border-radius) 0 0;
+        }
+
+        // Selection column
+        &.ui-table-selection-cell {
+          width: var(--table-selection-column);
+          text-align: center;
+          padding: 0;
+        }
+
+        // Action column
+        &.ui-table-action-cell {
+          width: var(--table-action-column);
+          text-align: center;
+        }
+      }
+    }
+
+    // Table body rows
+    .p-datatable-tbody>tr {
+      border-bottom: var(--table-border-width) solid var(--color-border-subtle);
+      transition: background-color var(--p-transition-duration) var(--p-transition-timing);
+      height: var(--table-row-height);
+
+      &:hover {
+        background-color: var(--color-hover);
+      }
+
+      &:last-child {
+        border-bottom: none;
+      }
+
+      >td {
+        padding: var(--table-cell-padding-y) var(--table-cell-padding-x);
+        vertical-align: middle;
+        border: none;
+        height: var(--table-row-height);
+        font-size: var(--table-body-font-size);
+        font-weight: var(--table-body-font-weight);
+
+        // Selection column
+        &.ui-table-selection-cell {
+          width: var(--table-selection-column);
+          text-align: center;
+          padding: 0;
+        }
+
+        // Action column
+        &.ui-table-action-cell {
+          width: var(--table-action-column);
+          padding: var(--spacing-1) var(--spacing-2);
+        }
+      }
+
+      // Selected row styling
+      &.p-highlight {
+        background-color: color-mix(in srgb, var(--p-primary-color) 8%, transparent);
+      }
+    }
+
+    // Sortable columns
+    .p-sortable-column {
+      cursor: pointer;
+      user-select: none;
+      transition: background-color var(--p-transition-duration) var(--p-transition-timing);
+
+      &:hover {
+        background-color: color-mix(in srgb, var(--p-surface-0) 90%, var(--p-surface-400));
+      }
+
+      &.p-highlight {
+        background-color: color-mix(in srgb, var(--p-primary-color) 10%, transparent);
+        color: var(--p-primary-color);
+      }
+    }
+
+    // Sort icon
+    .p-sortable-column-icon {
+      margin-left: var(--spacing-2);
+      font-size: var(--p-font-size-sm);
+      color: var(--p-text-muted-color);
+
+      .p-highlight & {
+        color: var(--p-primary-color);
+      }
+    }
+
+    // Table footer row
+    .p-datatable-tfoot>tr>td {
+      padding: var(--table-cell-padding-y) var(--table-cell-padding-x);
+      font-weight: var(--p-font-weight-semibold);
+      color: var(--p-text-color);
+      background-color: var(--color-surface);
+      border: none;
+      border-top: var(--table-border-width) solid var(--color-border-default);
+    }
+
+    // Table header section
+    .p-datatable-header {
+      background-color: var(--color-surface);
+      border-bottom: var(--table-border-width) solid var(--color-border-subtle);
+      border-radius: var(--card-border-radius) var(--card-border-radius) 0 0;
+      padding: var(--spacing-4);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    // Table footer section
+    .p-datatable-footer {
+      background-color: var(--color-surface);
+      border-top: var(--table-border-width) solid var(--color-border-subtle);
+      border-radius: 0 0 var(--card-border-radius) var(--card-border-radius);
+      padding: var(--spacing-4);
+    }
+
+    // Paginator - compact centered layout (preserves PrimeNG default centering)
+    .p-paginator {
+      border-top: var(--table-border-width) solid var(--color-border-subtle);
+      padding: var(--spacing-3);
+      background-color: var(--color-surface);
+      border-radius: 0 0 var(--card-border-radius) var(--card-border-radius);
+      gap: var(--spacing-2);
+
+      // Navigation buttons (first, prev, next, last)
+      .p-paginator-first,
+      .p-paginator-prev,
+      .p-paginator-next,
+      .p-paginator-last {
+        width: var(--table-touch-target);
+        height: var(--table-touch-target);
+        min-width: var(--table-touch-target);
+        border: none;
+        border-radius: var(--border-radius-full);
+        background-color: transparent;
+        color: var(--p-text-muted-color);
+        cursor: pointer;
+        transition:
+          background-color var(--p-transition-duration) var(--p-transition-timing),
+          color var(--p-transition-duration) var(--p-transition-timing);
+
+        &:hover:not(.p-disabled) {
+          background-color: var(--color-hover);
+          color: var(--p-text-color);
+        }
+
+        &:focus-visible {
+          outline: 2px solid var(--p-primary-color);
+          outline-offset: 2px;
+        }
+
+        &.p-disabled {
+          opacity: var(--table-disabled-opacity);
+          cursor: not-allowed;
+        }
+      }
+
+      // Page number buttons container
+      .p-paginator-pages {
+        display: flex;
+        align-items: center;
+        gap: var(--spacing-1);
+      }
+
+      // Individual page buttons
+      .p-paginator-page {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-width: var(--table-touch-target);
+        height: var(--table-touch-target);
+        padding: 0 var(--spacing-2);
+        border: none;
+        border-radius: var(--border-radius-md);
+        background-color: transparent;
+        color: var(--p-text-color);
+        font-family: var(--p-font-family);
+        font-size: var(--table-body-font-size);
+        font-weight: var(--font-weight-medium);
+        cursor: pointer;
+        transition:
+          background-color var(--p-transition-duration) var(--p-transition-timing),
+          color var(--p-transition-duration) var(--p-transition-timing);
+
+        &:hover:not(.p-highlight) {
+          background-color: var(--color-hover);
+        }
+
+        &:focus-visible {
+          outline: 2px solid var(--p-primary-color);
+          outline-offset: 2px;
+        }
+
+        // // Active/selected page
+        // &.p-highlight {
+        //   background-color: var(--p-primary-color);
+        //   color: var(--color-text-on-primary);
+        // }
+
+        &.p-highlight,
+        &.p-paginator-page-selected {
+          background-color: var(--p-blue-100);
+          color: var(--p-primary-color);
+        }
+      }
+
+
+      // Current page report text
+      .p-paginator-current {
+        font-family: var(--p-font-family);
+        font-size: var(--table-body-font-size);
+        color: var(--p-text-muted-color);
+        padding: 0 var(--spacing-3);
+      }
+
+      // Rows per page select (PrimeNG 19 uses p-select)
+      .p-paginator-rpp-options {
+
+        .p-select {
+          display: inline-flex;
+          align-items: center;
+          min-width: var(--table-paginator-dropdown-width);
+          height: var(--input-height-md) !important;
+          border: var(--table-border-width) solid var(--color-border-default);
+          border-radius: var(--border-radius-md);
+          background-color: var(--color-surface);
+          color: var(--p-text-color);
+          cursor: pointer;
+          transition: border-color var(--p-transition-duration) var(--p-transition-timing);
+
+          &:hover {
+            border-color: var(--color-border-emphasis);
+          }
+
+          &.p-focus {
+            border-color: var(--p-primary-color);
+            box-shadow: 0 0 0 var(--table-focus-ring-width) var(--focus-ring-color-alpha);
+          }
+
+          .p-select-label {
+            padding: var(--spacing-2) var(--spacing-3);
+            font-family: var(--p-font-family);
+            font-size: var(--table-body-font-size);
+            color: var(--p-text-color);
+          }
+
+          .p-select-dropdown {
+            width: var(--spacing-8);
+            color: var(--p-text-muted-color);
+
+            &:hover {
+              color: var(--p-text-color);
+            }
+          }
+        }
+      }
+
+      // Rows per page label
+      .p-paginator-rpp-label {
+        font-family: var(--p-font-family);
+        font-size: var(--table-body-font-size);
+        color: var(--p-text-muted-color);
+        margin-right: var(--spacing-2);
+      }
+    }
+
+    // Empty message
+    .p-datatable-emptymessage>tr>td {
+      padding: var(--spacing-8) var(--spacing-4);
+      text-align: center;
+      color: var(--p-text-muted-color);
+    }
+
+    // Loading overlay
+    .p-datatable-loading {
+      background-color: color-mix(in srgb, var(--p-surface-0) 70%, transparent);
+    }
+
+    // Resizable columns
+    .p-column-resizer-helper {
+      background-color: var(--p-primary-color);
+    }
+  }
+}
+
+// =============================================================================
+// TABLE HEADER (Title Area)
+// =============================================================================
+.ui-table-header {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding-bottom: var(--spacing-4);
+}
+
+.ui-table-header-left {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-3);
+}
+
+.ui-table-title {
+  font-family: var(--p-font-family);
+  font-size: var(--p-font-size-lg);
+  font-weight: var(--p-font-weight-medium);
+  color: var(--p-text-color);
+  margin: 0;
+}
+
+// =============================================================================
+// TABLE ELEMENT
+// =============================================================================
+.ui-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: var(--p-font-family);
+  color: var(--p-text-color);
+}
+
+// =============================================================================
+// TABLE HEADER ROW
+// =============================================================================
+.ui-table-header-row {
+  background-color: var(--color-surface-variant);
+}
+
+// =============================================================================
+// TABLE HEADER CELL
+// =============================================================================
+.ui-table-header-cell {
+  padding: var(--table-cell-padding-y) var(--table-cell-padding-x);
+  text-align: left;
+  font-size: var(--table-header-font-size);
+  font-weight: var(--table-header-font-weight);
+  color: var(--p-text-color);
+  border-bottom: var(--table-border-width) solid var(--color-border-default);
+  background-color: var(--color-surface-variant);
+  height: var(--table-row-height);
+  vertical-align: middle;
+
+  &.ui-table-selection-cell {
+    width: var(--table-selection-column);
+    text-align: center;
+    padding: 0;
+  }
+
+  &.ui-table-action-cell {
+    width: var(--table-action-column);
+    text-align: center;
+  }
+}
+
+// =============================================================================
+// TABLE HEADER CONTENT
+// =============================================================================
+.ui-table-header-content {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+}
+
+.ui-table-header-icon {
+  font-size: var(--p-font-size-base);
+}
+
+.ui-table-header-text {
+  flex: 1;
+  font-size: var(--table-header-font-size);
+}
+
+.ui-table-sort-icon {
+  font-size: var(--p-font-size-sm);
+  color: var(--p-text-muted-color);
+  transition: color var(--p-transition-duration) var(--p-transition-timing);
+
+  &.p-highlight {
+    color: var(--p-primary-color);
+  }
+}
+
+// =============================================================================
+// TABLE BODY ROW
+// =============================================================================
+.ui-table-row {
+  border-bottom: var(--table-border-width) solid var(--color-border-subtle);
+  transition: background-color var(--p-transition-duration) var(--p-transition-timing);
+  height: var(--table-row-height);
+
+  &:hover {
+    background-color: var(--color-hover);
+  }
+
+  &:last-child {
+    border-bottom: none;
+  }
+
+  // Selected row state
+  &.p-highlight {
+    background-color: color-mix(in srgb, var(--p-primary-color) 8%, transparent);
+  }
+}
+
+// =============================================================================
+// TABLE CELL
+// =============================================================================
+.ui-table-cell {
+  padding: var(--table-cell-padding-y) var(--table-cell-padding-x);
+  vertical-align: middle;
+  height: var(--table-row-height);
+
+  &.ui-table-selection-cell {
+    width: var(--table-selection-column);
+    text-align: center;
+    padding: 0;
+  }
+
+  &.ui-table-action-cell {
+    width: var(--table-action-column);
+    text-align: center;
+    padding: var(--spacing-1) var(--spacing-2);
+  }
+}
+
+// =============================================================================
+// TABLE CELL TEXT
+// =============================================================================
+.ui-table-cell-text {
+  font-family: var(--p-font-family);
+  font-size: var(--table-body-font-size);
+  font-weight: var(--table-body-font-weight);
+  color: var(--p-text-color);
+  line-height: var(--text-line-height);
+}
+
+// =============================================================================
+// TABLE ACTIONS CONTAINER
+// =============================================================================
+.ui-table-actions {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--table-action-gap);
+}
+
+// =============================================================================
+// ACTION ICONS - MD3 Dense (Compact) as Default
+// =============================================================================
+// Default: 32px touch target, 14px icon (MD3 dense for data tables)
+// Use .ui-table-action-icon--large for 48px touch target (touch devices)
+
+.ui-table-action-icon {
+  // Icon sizing (14px - MD3 dense, proportional to 32px target)
+  // Uses !important to override .pi global rule in primeng.scss
+  font-size: 14px !important;
+
+  // Touch target (32px - MD3 dense for compact tables)
+  width: var(--button-height-sm);
+  height: var(--button-height-sm);
+  min-width: var(--button-height-sm);
+  min-height: var(--button-height-sm);
+
+  // Centering
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  // Appearance
+  color: var(--p-text-muted-color);
+  background-color: transparent;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+
+  // Transitions
+  transition:
+    color var(--p-transition-duration) var(--p-transition-timing),
+    background-color var(--p-transition-duration) var(--p-transition-timing);
+
+  // Hover state
+  &:hover {
+    color: var(--p-text-color);
+    background-color: var(--color-hover);
+  }
+
+  // Focus visible state (accessibility)
+  &:focus-visible {
+    outline: 2px solid var(--p-primary-color);
+    outline-offset: 2px;
+    color: var(--p-text-color);
+  }
+
+  // Active/pressed state
+  &:active {
+    background-color: var(--color-active);
+  }
+
+  // Large variant (48px touch target for touch devices)
+  &--large {
+    width: var(--table-touch-target);
+    height: var(--table-touch-target);
+    min-width: var(--table-touch-target);
+    min-height: var(--table-touch-target);
+    font-size: var(--table-action-icon-size); // 24px
+  }
+
+  // Semantic colors for action types
+  &.view,
+  &.pi-eye {
+    color: var(--color-info);
+
+    &:hover {
+      color: var(--color-info);
+      background-color: color-mix(in srgb, var(--color-info) 12%, transparent);
+    }
+  }
+
+  &.edit,
+  &.pi-pencil {
+    color: var(--color-warning);
+
+    &:hover {
+      color: var(--color-warning);
+      background-color: color-mix(in srgb, var(--color-warning) 12%, transparent);
+    }
+  }
+
+  &.delete,
+  &.pi-trash {
+    color: var(--color-error);
+
+    &:hover {
+      color: var(--color-error);
+      background-color: color-mix(in srgb, var(--color-error) 12%, transparent);
+    }
+  }
+}
+
+// =============================================================================
+// STATUS TAG IN TABLE - MD3 Compact
+// =============================================================================
+// Compact status indicators for Active/Inactive states in table rows
+// Height: 20px, Font: 12px, Radius: 4px (subtle) or 8px (pill)
+
+.ui-table-status-tag {
+  // Compact height for table rows
+  height: 20px !important;
+  min-height: 20px !important;
+  min-width: 56px !important; // Minimum for "Active" text
+
+  // Typography
+  font-size: var(--font-size-xs) !important; // 12px
+  font-weight: var(--font-weight-medium) !important;
+  line-height: 1 !important;
+
+  // Spacing - horizontal only
+  padding: 0 var(--spacing-2) !important; // 0 8px
+
+  // Shape - subtle rounded
+  border-radius: var(--border-radius-sm) !important; // 4px
+
+  // Remove text transform to preserve case
+  text-transform: none !important;
+
+  // Pill variant for rounded status tags
+  &--pill {
+    border-radius: var(--border-radius-full) !important;
+    padding: 0 var(--spacing-3) !important; // 0 12px
+  }
+
+  // Larger variant for emphasis
+  &--lg {
+    height: 24px !important;
+    min-height: 24px !important;
+    font-size: var(--font-size-sm) !important; // 14px
+    padding: 0 var(--spacing-3) !important; // 0 12px
+  }
+}
+
+// =============================================================================
+// EMPTY STATE
+// =============================================================================
+.ui-table-empty-cell {
+  padding: var(--spacing-8) var(--spacing-4);
+  text-align: center;
+  color: var(--p-text-muted-color);
+}
+
+.ui-table-empty-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-3);
+}
+
+.ui-table-empty-icon {
+  font-size: var(--p-font-size-2xl);
+  color: var(--p-text-muted-color);
+}
+
+.ui-table-empty-text {
+  font-family: var(--p-font-family);
+  font-size: var(--p-font-size-base);
+  color: var(--p-text-muted-color);
+}
+
+// =============================================================================
+// CHECKBOXES
+// =============================================================================
+.ui-table-header-checkbox,
+.ui-table-row-checkbox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--table-touch-target);
+  height: var(--table-touch-target);
+  margin: 0 auto;
+}
+
+// =============================================================================
+// TABLE FILTERS
+// =============================================================================
+.ui-table-filters {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--color-surface);
+  border-radius: var(--card-border-radius);
+  padding-bottom: var(--spacing-3);
+}
+
+// =============================================================================
+// ADD BUTTON
+// =============================================================================
+.ui-add-icon {
+  width: 28px;
+  height: 28px;
+  min-width: 28px;
+  min-height: 28px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  color: var(--p-primary-color);
+  background-color: transparent;
+  border: 1px solid var(--p-primary-color);
+  border-radius: var(--border-radius-xs);
+  cursor: pointer;
+  transition:
+    color var(--p-transition-duration) var(--p-transition-timing),
+    background-color var(--p-transition-duration) var(--p-transition-timing);
+
+  &:hover {
+    background-color: var(--p-primary-color);
+    color: var(--p-primary-contrast-color);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--p-primary-color);
+    outline-offset: 2px;
+  }
+}
+
+// =============================================================================
+// RESPONSIVE DESIGN
+// =============================================================================
+@media (max-width: 767px) {
+  .ui-table-container {
+    padding: var(--spacing-3);
+
+    // PrimeNG responsive overrides
+    .p-datatable {
+
+      .p-datatable-thead>tr>th,
+      .p-datatable-tbody>tr>td,
+      .p-datatable-tfoot>tr>td {
+        padding: var(--spacing-2) var(--spacing-3);
+      }
+    }
+  }
+
+  .ui-table-header-cell,
+  .ui-table-cell {
+    padding: var(--spacing-2) var(--spacing-3);
+  }
+
+  // Smaller touch targets on mobile (44px per Apple HIG)
+  .ui-table-action-icon {
+    width: var(--table-touch-target-mobile);
+    height: var(--table-touch-target-mobile);
+    min-width: var(--table-touch-target-mobile);
+    min-height: var(--table-touch-target-mobile);
+    font-size: 14px !important;
+  }
+
+  .ui-table-actions {
+    gap: 0;
+  }
+
+  .ui-table-action-cell {
+    width: 132px; // 44px * 3
+  }
+}
+
+// =============================================================================
+// DENSE VARIANT
+// =============================================================================
+.ui-table--dense {
+
+  .ui-table-header-cell,
+  .ui-table-cell,
+  .ui-table-row {
+    height: var(--table-row-height-dense);
+  }
+
+  .ui-table-action-icon {
+    width: var(--button-height-sm);
+    height: var(--button-height-sm);
+    min-width: var(--button-height-sm);
+    min-height: var(--button-height-sm);
+    font-size: 14px !important;
+  }
+
+  // PrimeNG dense variant
+  .p-datatable {
+
+    .p-datatable-thead>tr,
+    .p-datatable-tbody>tr,
+    .p-datatable-thead>tr>th,
+    .p-datatable-tbody>tr>td {
+      height: var(--table-row-height-dense);
+    }
+  }
+}
+
+// =============================================================================
+// COMFORTABLE VARIANT
+// =============================================================================
+.ui-table--comfortable {
+
+  .ui-table-header-cell,
+  .ui-table-cell,
+  .ui-table-row {
+    height: var(--table-row-height-comfortable);
+  }
+
+  // PrimeNG comfortable variant
+  .p-datatable {
+
+    .p-datatable-thead>tr,
+    .p-datatable-tbody>tr,
+    .p-datatable-thead>tr>th,
+    .p-datatable-tbody>tr>td {
+      height: var(--table-row-height-comfortable);
+    }
+  }
+}
+
+// =============================================================================
+// P-SELECT OVERLAY (Portaled to body - needs root level styles)
+// =============================================================================
+// PrimeNG 19 renders select overlay outside component tree, so these styles
+// must be at root level to override Aura theme defaults
+
+.p-select-overlay {
+  // Override PrimeNG design tokens using design system highlight colors
+  --p-select-option-focus-background: var(--color-hover);
+  --p-select-option-selected-background: var(--color-highlight-bg);
+  --p-select-option-selected-focus-background: var(--color-highlight-bg-focus);
+  --p-select-option-selected-color: var(--color-highlight-text);
+  --p-select-option-selected-focus-color: var(--color-highlight-text-focus);
+  --p-highlight-background: var(--color-highlight-bg);
+  --p-highlight-focus-background: var(--color-highlight-bg-focus);
+  --p-highlight-color: var(--color-highlight-text);
+  --p-highlight-focus-color: var(--color-highlight-text-focus);
+
+  background-color: var(--color-surface) !important;
+  border: var(--table-border-width) solid var(--color-border-default) !important;
+  border-radius: var(--border-radius-md) !important;
+  box-shadow: var(--shadow-lg) !important;
+
+  .p-select-list {
+    padding: var(--spacing-1) 0 !important;
+  }
+
+  .p-select-option {
+    padding: var(--spacing-2) var(--spacing-3) !important;
+    font-family: var(--p-font-family) !important;
+    font-size: var(--table-body-font-size) !important;
+    color: var(--p-text-color) !important;
+    cursor: pointer;
+    transition: background-color var(--p-transition-duration) var(--p-transition-timing);
+
+    &:hover {
+      background-color: var(--color-hover) !important;
+    }
+
+    &.p-focus {
+      background-color: var(--color-hover) !important;
+    }
+
+    // Selected state - uses design system highlight tokens
+    // Support both .p-highlight (legacy) and [aria-selected="true"] (PrimeNG 19+)
+    &.p-highlight,
+    &[aria-selected="true"] {
+      background-color: var(--color-highlight-bg) !important;
+      color: var(--color-highlight-text) !important;
+    }
+
+    &.p-highlight.p-focus,
+    &.p-highlight:hover,
+    &[aria-selected="true"].p-focus,
+    &[aria-selected="true"]:hover {
+      background-color: var(--color-highlight-bg-focus) !important;
+      color: var(--color-highlight-text-focus) !important;
+    }
+  }
+}
+
+// P-SELECT TRIGGER (the dropdown button itself)
+.p-paginator .p-select {
+  height: var(--input-height-md) !important;
+  min-height: var(--input-height-md) !important;
+  max-height: var(--input-height-md) !important;
+  width: fit-content !important;
+  min-width: var(--spacing-12) !important; // 48px - ensures space for icon + 2 digits minimum
+  display: inline-flex !important;
+  align-items: center !important;
+
+  .p-select-label {
+    font-size: var(--table-body-font-size) !important;
+    font-family: var(--p-font-family) !important;
+    padding: 0 var(--spacing-2) !important;
+    display: flex !important;
+    align-items: center !important;
+    height: 100% !important;
+  }
+}

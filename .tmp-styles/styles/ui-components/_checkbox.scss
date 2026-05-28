@@ -1,0 +1,79 @@
+// =============================================================================
+// CHECKBOX COMPONENT - Design System Color Overrides
+// =============================================================================
+// Pattern: @extend p-checkbox base, only override colors via theme variables
+// Dark/Light compatible — all colors from theme CSS custom properties
+// Follows ui-tag.scss pattern
+
+.p-checkbox {
+    .p-checkbox-box {
+        // --- Default State ---
+        background-color: var(--input-background) !important;
+        border-color: var(--color-border-default) !important;
+
+        // --- Hover ---
+        &:not(.p-disabled):hover {
+            border-color: var(--color-border-emphasis) !important;
+            background-color: var(--color-hover) !important;
+        }
+
+        // --- Focus ---
+        &.p-focus {
+            border-color: var(--color-primary) !important;
+            box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-primary) 20%, transparent) !important;
+        }
+
+        // --- Checked ---
+        &.p-highlight {
+            background-color: var(--color-primary) !important;
+            border-color: var(--color-primary) !important;
+
+            .p-checkbox-icon {
+                color: var(--color-text-on-primary) !important;
+            }
+
+            &:not(.p-disabled):hover {
+                background-color: var(--color-primary-hover) !important;
+                border-color: var(--color-primary-hover) !important;
+            }
+
+            &.p-focus {
+                box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-primary) 20%, transparent) !important;
+            }
+        }
+
+        // --- Indeterminate ---
+        // &.p-indeterminate {
+        //     background-color: var(--color-primary) !important;
+        //     border-color: var(--color-primary) !important;
+
+        //     .p-checkbox-icon {
+        //         color: var(--color-text-on-primary) !important;
+        //     }
+
+        //     &:not(.p-disabled):hover {
+        //         background-color: var(--color-primary-hover) !important;
+        //         border-color: var(--color-primary-hover) !important;
+        //     }
+        // }
+
+        // --- Disabled ---
+        &.p-disabled {
+            background-color: var(--input-bg-disabled) !important;
+            border-color: var(--input-border-disabled) !important;
+
+            .p-checkbox-icon {
+                color: var(--color-text-disabled) !important;
+            }
+        }
+
+        // --- Invalid ---
+        &.p-invalid {
+            border-color: var(--color-error) !important;
+
+            &.p-focus {
+                box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-error) 20%, transparent) !important;
+            }
+        }
+    }
+}

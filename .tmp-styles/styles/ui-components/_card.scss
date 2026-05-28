@@ -1,0 +1,304 @@
+/* =============================================================================
+   UI CARD COMPONENT - FULL TAILWIND @APPLY CONVERSION SINGLE FILE
+============================================================================= */
+
+@import '../themes/light';
+@import '../themes/dark';
+
+/* Base card */
+.ui-card {
+    /* Extend PrimeNG card functionality */
+    @extend .p-card;
+
+    /* Override with semantic tokens */
+    @apply flex flex-col relative break-words;
+    border-radius: var(--card-border-radius);
+    background: var(--color-surface);
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: var(--card-max-width, 450px); // Tokenized with fallback
+    padding: var(--card-padding);
+    box-shadow: var(--card-shadow); // Use semantic token
+}
+
+/* Interactive hover */
+.ui-card--hover {
+  @apply transition-transform transition-shadow duration-200 ease-in-out;
+}
+.ui-card--hover:hover {
+  @apply -translate-y-0.5 shadow-lg;
+}
+
+.ui-card--interactive {
+  @apply cursor-pointer transition-transform transition-shadow duration-200 ease-in-out;
+}
+.ui-card--interactive:hover {
+  @apply -translate-y-0.5 shadow-lg;
+}
+.ui-card--interactive:focus {
+    outline: 2px solid var(--color-border-focus);
+    outline-offset: 2px;
+  }
+
+.ui-card--interactive:active {
+  @apply translate-y-0;
+}
+
+/* Style variants */
+.ui-card--outlined {
+    @apply border-2 shadow-none;
+    border-color: var(--color-border-default);
+  }
+  .ui-card--elevated {
+    @apply border-0;
+    box-shadow: var(--shadow-xl);
+  }
+
+.ui-card--flat {
+  @apply border-0 shadow-none bg-transparent;
+}
+
+/* Size variants */
+.ui-card--compact > .ui-card-header,
+.ui-card--compact > .ui-card-body,
+.ui-card--compact > .ui-card-footer {
+  @apply p-4;
+}
+.ui-card--spacious > .ui-card-header,
+.ui-card--spacious > .ui-card-body,
+.ui-card--spacious > .ui-card-footer {
+  @apply p-8;
+}
+
+/* Layout variants */
+.ui-card--horizontal {
+  @apply flex flex-row;
+
+  .ui-card-media {
+    @apply w-[200px] min-w-[200px] h-auto border-b-0 border-r;
+      border-color: var(--color-border-subtle);
+  }
+  .ui-card-content {
+    @apply flex-1 flex flex-col;
+  }
+}
+@media (max-width: 768px) {
+  .ui-card--horizontal {
+    @apply flex-col;
+  }
+  .ui-card--horizontal .ui-card-media {
+    @apply w-full border-r-0 border-b;
+      border-color: var(--color-border-subtle);
+  }
+}
+
+/* Card header */
+.ui-card-header {
+  @apply px-6 py-4;
+  ui-card-title {
+      @apply text-xl font-semibold mb-1 leading-tight;
+      color: var(--color-text-primary);
+    }
+    .ui-card-subtitle {
+      @apply text-sm m-0 leading-snug;
+      color: var(--color-text-secondary);
+    }
+    .ui-card-description {
+      @apply text-base mt-2 leading-normal;
+      color: var(--color-text-secondary);
+    }
+}
+.ui-card-header.ui-card-header--borderless {
+  @apply border-b-0;
+}
+.ui-card-header.ui-card-header--accent {
+    @apply border-l-4;
+    border-color: var(--color-primary);
+  }
+
+/* Card body */
+.ui-card-body {
+  @apply flex-1 px-6 py-4;
+
+  /* Remove top padding if preceded by header */
+  .ui-card-header + & {
+    @apply pt-6;
+  }
+
+  > *:first-child {
+    @apply mt-0;
+  }
+  > *:last-child {
+    @apply mb-0;
+  }
+}
+
+/* Card footer */
+.ui-card-footer {
+    @apply px-6 py-4 border-t;
+    border-color: var(--color-border-subtle);
+
+  .ui-card-actions {
+    @apply flex gap-3 items-center;
+
+    &.ui-card-actions--start {
+      @apply justify-start;
+    }
+    &.ui-card-actions--center {
+      @apply justify-center;
+    }
+    &.ui-card-actions--end {
+      @apply justify-end;
+    }
+    &.ui-card-actions--between {
+      @apply justify-between;
+    }
+    &.ui-card-actions--around {
+      @apply justify-around;
+    }
+
+    @media (max-width: 480px) {
+      @apply flex-col items-stretch gap-2;
+      .ui-button {
+        @apply w-full;
+      }
+    }
+  }
+}
+.ui-card-footer.ui-card-footer--borderless {
+  @apply border-t-0;
+}
+
+/* Card media */
+.ui-card-media {
+    @apply block w-full h-48 object-cover border-b;
+    border-color: var(--color-border-subtle);
+  &.ui-card-media--rounded {
+    @apply rounded-t-lg;
+  }
+  &.ui-card-media--sm {
+    @apply h-36;
+  }
+  &.ui-card-media--lg {
+    @apply h-72;
+  }
+  &.ui-card-media--square {
+    aspect-ratio: 1 / 1;
+    height: auto;
+  }
+  &.ui-card-media--wide {
+    aspect-ratio: 16 / 9;
+    height: auto;
+  }
+  &.ui-card-media--ultra-wide {
+    aspect-ratio: 21 / 9;
+    height: auto;
+  }
+}
+
+/* Card grid */
+.ui-card-grid {
+  @apply grid gap-6;
+
+  &.ui-card-grid--cols-2 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  &.ui-card-grid--cols-3 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  &.ui-card-grid--cols-4 {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  &.ui-card-grid--auto-fit {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  }
+  &.ui-card-grid--auto-fill {
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  }
+}
+@media (max-width: 1200px) {
+  .ui-card-grid.ui-card-grid--cols-4 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media (max-width: 768px) {
+  .ui-card-grid.ui-card-grid--cols-3,
+  .ui-card-grid.ui-card-grid--cols-4 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 480px) {
+  .ui-card-grid.ui-card-grid--cols-2,
+  .ui-card-grid.ui-card-grid--cols-3,
+  .ui-card-grid.ui-card-grid--cols-4 {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Specialized card types */
+
+/* Stats card */
+.ui-card--stats {
+  @apply text-center;
+
+  .ui-card-body {
+    @apply p-8 !important;
+  }
+  .ui-stats-value {
+      @apply text-4xl font-bold mb-2 leading-none;
+      color: var(--color-primary);
+    }
+    .ui-stats-label {
+      @apply text-sm uppercase tracking-widest m-0;
+      color: var(--color-text-secondary);
+    }
+      &.ui-stats-change--positive {
+        color: var(--color-success);
+      }
+      &.ui-stats-change--negative {
+        color: var(--color-error);
+      }
+      &.ui-stats-change--neutral {
+        color: var(--color-text-tertiary);
+      }
+  }
+
+
+/* Profile card */
+.ui-card--profile {
+  @apply text-center;
+
+  .ui-profile-avatar {
+      @apply w-20 h-20 rounded-full mx-auto mb-4 object-cover border-4;
+      border-color: var(--color-border-default);
+    }
+    .ui-profile-name {
+      @apply text-xl font-semibold mb-1;
+      color: var(--color-text-primary);
+    }
+    .ui-profile-role {
+      @apply text-sm mb-4;
+      color: var(--color-text-secondary);
+    }
+    .ui-profile-bio {
+      @apply text-base leading-relaxed m-0;
+      color: var(--color-text-secondary);
+    }
+}
+
+/* Notification card variants */
+.ui-card--notification {
+    @apply border-l-4;
+    border-color: var(--color-primary);
+
+    &.ui-card--notification-success {
+      border-color: var(--color-success);
+    }
+    &.ui-card--notification-warning {
+      border-color: var(--color-warning);
+    }
+    &.ui-card--notification-error {
+      border-color: var(--color-error);
+    }
+  }

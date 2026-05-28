@@ -1,0 +1,513 @@
+// =============================================================================
+// LIST CARD COMPONENT - UI Component Styles
+// =============================================================================
+// Reusable list card styles for consistent data display
+// Use these classes to create uniform list cards across the application
+
+// Main list card container
+.ui-list-card {
+  background-color: var(--color-surface) !important;
+  border: 1px solid var(--color-border-subtle) !important;
+  border-radius: var(--p-border-radius-lg) !important;
+  padding: var(--p-spacing-lg) !important;
+  width: 100% !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: var(--p-spacing-md) !important;
+  box-shadow: var(--p-shadow-sm) !important;
+  transition: box-shadow var(--p-transition-duration) var(--p-transition-timing) !important;
+
+  &:hover {
+    box-shadow: var(--p-shadow-md) !important;
+  }
+}
+
+// List card header section
+.ui-list-card-header {
+  display: flex !important;
+  // justify-content: space-between !important;
+  align-items: flex-start !important;
+  gap: 30px !important;
+  // gap: var(--p-spacing-xl) !important;
+  padding-bottom: var(--p-spacing-md) !important;
+  gap: 30px !important; // border-bottom: 1px solid var(--color-border-subtle) !important;
+}
+
+// List card main content area
+.ui-list-card-main {
+  min-width: 30% !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: var(--p-spacing-xs) !important;
+}
+
+// List card title
+.ui-list-card-title {
+  margin: 0 !important;
+  font-size: var(--p-font-size-base) !important;
+  font-weight: var(--p-font-weight-semibold) !important;
+  color: var(--color-text-primary) !important;
+}
+
+// List card subtitle
+.ui-list-card-subtitle {
+  margin: 0 !important;
+  font-size: var(--p-font-size-sm) !important;
+  color: var(--color-text-secondary) !important;
+  font-weight: var(--p-font-weight-normal) !important;
+}
+
+// List card meta section
+.ui-list-card-meta {
+  display: flex !important;
+  gap: var(--p-spacing-md) !important;
+  min-width: 30% !important;
+}
+
+// List card meta items container
+.ui-list-card-meta-items {
+  min-width: 100% !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: var(--p-spacing-xs) !important;
+}
+
+// List card meta grid for two-column layout
+.ui-list-card-meta-grid {
+  display: grid !important;
+  grid-template-columns: 1fr 1fr !important;
+  gap: var(--p-spacing-lg) var(--p-spacing-xl) !important;
+  width: 100% !important;
+}
+
+// List card meta column
+.ui-list-card-meta-column {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: var(--p-spacing-md) !important;
+}
+
+// Inline meta layout (labels and values side by side)
+.ui-list-card-meta-inline {
+  display: flex !important;
+  gap: var(--p-spacing-2xl) !important;
+  align-items: flex-start !important;
+  // width: 100% !important;
+}
+
+// Meta labels container
+.ui-list-card-meta-labels {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: var(--p-spacing-xs) !important;
+  color: var(--color-text-secondary) !important;
+  font-size: var(--p-font-size-xs) !important;
+  font-weight: var(--p-font-weight-medium) !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.5px !important;
+}
+
+// Meta values container
+.ui-list-card-meta-values {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: var(--p-spacing-xs) !important;
+  color: var(--color-text-primary) !important;
+  font-size: var(--p-font-size-sm) !important;
+}
+
+// Individual meta label
+.ui-list-card-meta-label {
+  font-size: var(--p-font-size-sm) !important;
+  margin: 0 !important;
+  line-height: 1.5 !important;
+  color: var(--color-text-primary) !important;
+
+  font-weight: var(--p-font-weight-medium) !important;
+
+  font-weight: var(--p-font-weight-medium) !important;
+}
+
+// Individual meta value
+.ui-list-card-meta-value {
+  font-size: var(--p-font-size-sm) !important;
+  margin: 0 !important;
+  line-height: 1.5 !important;
+  color: var(--color-text-secondary) !important;
+  // margin-right: 20px !important;
+}
+
+// List card field with label and value pairing
+.ui-list-card-field .ui-list-card-content-label {
+  font-size: var(--p-font-size-sm) !important;
+  // font-weight: var(--p-font-weight-medium) !important;
+  color: var(--color-text-primary) !important;
+  margin: 0 !important;
+  text-transform: uppercase !important;
+}
+
+.ui-list-card-field .ui-list-card-content-value {
+  font-size: var(--p-font-size-sm) !important;
+  color: var(--color-text-secondary) !important;
+  // margin: var(--p-spacing-xs) 0 0 0 !important;
+  font-weight: var(--p-font-weight-normal) !important;
+  line-height: 1.5 !important;
+  // Line clamp to 2 lines with ellipsis
+  display: -webkit-box !important;
+  -webkit-line-clamp: 2 !important;
+  -webkit-box-orient: vertical !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+}
+
+// Responsive adjustments for meta grid
+@media (max-width: 768px) {
+  .ui-list-card-meta-grid {
+    grid-template-columns: 1fr !important;
+    gap: var(--p-spacing-md) var(--p-spacing-lg) !important;
+  }
+}
+
+// List card field
+.ui-list-card-field {
+  display: flex !important;
+  align-items: center !important;
+  gap: var(--p-spacing-sm) !important;
+}
+
+// List card field icon
+.ui-list-card-field-icon {
+  font-size: var(--p-font-size-xs) !important;
+  color: var(--color-text-tertiary) !important;
+  min-width: 1rem !important;
+}
+
+// List card field info
+.ui-list-card-field-info {
+  display: flex !important;
+  align-items: center !important;
+  gap: var(--p-spacing-xs) !important;
+}
+
+// List card content label
+.ui-list-card-content-id {
+  font-size: var(--p-font-size-xs) !important;
+  font-weight: var(--p-font-weight-medium) !important;
+  color: var(--color-text-primary) !important;
+  margin: 0 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.5px !important;
+}
+
+// List card content label
+.ui-list-card-content-label {
+  font-size: var(--p-font-size-sm) !important;
+  font-weight: var(--p-font-weight-medium) !important;
+  color: var(--color-text-primary) !important;
+  margin: 0 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.5px !important;
+}
+
+// List card content value
+.ui-list-card-content-value {
+  font-size: var(--p-font-size-sm) !important;
+  color: var(--color-text-secondary) !important;
+  margin: 0 !important;
+  font-weight: var(--p-font-weight-normal) !important;
+  line-height: 1.5 !important;
+}
+
+// List card description section
+.ui-list-card-description {
+  // min-width:40% !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: var(--p-spacing-xs) !important;
+}
+
+// List card description content
+.ui-list-card-desc-content {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: var(--p-spacing-xs) !important;
+}
+
+// List card read more link
+.ui-list-card-read-more {
+  color: var(--color-primary) !important;
+  text-decoration: none !important;
+  font-size: var(--p-font-size-sm) !important;
+  cursor: pointer !important;
+  align-self: flex-start !important;
+  font-weight: var(--p-font-weight-medium) !important;
+
+  &:hover {
+    text-decoration: underline !important;
+    color: var(--color-primary-hover) !important;
+  }
+}
+
+// List card footer section
+.ui-list-card-footer {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  padding-top: var(--p-spacing-md) !important;
+  border-top: 1px solid var(--color-border-subtle) !important;
+  margin-top: var(--p-spacing-sm) !important;
+  gap: var(--p-spacing-2xl) !important;
+}
+
+// List card description created section
+.ui-list-card-container {
+  display: flex !important;
+  gap: var(--p-spacing-xl) !important;
+  align-items: center !important;
+}
+
+// List card created info
+.ui-list-card-field-info {
+  display: flex !important;
+  align-items: center !important;
+  gap: var(--p-spacing-sm) !important;
+}
+
+// List card actions section
+.ui-list-card-actions {
+  display: flex !important;
+  gap: var(--p-spacing-md) !important;
+}
+
+// List card action button
+.ui-list-card-action-btn {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: var(--p-spacing-xs) !important;
+  padding: var(--p-spacing-sm) var(--p-spacing-md) !important;
+  border-radius: var(--p-border-radius) !important;
+  border: 1px solid var(--color-border-default) !important;
+  background-color: var(--color-surface) !important;
+  color: var(--color-text-primary) !important;
+  font-size: var(--p-font-size-sm) !important;
+  font-weight: var(--p-font-weight-medium) !important;
+  cursor: pointer !important;
+  transition: all var(--p-transition-duration) var(--p-transition-timing) !important;
+
+  &:hover {
+    background-color: var(--color-surface-variant) !important;
+    border-color: var(--color-border-emphasis) !important;
+  }
+
+  i {
+    font-size: var(--p-font-size-sm) !important;
+  }
+}
+
+// List card with emphasis
+.ui-list-card-emphasis {
+  border-left: 4px solid var(--color-primary) !important;
+}
+
+// List card with subtle background
+.ui-list-card-subtle {
+  background-color: var(--color-surface-variant) !important;
+}
+
+// List card with rounded corners
+.ui-list-card-rounded {
+  border-radius: var(--p-border-radius-xl) !important;
+}
+
+// List card with no padding
+.ui-list-card-nopad {
+  padding: 0 !important;
+}
+
+// List card with large padding
+.ui-list-card-padded-lg {
+  padding: var(--p-spacing-xl) !important;
+}
+
+// List card with small padding
+.ui-list-card-padded-sm {
+  padding: var(--p-spacing-md) !important;
+}
+
+// List card with custom gap sizes
+.ui-list-card-gap-xs {
+  gap: var(--p-spacing-xs) !important;
+}
+
+.ui-list-card-gap-sm {
+  gap: var(--p-spacing-sm) !important;
+}
+
+.ui-list-card-gap-lg {
+  gap: var(--p-spacing-lg) !important;
+}
+
+.ui-list-card-gap-xl {
+  gap: var(--p-spacing-xl) !important;
+}
+
+// List card with custom widths
+.ui-list-card-wide {
+  max-width: 1200px !important;
+}
+
+// Line clamp utility classes for consistent text truncation
+.ui-list-card-line-clamp-1 {
+  display: -webkit-box !important;
+  -webkit-line-clamp: 1 !important;
+  -webkit-box-orient: vertical !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+}
+
+.ui-list-card-line-clamp-2 {
+  display: -webkit-box !important;
+  -webkit-line-clamp: 2 !important;
+  -webkit-box-orient: vertical !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+}
+
+.ui-list-card-line-clamp-3 {
+  font-size: var(--p-font-size-sm) !important;
+  display: -webkit-box !important;
+  -webkit-line-clamp: 3 !important;
+  -webkit-box-orient: vertical !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+}
+
+.ui-list-card-narrow {
+  max-width: 800px !important;
+}
+
+// List card with hover effect
+.ui-list-card-hover {
+  transition: all var(--p-transition-duration) var(--p-transition-timing) !important;
+
+  &:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: var(--p-shadow-lg) !important;
+  }
+}
+
+// List card with shadow variants
+.ui-list-card-shadow-sm {
+  box-shadow: var(--p-shadow-sm) !important;
+}
+
+.ui-list-card-shadow-md {
+  box-shadow: var(--p-shadow-md) !important;
+}
+
+.ui-list-card-shadow-lg {
+  box-shadow: var(--p-shadow-lg) !important;
+}
+
+// Responsive adjustments
+@media (max-width: 768px) {
+  .ui-list-card-meta-grid {
+    grid-template-columns: 1fr !important;
+    gap: var(--p-spacing-md) var(--p-spacing-lg) !important;
+  }
+
+  .ui-list-card-meta-inline {
+    flex-direction: column !important;
+    gap: var(--p-spacing-md) !important;
+  }
+
+  .ui-list-card-container {
+    flex-direction: column !important;
+    gap: var(--p-spacing-md) !important;
+    align-items: flex-start !important;
+  }
+}
+
+.ui-list-card-shadow-none {
+  box-shadow: none !important;
+}
+
+// List card with border variants
+.ui-list-card-border-thick {
+  border-width: 2px !important;
+}
+
+.ui-list-card-border-dashed {
+  border-style: dashed !important;
+}
+
+.ui-list-card-border-none {
+  border: none !important;
+}
+
+// List card with custom background colors
+.ui-list-card-bg-primary {
+  background-color: var(--color-primary-subtle) !important;
+}
+
+.ui-list-card-bg-success {
+  background-color: var(--color-success-subtle) !important;
+}
+
+.ui-list-card-bg-warning {
+  background-color: var(--color-warning-subtle) !important;
+}
+
+.ui-list-card-bg-danger {
+  background-color: var(--color-error-subtle) !important;
+}
+
+.ui-list-card-bg-info {
+  background-color: var(--color-info-subtle) !important;
+}
+
+// Responsive adjustments
+@media (max-width: 1024px) {
+  .ui-list-card-header {
+    flex-direction: column !important;
+    gap: var(--p-spacing-lg) !important;
+  }
+
+  .ui-list-card-container {
+    flex-direction: column !important;
+    gap: var(--p-spacing-md) !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .ui-list-card {
+    padding: var(--p-spacing-md) !important;
+  }
+
+  .ui-list-card-meta {
+    min-width: auto !important;
+    flex-direction: row !important;
+    flex-wrap: wrap !important;
+  }
+
+  .ui-list-card-footer {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+  }
+
+  .ui-list-card-actions {
+    width: 100% !important;
+    justify-content: center !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .ui-list-card-meta {
+    flex-direction: column !important;
+  }
+
+  .ui-list-card-container {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+  }
+}
