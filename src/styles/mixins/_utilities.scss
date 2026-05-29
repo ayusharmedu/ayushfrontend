@@ -79,7 +79,7 @@ svg {
 .text-heading-lg { font-size: var(--text-heading-lg-size); font-weight: var(--text-heading-lg-weight); line-height: var(--text-heading-lg-lh); }
 .text-display { font-size: var(--text-display-size); font-weight: var(--text-display-weight); line-height: var(--text-display-lh); }
 .text-metric-md { font-size: var(--text-heading-lg-size); font-weight: var(--text-ui-strong-weight); line-height: var(--text-metric-md-lh); letter-spacing: var(--tracking-metric-value); font-variant-numeric: tabular-nums; }
-.text-code { font-family: var(--primitive-font-mono); font-size: 12px; font-weight: 500; }
+.text-code { font-family: var(--primitive-font-mono); font-size: var(--text-body-xs-size); font-weight: var(--text-ui-medium-weight); }
 
 .text-primary { color: var(--color-text-primary); }
 .text-secondary { color: var(--color-text-secondary); }

@@ -1,158 +1,208 @@
 @use 'sass:map';
 
+// =============================================================================
+// PRIMITIVE TYPOGRAPHY
+// =============================================================================
+// Raw typographic values — font families, sizes, weights, line-heights.
+// All values must be referenced via the helper functions below;
+// never use raw numbers in components.
+
 $font-family-primary: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-$font-family-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+$font-family-mono:    "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
 
 $font-weights: (
-    regular: 400,
-    medium: 500,
-    semibold: 600,
-    bold: 700
+  regular:  400,
+  medium:   500,
+  semibold: 600,
+  bold:     700,
+  heavy:    800
 );
 
 $font-sizes: (
-    mini: 8px,
-    xxs: 10px,
-    xs: 12px,
-    sm: 13px,
-    base: 14px,
-    md: 16px,
-    lg: 18px,
-    xl: 20px,
-    2xl: 24px,
-    3xl: 30px,
-    4xl: 36px,
-    5xl: 48px,
-    6xl: 60px,
-    7xl: 72px,
-    caption: 11px,
-    micro: 11px,
-    body-xs: 12px,
-    body-sm: 13px,
-    body: 14px,
-    label: 13px,
-    button: 13px,
-    row-name: 14px,
-    heading-xs: 15px,
-    heading-sm: 17px,
-    heading-md: 20px,
-    heading-lg: 24px,
-    display: 32px,
-    metric-md: 22px
+  // Absolute scale
+  mini:       8px,
+  xxs:        10px,
+  xs:         12px,
+  sm:         13px,
+  base:       14px,
+  md:         16px,
+  lg:         18px,
+  xl:         20px,
+  2xl:        24px,
+  3xl:        30px,
+  4xl:        36px,
+  5xl:        48px,
+  6xl:        60px,
+  7xl:        72px,
+
+  // Semantic aliases used by the typography map below
+  caption:    11px,
+  micro:      11px,
+  body-xs:    12px,
+  body-sm:    13px,
+  body:       14px,
+  label:      13px,
+  button:     13px,
+  row-name:   14px,
+  heading-xs: 15px,
+  heading-sm: 17px,
+  heading-md: 20px,
+  heading-lg: 24px,
+  display:    32px,
+  metric-md:  22px,
+
+  // UI-scale sizes — sub-scale values used for tight UI chrome.
+  // These are intentional half-pixel / optical-size choices that don't
+  // land on the main scale and are defined here so semantic tokens can
+  // reference them via font-size() instead of raw literals.
+  ui-micro:        10.5px,
+  ui-notification: 9px,
+  ui-xxs:          10px,
+  ui-xs:           11.5px,
+  ui-sm:           12.5px,
+  ui-lg:           13.5px,
+
+  // One-off display / login sizes
+  login-title: 44px,
+  wordmark:    18px
 );
 
 $line-heights: (
-    tight: 1.2,
-    snug: 1.3,
-    normal: 1.4,
-    relaxed: 1.5,
-    body: 1.55,
-    display: 1.1
+  tight:   1.2,
+  snug:    1.3,
+  normal:  1.4,
+  relaxed: 1.5,
+  body:    1.55,
+  display: 1.1
 );
 
-@function font-weight($weight) {
-    @if map.has-key($font-weights, $weight) {
-        @return map.get($font-weights, $weight);
-    }
+// ---------------------------------------------------------------------------
+// Helper functions
+// ---------------------------------------------------------------------------
 
-    @error "Font weight '#{$weight}' not found";
+@function font-weight($weight) {
+  @if map.has-key($font-weights, $weight) {
+    @return map.get($font-weights, $weight);
+  }
+  @error "Font weight '#{$weight}' not found";
 }
 
 @function font-size($size) {
-    @if map.has-key($font-sizes, $size) {
-        @return map.get($font-sizes, $size);
-    }
-
-    @error "Font size '#{$size}' not found";
+  @if map.has-key($font-sizes, $size) {
+    @return map.get($font-sizes, $size);
+  }
+  @error "Font size '#{$size}' not found";
 }
 
 @function line-height($height) {
-    @if map.has-key($line-heights, $height) {
-        @return map.get($line-heights, $height);
-    }
-
-    @error "Line height '#{$height}' not found";
+  @if map.has-key($line-heights, $height) {
+    @return map.get($line-heights, $height);
+  }
+  @error "Line height '#{$height}' not found";
 }
 
+// ---------------------------------------------------------------------------
+// Typography variant map
+// ---------------------------------------------------------------------------
 $typography: (
-    caption: (size: font-size(caption), weight: font-weight(semibold), line-height: line-height(normal)),
-    micro: (size: font-size(micro), weight: font-weight(medium), line-height: line-height(relaxed)),
-    body-xs: (size: font-size(body-xs), weight: font-weight(medium), line-height: line-height(relaxed)),
-    body-sm: (size: font-size(body-sm), weight: font-weight(regular), line-height: line-height(body)),
-    body: (size: font-size(body), weight: font-weight(regular), line-height: line-height(body)),
-    label: (size: font-size(label), weight: font-weight(medium), line-height: line-height(normal)),
-    button: (size: font-size(button), weight: font-weight(semibold), line-height: line-height(snug)),
-    row-name: (size: font-size(row-name), weight: font-weight(semibold), line-height: line-height(normal)),
-    heading-xs: (size: font-size(heading-xs), weight: font-weight(semibold), line-height: line-height(normal)),
-    heading-sm: (size: font-size(heading-sm), weight: font-weight(bold), line-height: line-height(snug)),
-    heading-md: (size: font-size(heading-md), weight: font-weight(bold), line-height: line-height(tight)),
-    heading-lg: (size: font-size(heading-lg), weight: font-weight(bold), line-height: line-height(tight)),
-    display: (size: font-size(display), weight: font-weight(bold), line-height: line-height(display)),
-    metric-md: (size: font-size(metric-md), weight: font-weight(bold), line-height: line-height(display))
+  caption:    (size: font-size(caption),    weight: font-weight(semibold), line-height: line-height(normal)),
+  micro:      (size: font-size(micro),      weight: font-weight(medium),   line-height: line-height(relaxed)),
+  body-xs:    (size: font-size(body-xs),    weight: font-weight(medium),   line-height: line-height(relaxed)),
+  body-sm:    (size: font-size(body-sm),    weight: font-weight(regular),  line-height: line-height(body)),
+  body:       (size: font-size(body),       weight: font-weight(regular),  line-height: line-height(body)),
+  label:      (size: font-size(label),      weight: font-weight(medium),   line-height: line-height(normal)),
+  button:     (size: font-size(button),     weight: font-weight(semibold), line-height: line-height(snug)),
+  row-name:   (size: font-size(row-name),   weight: font-weight(semibold), line-height: line-height(normal)),
+  heading-xs: (size: font-size(heading-xs), weight: font-weight(semibold), line-height: line-height(normal)),
+  heading-sm: (size: font-size(heading-sm), weight: font-weight(bold),     line-height: line-height(snug)),
+  heading-md: (size: font-size(heading-md), weight: font-weight(bold),     line-height: line-height(tight)),
+  heading-lg: (size: font-size(heading-lg), weight: font-weight(bold),     line-height: line-height(tight)),
+  display:    (size: font-size(display),    weight: font-weight(bold),     line-height: line-height(display)),
+  metric-md:  (size: font-size(metric-md),  weight: font-weight(bold),     line-height: line-height(display))
 );
 
 @function typography-token($variant, $property) {
-    @if map.has-key($typography, $variant) {
-        $styles: map.get($typography, $variant);
-
-        @if map.has-key($styles, $property) {
-            @return map.get($styles, $property);
-        }
+  @if map.has-key($typography, $variant) {
+    $styles: map.get($typography, $variant);
+    @if map.has-key($styles, $property) {
+      @return map.get($styles, $property);
     }
-
-    @error "Typography token '#{$variant}.#{$property}' not found";
+  }
+  @error "Typography token '#{$variant}.#{$property}' not found";
 }
 
 @mixin typography($variant) {
-    font-size: typography-token($variant, size);
-    font-weight: typography-token($variant, weight);
-    line-height: typography-token($variant, line-height);
+  font-size:   typography-token($variant, size);
+  font-weight: typography-token($variant, weight);
+  line-height: typography-token($variant, line-height);
 }
 
-:root {
-    --primitive-font-sans: #{$font-family-primary};
-    --primitive-font-mono: #{$font-family-mono};
+// ---------------------------------------------------------------------------
+// CSS custom property exports  (--primitive-text-* namespace)
+// ---------------------------------------------------------------------------
 
-    --primitive-text-caption-size: #{typography-token(caption, size)};
-    --primitive-text-caption-weight: #{typography-token(caption, weight)};
-    --primitive-text-caption-lh: #{typography-token(caption, line-height)};
-    --primitive-text-micro-size: #{typography-token(micro, size)};
-    --primitive-text-micro-weight: #{typography-token(micro, weight)};
-    --primitive-text-micro-lh: #{typography-token(micro, line-height)};
-    --primitive-text-body-xs-size: #{typography-token(body-xs, size)};
-    --primitive-text-body-xs-weight: #{typography-token(body-xs, weight)};
-    --primitive-text-body-xs-lh: #{typography-token(body-xs, line-height)};
-    --primitive-text-body-sm-size: #{typography-token(body-sm, size)};
-    --primitive-text-body-sm-weight: #{typography-token(body-sm, weight)};
-    --primitive-text-body-sm-lh: #{typography-token(body-sm, line-height)};
-    --primitive-text-body-size: #{typography-token(body, size)};
-    --primitive-text-body-weight: #{typography-token(body, weight)};
-    --primitive-text-body-lh: #{typography-token(body, line-height)};
-    --primitive-text-label-size: #{typography-token(label, size)};
-    --primitive-text-label-weight: #{typography-token(label, weight)};
-    --primitive-text-label-lh: #{typography-token(label, line-height)};
-    --primitive-text-button-size: #{typography-token(button, size)};
-    --primitive-text-button-weight: #{typography-token(button, weight)};
-    --primitive-text-button-lh: #{typography-token(button, line-height)};
-    --primitive-text-row-name-size: #{typography-token(row-name, size)};
-    --primitive-text-row-name-weight: #{typography-token(row-name, weight)};
-    --primitive-text-row-name-lh: #{typography-token(row-name, line-height)};
-    --primitive-text-heading-xs-size: #{typography-token(heading-xs, size)};
-    --primitive-text-heading-xs-weight: #{typography-token(heading-xs, weight)};
-    --primitive-text-heading-xs-lh: #{typography-token(heading-xs, line-height)};
-    --primitive-text-heading-sm-size: #{typography-token(heading-sm, size)};
-    --primitive-text-heading-sm-weight: #{typography-token(heading-sm, weight)};
-    --primitive-text-heading-sm-lh: #{typography-token(heading-sm, line-height)};
-    --primitive-text-heading-md-size: #{typography-token(heading-md, size)};
-    --primitive-text-heading-md-weight: #{typography-token(heading-md, weight)};
-    --primitive-text-heading-md-lh: #{typography-token(heading-md, line-height)};
-    --primitive-text-heading-lg-size: #{typography-token(heading-lg, size)};
-    --primitive-text-heading-lg-weight: #{typography-token(heading-lg, weight)};
-    --primitive-text-heading-lg-lh: #{typography-token(heading-lg, line-height)};
-    --primitive-text-display-size: #{typography-token(display, size)};
-    --primitive-text-display-weight: #{typography-token(display, weight)};
-    --primitive-text-display-lh: #{typography-token(display, line-height)};
-    --primitive-text-metric-md-size: #{typography-token(metric-md, size)};
-    --primitive-text-metric-md-weight: #{typography-token(metric-md, weight)};
-    --primitive-text-metric-md-lh: #{typography-token(metric-md, line-height)};
+:root {
+  --primitive-font-sans: #{$font-family-primary};
+  --primitive-font-mono: #{$font-family-mono};
+
+  // Named typography variants
+  --primitive-text-caption-size:      #{typography-token(caption,    size)};
+  --primitive-text-caption-weight:    #{typography-token(caption,    weight)};
+  --primitive-text-caption-lh:        #{typography-token(caption,    line-height)};
+  --primitive-text-micro-size:        #{typography-token(micro,      size)};
+  --primitive-text-micro-weight:      #{typography-token(micro,      weight)};
+  --primitive-text-micro-lh:          #{typography-token(micro,      line-height)};
+  --primitive-text-body-xs-size:      #{typography-token(body-xs,    size)};
+  --primitive-text-body-xs-weight:    #{typography-token(body-xs,    weight)};
+  --primitive-text-body-xs-lh:        #{typography-token(body-xs,    line-height)};
+  --primitive-text-body-sm-size:      #{typography-token(body-sm,    size)};
+  --primitive-text-body-sm-weight:    #{typography-token(body-sm,    weight)};
+  --primitive-text-body-sm-lh:        #{typography-token(body-sm,    line-height)};
+  --primitive-text-body-size:         #{typography-token(body,       size)};
+  --primitive-text-body-weight:       #{typography-token(body,       weight)};
+  --primitive-text-body-lh:           #{typography-token(body,       line-height)};
+  --primitive-text-label-size:        #{typography-token(label,      size)};
+  --primitive-text-label-weight:      #{typography-token(label,      weight)};
+  --primitive-text-label-lh:          #{typography-token(label,      line-height)};
+  --primitive-text-button-size:       #{typography-token(button,     size)};
+  --primitive-text-button-weight:     #{typography-token(button,     weight)};
+  --primitive-text-button-lh:         #{typography-token(button,     line-height)};
+  --primitive-text-row-name-size:     #{typography-token(row-name,   size)};
+  --primitive-text-row-name-weight:   #{typography-token(row-name,   weight)};
+  --primitive-text-row-name-lh:       #{typography-token(row-name,   line-height)};
+  --primitive-text-heading-xs-size:   #{typography-token(heading-xs, size)};
+  --primitive-text-heading-xs-weight: #{typography-token(heading-xs, weight)};
+  --primitive-text-heading-xs-lh:     #{typography-token(heading-xs, line-height)};
+  --primitive-text-heading-sm-size:   #{typography-token(heading-sm, size)};
+  --primitive-text-heading-sm-weight: #{typography-token(heading-sm, weight)};
+  --primitive-text-heading-sm-lh:     #{typography-token(heading-sm, line-height)};
+  --primitive-text-heading-md-size:   #{typography-token(heading-md, size)};
+  --primitive-text-heading-md-weight: #{typography-token(heading-md, weight)};
+  --primitive-text-heading-md-lh:     #{typography-token(heading-md, line-height)};
+  --primitive-text-heading-lg-size:   #{typography-token(heading-lg, size)};
+  --primitive-text-heading-lg-weight: #{typography-token(heading-lg, weight)};
+  --primitive-text-heading-lg-lh:     #{typography-token(heading-lg, line-height)};
+  --primitive-text-display-size:      #{typography-token(display,    size)};
+  --primitive-text-display-weight:    #{typography-token(display,    weight)};
+  --primitive-text-display-lh:        #{typography-token(display,    line-height)};
+  --primitive-text-metric-md-size:    #{typography-token(metric-md,  size)};
+  --primitive-text-metric-md-weight:  #{typography-token(metric-md,  weight)};
+  --primitive-text-metric-md-lh:      #{typography-token(metric-md,  line-height)};
+
+  // UI-scale sizes exported as primitives so semantic tokens consume them
+  // via var() instead of raw literals.
+  --primitive-text-ui-micro:        #{font-size(ui-micro)};
+  --primitive-text-ui-notification: #{font-size(ui-notification)};
+  --primitive-text-ui-xxs:          #{font-size(ui-xxs)};
+  --primitive-text-ui-xs:           #{font-size(ui-xs)};
+  --primitive-text-ui-sm:           #{font-size(ui-sm)};
+  --primitive-text-ui-lg:           #{font-size(ui-lg)};
+  --primitive-text-login-title:     #{font-size(login-title)};
+  --primitive-text-wordmark:        #{font-size(wordmark)};
+
+  // Font-weight scale exported for semantic consumption
+  --primitive-font-weight-medium:   #{font-weight(medium)};
+  --primitive-font-weight-semibold: #{font-weight(semibold)};
+  --primitive-font-weight-bold:     #{font-weight(bold)};
+  --primitive-font-weight-heavy:    #{font-weight(heavy)};
 }

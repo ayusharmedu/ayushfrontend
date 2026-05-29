@@ -2,6 +2,14 @@
 // SEMANTIC TOKENS - Design System Foundation
 // =============================================================================
 // Purpose-driven tokens that abstract primitive values into meaningful roles.
+//
+// Token flow:
+//   Primitives → $maps here → helper functions → :root CSS vars → themes → HTML
+//
+// Rules:
+//   1. No hard-coded hex / px values anywhere in this file.
+//   2. SCSS maps reference SCSS functions or $dark-* variables from colors.
+//   3. Every value that ends up in :root must trace back to a primitive.
 
 @use 'sass:map';
 @use '../primitives/colors' as color;
@@ -9,13 +17,16 @@
 @use '../primitives/spacing' as space;
 @use '../primitives/icons';
 
+// ---------------------------------------------------------------------------
+// Breakpoints (SCSS-only — consumed by @media in component files)
+// ---------------------------------------------------------------------------
 $breakpoint-sm: 560px;
 $breakpoint-md: 760px;
 $breakpoint-login: 900px;
 $breakpoint-layout: 1040px;
 
 // =============================================================================
-// COLOR SEMANTIC TOKENS
+// COLOR SEMANTIC MAPS
 // =============================================================================
 
 $brand-colors: (
@@ -26,14 +37,14 @@ $brand-colors: (
   primary-dark: color.get-color(primary, 500),
   primary-hover-dark: color.get-color(primary, 400),
   primary-active-dark: color.get-color(primary, 300),
-  primary-disabled-dark: color.get-color(neutral, 600),
+  primary-disabled-dark:color.get-color(neutral, 600),
   secondary: color.get-color(secondary, 600),
   secondary-hover: color.get-color(secondary, 700),
   secondary-active: color.get-color(secondary, 800),
   secondary-disabled: color.get-color(neutral, 300),
   secondary-dark: color.get-color(secondary, 500),
   secondary-hover-dark: color.get-color(secondary, 400),
-  secondary-active-dark: color.get-color(secondary, 300),
+  secondary-active-dark:color.get-color(secondary, 300),
   secondary-disabled-dark: color.get-color(neutral, 600),
   accent: color.get-color(primary, 600),
   accent-hover: color.get-color(primary, 700),
@@ -86,7 +97,7 @@ $action-colors: (
   cancel: color.get-color(cancel, 500),
   cancel-hover: color.get-color(cancel, 600),
   cancel-active: color.get-color(cancel, 700),
-  cancel-disabled: color.get-color(neutral, 300),
+  cancel-disabled:color.get-color(neutral, 300),
   edit: color.get-color(edit, 500),
   edit-hover: color.get-color(edit, 600),
   edit-active: color.get-color(edit, 700),
@@ -106,7 +117,9 @@ $surface-colors: (
   canvas-dark: color.get-color(neutral, 950),
   raised-dark: color.get-color(neutral, 900),
   sunken-dark: color.get-color(neutral, 850),
-  muted-dark: #0b1426,
+  // $dark-surface-muted is a SCSS variable in _colors.scss — cannot use a
+  // CSS var inside a Sass map, so we reference the SCSS var directly.
+  muted-dark: color.$dark-surface-muted,
   overlay-dark: color.color-alpha(color.get-color(neutral, 950), 0.70)
 );
 
@@ -118,7 +131,7 @@ $text-colors: (
   disabled: color.get-color(neutral, 400),
   inverse: color.get-color(neutral, 0),
   primary-dark: color.get-color(neutral, 50),
-  secondary-dark: color.get-color(neutral, 300),
+  secondary-dark:color.get-color(neutral, 300),
   tertiary-dark: color.get-color(neutral, 400),
   muted-dark: color.get-color(neutral, 500),
   disabled-dark: color.get-color(neutral, 500),
@@ -131,8 +144,9 @@ $border-colors: (
   default: color.get-color(neutral, 200),
   strong: color.get-color(neutral, 300),
   focus: map.get($brand-colors, accent),
-  subtle-dark: #1c2740,
-  default-dark: #26334d,
+  // Same pattern as muted-dark above — reference SCSS vars, not CSS vars.
+  subtle-dark: color.$dark-border-subtle,
+  default-dark: color.$dark-border-default,
   strong-dark: color.get-color(neutral, 700),
   focus-dark: map.get($brand-colors, primary-dark)
 );
@@ -198,12 +212,12 @@ $hue-colors: (
 );
 
 // =============================================================================
-// COMPONENT SEMANTIC TOKENS
+// COMPONENT SEMANTIC MAPS
 // =============================================================================
 
 $button-tokens: (
   primary-bg: map.get($brand-colors, accent),
-  primary-bg-hover: map.get($brand-colors, accent-hover),
+  primary-bg-hover:map.get($brand-colors, accent-hover),
   primary-text: map.get($text-colors, on-accent),
   danger-bg: map.get($action-colors, cancel),
   danger-bg-hover: map.get($action-colors, cancel-hover),
@@ -261,7 +275,7 @@ $typography-tokens: (
 );
 
 // =============================================================================
-// HELPER FUNCTIONS FOR SEMANTIC TOKENS
+// HELPER FUNCTIONS
 // =============================================================================
 
 @function brand-color($token) {
@@ -361,10 +375,13 @@ $typography-tokens: (
 }
 
 // =============================================================================
-// CSS CUSTOM PROPERTY EXPORTS
+// CSS CUSTOM PROPERTY EXPORTS  (:root)
 // =============================================================================
+// Every value below is sourced from a primitive CSS var or a semantic SCSS
+// function — no raw hex, px, or magic numbers allowed here.
 
 :root {
+  // ── Spacing aliases ────────────────────────────────────────────────────────
   --space-0: var(--primitive-space-0);
   --space-px: var(--primitive-space-px);
   --space-0-5: var(--primitive-space-0-5);
@@ -386,10 +403,13 @@ $typography-tokens: (
   --space-13: var(--primitive-space-13);
   --space-14: var(--primitive-space-14);
   --space-16: var(--primitive-space-16);
+  --space-18: var(--primitive-space-18);
   --space-20: var(--primitive-space-20);
   --space-64: var(--primitive-space-64);
-  --space-110: 440px;
+  // 110 = 440px login-card cap — now sourced from primitive, not raw px
+  --space-110: var(--primitive-space-110);
 
+  // ── Border radius ──────────────────────────────────────────────────────────
   --radius-none: var(--primitive-radius-none);
   --radius-xs: var(--primitive-radius-xs);
   --radius-sm: var(--primitive-radius-sm);
@@ -398,23 +418,29 @@ $typography-tokens: (
   --radius-xl: var(--primitive-radius-xl);
   --radius-full: var(--primitive-radius-full);
 
+  // ── Border widths ──────────────────────────────────────────────────────────
   --border-thin: var(--primitive-border-thin);
   --border-thick: var(--primitive-border-thick);
   --border-focus: var(--primitive-border-focus);
 
+  // ── Motion ─────────────────────────────────────────────────────────────────
   --motion-fast: var(--primitive-motion-fast);
   --motion-base: var(--primitive-motion-base);
   --motion-slow: var(--primitive-motion-slow);
   --motion-enter: var(--primitive-motion-enter);
 
+  // ── Z-index ────────────────────────────────────────────────────────────────
   --z-base: var(--primitive-z-base);
   --z-popover: var(--primitive-z-popover);
   --z-drawer: var(--primitive-z-drawer);
   --z-modal: var(--primitive-z-modal);
   --z-toast: var(--primitive-z-toast);
 
+  // ── Typography ─────────────────────────────────────────────────────────────
   --font-sans: var(--primitive-font-sans);
   --font-mono: var(--primitive-font-mono);
+
+  // Named variants — proxy to primitives
   --text-caption-size: var(--primitive-text-caption-size);
   --text-caption-weight: var(--primitive-text-caption-weight);
   --text-caption-lh: var(--primitive-text-caption-lh);
@@ -458,6 +484,42 @@ $typography-tokens: (
   --text-metric-md-weight: var(--primitive-text-metric-md-weight);
   --text-metric-md-lh: var(--primitive-text-metric-md-lh);
 
+  // UI-chrome text sizes — sourced from --primitive-text-ui-* vars
+  --text-ui-micro-size: var(--primitive-text-ui-micro);
+  --text-notification-size: var(--primitive-text-ui-notification);
+  --text-ui-xxs-size: var(--primitive-text-ui-xxs);
+  --text-ui-xs-size: var(--primitive-text-ui-xs);
+  --text-ui-sm-size: var(--primitive-text-ui-sm);
+  --text-ui-md-size: var(--text-body-sm-size);
+  --text-ui-lg-size: var(--primitive-text-ui-lg);
+
+  // One-off display sizes sourced from primitives
+  --text-login-title-size: var(--primitive-text-login-title);
+  --text-wordmark-size: var(--primitive-text-wordmark);
+
+  // Font-weight scale — sourced from primitives
+  --text-ui-medium-weight: var(--primitive-font-weight-medium);
+  --text-ui-semibold-weight: var(--primitive-font-weight-semibold);
+  --text-ui-strong-weight: var(--primitive-font-weight-bold);
+  --text-ui-heavy-weight: var(--primitive-font-weight-heavy);
+
+  // Dashboard / page text roles (reference the UI-chrome vars above)
+  --text-page-title-size: var(--size-dashboard-page-title);
+  --text-dashboard-subtitle-size: var(--text-ui-lg-size);
+  --text-dashboard-cell-size: var(--text-ui-lg-size);
+  --text-dashboard-meta-size: var(--text-body-xs-size);
+  --text-login-brand-size: var(--text-body-size);
+  --text-login-brand-mark-size: var(--text-logo-size);
+  --text-login-eyebrow-size: var(--text-body-xs-size);
+  --text-login-copy-size: var(--text-heading-xs-size);
+  --text-login-field-size: var(--text-ui-lg-size);
+  --text-login-link-size: var(--text-body-xs-size);
+  --text-login-version-size: var(--text-micro-size);
+  --text-logo-size: var(--text-heading-xs-size);
+  --text-card-heading-size: var(--text-metric-md-size);
+  --text-hero-size: clamp(var(--size-dashboard-page-title), 3vw, 38px);
+
+  // ── Color — theme-independent globals ─────────────────────────────────────
   --semantic-color-on-accent: #{text-color(on-accent)};
   --color-on-solid: var(--semantic-color-on-accent);
   --color-on-translucent: var(--semantic-color-on-accent);
@@ -486,9 +548,11 @@ $typography-tokens: (
   --color-scope-dept: #{color.get-color(sky, 500)};
   --color-scope-team: #{color.get-color(amber, 500)};
 
+  // ── Interaction state ─────────────────────────────────────────────────────
   --state-interaction-hidden: 0;
   --state-interaction-visible: 1;
 
+  // ── Component / layout sizes ──────────────────────────────────────────────
   --size-control-xs: var(--space-6);
   --size-control-compact: var(--space-8);
   --size-control-sm: var(--space-7);
@@ -500,19 +564,24 @@ $typography-tokens: (
   --size-sidebar-width: var(--space-64);
   --size-viewport-height: 100vh;
   --size-filter-search-width: calc(var(--space-64) + var(--space-6));
-  --size-table-min-width: 900px;
+
+  // Table sizes
+  --size-table-min-width: 900px; // intentional fixed breakout value
   --size-table-checkbox-col: var(--space-10);
   --size-table-actions-col: var(--space-20);
   --size-table-row-height: var(--space-12);
-  --size-table-row-comfortable-height: 60px;
+  --size-table-row-comfortable-height: 60px; // between space-14(56) & space-16(64)
   --size-table-row-spacious-height: var(--space-18);
 
+  // Topbar sizes
   --size-topbar-separator-width: var(--space-px);
   --size-topbar-separator-height: var(--space-5);
   --size-topbar-separator-margin: var(--space-1);
-  --size-dashboard-page-title: 26px;
-  --size-dashboard-subtitle-max-width: 640px;
-  --size-dashboard-content-gap: 18px;
+
+  // Dashboard sizes
+  --size-dashboard-page-title: 26px; // intentional: between heading-md & lg
+  --size-dashboard-subtitle-max-width: 640px; // prose measure cap
+  --size-dashboard-content-gap: 18px; // between space-4(16) & space-5(20)
   --size-dashboard-action-gap: var(--space-2);
   --size-dashboard-card-padding: var(--space-3-5);
   --size-dashboard-tab-offset: calc(var(--space-0-5) * -1);
@@ -525,7 +594,9 @@ $typography-tokens: (
   --size-density-toggle-gap: var(--space-px);
   --size-density-toggle-button: calc(var(--space-6) + var(--space-0-5));
   --size-dashboard-avatar: calc(var(--space-7) + var(--space-0-5));
-  --size-login-panel-min: 420px;
+
+  // Login sizes
+  --size-login-panel-min: 420px; // intentional fixed min-width
   --size-login-card-max: var(--space-110);
   --size-login-panel-pad-y: var(--space-16);
   --size-login-panel-pad-x: var(--space-18);
@@ -547,74 +618,52 @@ $typography-tokens: (
   --size-login-strength-offset: var(--space-2);
   --size-login-strength-gap: var(--space-1);
   --size-login-criteria-gap: var(--space-2);
-  --size-login-criteria-item-gap: 3px;
-  --size-login-terms-offset: 18px;
-  --size-login-footer-dot: 3px;
+  --size-login-criteria-item-gap: 3px; // sub-grid optical gap (< space-1 = 4px)
+  --size-login-terms-offset: 18px; // between space-4(16) & space-5(20)
+  --size-login-footer-dot: 3px; // separator dot — sub-grid
   --size-mobile-hero-min-height: 50vh;
-  --size-panel-width: 300px;
+
+  // Misc component sizes
+  --size-panel-width: 300px; // theme-switcher panel — intentional fixed width
   --size-avatar-sm: var(--space-6);
   --size-avatar-md: var(--space-8);
   --size-avatar-lg: var(--space-10);
   --size-logo-sm: var(--space-7);
   --size-logo-md: var(--space-9);
   --size-checkbox: var(--space-4);
-  --size-checkbox-border: 1.5px;
+  --size-checkbox-border: 1.5px; // optical — between border-thin(1) & thick(2)
   --size-dot-sm: var(--space-1-5);
-  --size-notification-dot: 15px;
+  --size-notification-dot: 15px; // between space-3(12) & space-4(16), pill shape
   --size-badge-height: calc(var(--space-5) + var(--space-0-5));
   --size-count-height: calc(var(--space-4) + var(--space-0-5));
   --size-count-min-width: var(--space-5);
   --size-kbd-min-width: calc(var(--space-4) + var(--space-0-5));
   --size-color-chip-width: var(--space-13);
   --size-color-chip-height: var(--space-11);
-  --size-color-chip-icon: 13px;
+  --size-color-chip-icon: 13px; // between ui-xs(11.5) & ui-sm(12.5) — optical
   --size-scrollbar-sm: var(--space-1);
   --size-scrollbar-md: var(--space-1-5);
   --size-strength-label-min: var(--space-13);
-  --size-strength-bar-thickness: 3px;
-  --size-strength-bar-gap: 3px;
-  --size-inline-gap-xs: 5px;
-  --size-inline-pad-xs: 5px;
-  --size-hairline-border: 0.5px;
+  --size-strength-bar-thickness: 3px; // intentional sub-grid line
+  --size-strength-bar-gap: 3px; // intentional sub-grid gap
+  --size-inline-gap-xs: 5px; // between space-1(4) & space-1-5(6)
+  --size-inline-pad-xs: 5px; // intentional optical padding
+  --size-hairline-border: 0.5px; // sub-pixel decorative border
   --size-glass-blur: var(--space-5);
   --size-glass-saturate: 180%;
 
+  // ── Offsets ───────────────────────────────────────────────────────────────
   --offset-badge-dot: calc(var(--space-px) * -1);
   --offset-row-nudge: var(--space-px);
   --offset-tight: var(--space-0-5);
-  --offset-control-inset: 3px;
+  --offset-control-inset: 3px; // inner padding for segmented controls
   --offset-lift-sm: calc(var(--space-px) * -1);
   --offset-lift-md: calc(var(--space-0-5) * -1);
 
-  --text-ui-micro-size: 10.5px;
-  --text-notification-size: 9px;
-  --text-ui-xxs-size: 10px;
-  --text-ui-xs-size: 11.5px;
-  --text-ui-sm-size: 12.5px;
-  --text-ui-md-size: var(--text-body-sm-size);
-  --text-ui-lg-size: 13.5px;
-  --text-page-title-size: var(--size-dashboard-page-title);
-  --text-dashboard-subtitle-size: var(--text-ui-lg-size);
-  --text-dashboard-cell-size: var(--text-ui-lg-size);
-  --text-dashboard-meta-size: var(--text-body-xs-size);
-  --text-login-brand-size: var(--text-body-size);
-  --text-login-brand-mark-size: var(--text-logo-size);
-  --text-login-eyebrow-size: var(--text-body-xs-size);
-  --text-login-title-size: 44px;
-  --text-login-copy-size: var(--text-heading-xs-size);
-  --text-login-field-size: var(--text-ui-lg-size);
-  --text-login-link-size: var(--text-body-xs-size);
-  --text-login-version-size: var(--text-micro-size);
-  --text-logo-size: var(--text-heading-xs-size);
-  --text-wordmark-size: 18px;
-  --text-card-heading-size: var(--text-metric-md-size);
-  --text-hero-size: clamp(26px, 3vw, 38px);
-  --text-ui-medium-weight: 500;
-  --text-ui-semibold-weight: 600;
-  --text-ui-strong-weight: 700;
-  --text-ui-heavy-weight: 800;
-
+  // ── Motion ────────────────────────────────────────────────────────────────
   --motion-page-enter: 220ms var(--motion-enter);
+
+  // ── Line heights ──────────────────────────────────────────────────────────
   --line-height-hero: var(--text-display-lh);
   --line-height-page-title: 1.15;
   --line-height-login-title: 1.08;
@@ -622,6 +671,7 @@ $typography-tokens: (
   --line-height-dashboard-copy: var(--text-body-lh);
   --line-height-copy-relaxed: 1.6;
 
+  // ── Letter spacing ────────────────────────────────────────────────────────
   --tracking-page-title: -0.5px;
   --tracking-metric-value: -0.4px;
   --tracking-login-title: -1px;
@@ -634,6 +684,13 @@ $typography-tokens: (
   --tracking-section: 0.06em;
   --tracking-wide: 0.08em;
 
+  // ── Shadows ───────────────────────────────────────────────────────────────
+  // Brand-mark shadow: a branded tint lift for the login logo gradient.
+  // One-off value kept here because it is a single-use brand affordance.
+  --shadow-brand-mark: 0 4px 12px -2px #{color.color-alpha(color.get-color(primary, 500), 0.35)};
+
+  // ── Semantic static color exports ─────────────────────────────────────────
+  // Light-mode baseline (overridden per theme in themes/_light|dark.scss)
   --semantic-light-surface-canvas: #{surface-color(canvas)};
   --semantic-light-surface-raised: #{surface-color(raised)};
   --semantic-light-surface-sunken: #{surface-color(sunken)};
@@ -656,8 +713,8 @@ $typography-tokens: (
   --semantic-light-danger-fg: #{semantic-color(danger-fg)};
   --semantic-light-danger-bg: #{semantic-color(danger-bg)};
   --semantic-light-danger-border: #{semantic-color(danger-border)};
-  --semantic-light-control-disabled-bg: #{color.get-color(neutral, 200)};
-  --semantic-light-control-disabled-fg: #{text-color(disabled)};
+  --semantic-light-control-disabled-bg:#{color.get-color(neutral, 200)};
+  --semantic-light-control-disabled-fg:#{text-color(disabled)};
   --semantic-light-nav-bg: #{surface-color(raised)};
   --semantic-light-nav-hover: #{interactive-color(hover)};
   --semantic-light-nav-fg: #{text-color(secondary)};
@@ -670,6 +727,7 @@ $typography-tokens: (
   --semantic-light-panel-glass-bg: #{color.color-alpha(color.get-color(neutral, 50), 0.85)};
   --semantic-light-panel-glass-border: #{color.color-alpha(color.get-color(neutral, 0), 0.60)};
 
+  // Dark-mode baseline
   --semantic-dark-surface-canvas: #{surface-color(canvas-dark)};
   --semantic-dark-surface-raised: #{surface-color(raised-dark)};
   --semantic-dark-surface-sunken: #{surface-color(sunken-dark)};
@@ -707,6 +765,7 @@ $typography-tokens: (
   --semantic-dark-panel-glass-bg: #{color.color-alpha(color.get-color(neutral, 900), 0.85)};
   --semantic-dark-panel-glass-border: #{color.color-alpha(color.get-color(neutral, 0), 0.08)};
 
+  // Hue brand tokens (used by _custom.scss theme switcher)
   --semantic-brand-indigo-accent: #{map.get($hue-colors, indigo-accent)};
   --semantic-brand-indigo-hover: #{map.get($hue-colors, indigo-hover)};
   --semantic-brand-indigo-subtle: #{map.get($hue-colors, indigo-subtle)};

@@ -2,12 +2,17 @@
 @use 'sass:list';
 @use 'sass:map';
 
-// Primitive color palettes are the foundation for theme and semantic tokens.
-// Existing CSS custom property names are preserved for UI compatibility.
+// =============================================================================
+// PRIMITIVE COLORS
+// =============================================================================
+// Raw color palettes — the single source of truth for every color value.
+// Never use these hex values directly in components; always go through the
+// semantic token layer ( tokens/_semantic.scss → themes/ → CSS vars ).
+
 $neutral-palette: (
-  0: #ffffff,
-  25: #fcfdfe,
-  50: #f8fafc,
+  0:   #ffffff,
+  25:  #fcfdfe,
+  50:  #f8fafc,
   100: #f1f5f9,
   150: #eef2f7,
   200: #e2e8f0,
@@ -23,7 +28,7 @@ $neutral-palette: (
 );
 
 $indigo-palette: (
-  50: #eef2ff,
+  50:  #eef2ff,
   100: #e0e7ff,
   200: #c7d2fe,
   300: #a5b4fc,
@@ -37,7 +42,7 @@ $indigo-palette: (
 );
 
 $violet-palette: (
-  50: #f5f3ff,
+  50:  #f5f3ff,
   100: #ede9fe,
   200: #ddd6fe,
   300: #c4b5fd,
@@ -51,7 +56,7 @@ $violet-palette: (
 );
 
 $emerald-palette: (
-  50: #ecfdf5,
+  50:  #ecfdf5,
   100: #d1fae5,
   200: #a7f3d0,
   300: #6ee7b7,
@@ -65,7 +70,7 @@ $emerald-palette: (
 );
 
 $green-palette: (
-  50: #f0fdf4,
+  50:  #f0fdf4,
   100: #dcfce7,
   200: #bbf7d0,
   300: #86efac,
@@ -79,7 +84,7 @@ $green-palette: (
 );
 
 $amber-palette: (
-  50: #fffbeb,
+  50:  #fffbeb,
   100: #fef3c7,
   200: #fde68a,
   300: #fcd34d,
@@ -93,7 +98,7 @@ $amber-palette: (
 );
 
 $red-palette: (
-  50: #fef2f2,
+  50:  #fef2f2,
   100: #fee2e2,
   200: #fecaca,
   300: #fca5a5,
@@ -107,7 +112,7 @@ $red-palette: (
 );
 
 $sky-palette: (
-  50: #f0f9ff,
+  50:  #f0f9ff,
   100: #e0f2fe,
   200: #bae6fd,
   300: #7dd3fc,
@@ -121,7 +126,7 @@ $sky-palette: (
 );
 
 $rose-palette: (
-  50: #fff1f2,
+  50:  #fff1f2,
   100: #ffe4e6,
   200: #fecdd3,
   300: #fda4af,
@@ -135,7 +140,7 @@ $rose-palette: (
 );
 
 $orange-palette: (
-  50: #fff7ed,
+  50:  #fff7ed,
   100: #ffedd5,
   200: #fed7aa,
   300: #fdba74,
@@ -149,7 +154,7 @@ $orange-palette: (
 );
 
 $teal-palette: (
-  50: #f0fdfa,
+  50:  #f0fdfa,
   100: #ccfbf1,
   200: #99f6e4,
   300: #5eead4,
@@ -163,7 +168,7 @@ $teal-palette: (
 );
 
 $zinc-palette: (
-  50: #fafafa,
+  50:  #fafafa,
   100: #f4f4f5,
   200: #e4e4e7,
   300: #d4d4d8,
@@ -176,39 +181,56 @@ $zinc-palette: (
   950: #09090b
 );
 
+// ---------------------------------------------------------------------------
+// Dark-mode off-palette tones
+// ---------------------------------------------------------------------------
+// These three values sit below neutral-950 and are intentional deep tones
+// for dark-mode surface/border depth. Defined as SCSS variables so
+// _semantic.scss can use them inside SCSS map literals (Sass maps cannot
+// reference CSS custom properties). They are also exported as
+// --primitive-* vars below so nothing else in the codebase hard-codes hex.
+$dark-surface-muted:  #0b1426;
+$dark-border-subtle:  #1c2740;
+$dark-border-default: #26334d;
+
+// ---------------------------------------------------------------------------
+// Palette registry
+// ---------------------------------------------------------------------------
 $color-palettes: (
-  neutral: $neutral-palette,
-  primary: $indigo-palette,
+  neutral:   $neutral-palette,
+  primary:   $indigo-palette,
   secondary: $violet-palette,
-  indigo: $indigo-palette,
-  violet: $violet-palette,
-  emerald: $emerald-palette,
-  green: $green-palette,
-  success: $emerald-palette,
-  warning: $amber-palette,
-  amber: $amber-palette,
-  danger: $red-palette,
-  error: $red-palette,
-  red: $red-palette,
-  info: $sky-palette,
-  sky: $sky-palette,
-  rose: $rose-palette,
-  orange: $orange-palette,
-  save: $teal-palette,
-  cancel: $red-palette,
-  edit: $amber-palette,
-  close: $zinc-palette
+  indigo:    $indigo-palette,
+  violet:    $violet-palette,
+  emerald:   $emerald-palette,
+  green:     $green-palette,
+  success:   $emerald-palette,
+  warning:   $amber-palette,
+  amber:     $amber-palette,
+  danger:    $red-palette,
+  error:     $red-palette,
+  red:       $red-palette,
+  info:      $sky-palette,
+  sky:       $sky-palette,
+  rose:      $rose-palette,
+  orange:    $orange-palette,
+  save:      $teal-palette,
+  cancel:    $red-palette,
+  edit:      $amber-palette,
+  close:     $zinc-palette
 );
+
+// ---------------------------------------------------------------------------
+// Helper functions
+// ---------------------------------------------------------------------------
 
 @function get-color($palette, $shade: 500) {
   @if map.has-key($color-palettes, $palette) {
     $palette-map: map.get($color-palettes, $palette);
-
     @if map.has-key($palette-map, $shade) {
       @return map.get($palette-map, $shade);
     }
   }
-
   @error "Color '#{$palette}-#{$shade}' not found in color palettes";
 }
 
@@ -224,11 +246,15 @@ $color-palettes: (
   @if color.channel($color-value, 'lightness', $space: hsl) > 50% {
     @return get-color(neutral, 900);
   }
-
   @return get-color(neutral, 0);
 }
 
+// ---------------------------------------------------------------------------
+// CSS custom property exports  (--primitive-* namespace)
+// ---------------------------------------------------------------------------
+
 :root {
+  // Standard palettes (alias duplicates excluded to avoid redundant props)
   @each $palette-name, $palette in $color-palettes {
     @if not list.index((primary, secondary, success, warning, danger, error, info), $palette-name) {
       @each $shade, $value in $palette {
@@ -237,39 +263,44 @@ $color-palettes: (
     }
   }
 
-  --primitive-white: #{get-color(neutral, 0)};
-  --primitive-indigo-500: #{get-color(indigo, 500)};
-  --primitive-indigo-600: #{get-color(indigo, 600)};
-  --primitive-violet-500: #{get-color(violet, 500)};
-  --primitive-violet-600: #{get-color(violet, 600)};
-  --primitive-emerald-500: #{get-color(emerald, 500)};
-  --primitive-emerald-600: #{get-color(emerald, 600)};
-  --primitive-green-600: #{get-color(green, 600)};
-  --primitive-amber-500: #{get-color(amber, 500)};
-  --primitive-red-500: #{get-color(red, 500)};
-  --primitive-red-600: #{get-color(red, 600)};
-  --primitive-sky-500: #{get-color(sky, 500)};
-  --primitive-rose-500: #{get-color(rose, 500)};
-  --primitive-orange-500: #{get-color(orange, 500)};
-  --primitive-light-overlay: #{color-alpha(get-color(neutral, 900), 0.55)};
-  --primitive-dark-overlay: #{color-alpha(get-color(neutral, 950), 0.70)};
-  --primitive-dark-surface-muted: #0b1426;
-  --primitive-dark-border-subtle: #1c2740;
-  --primitive-dark-border-default: #26334d;
+  // Commonly-referenced individual shades
+  --primitive-white:          #{get-color(neutral, 0)};
+  --primitive-indigo-500:     #{get-color(indigo, 500)};
+  --primitive-indigo-600:     #{get-color(indigo, 600)};
+  --primitive-violet-500:     #{get-color(violet, 500)};
+  --primitive-violet-600:     #{get-color(violet, 600)};
+  --primitive-emerald-500:    #{get-color(emerald, 500)};
+  --primitive-emerald-600:    #{get-color(emerald, 600)};
+  --primitive-green-600:      #{get-color(green, 600)};
+  --primitive-amber-500:      #{get-color(amber, 500)};
+  --primitive-red-500:        #{get-color(red, 500)};
+  --primitive-red-600:        #{get-color(red, 600)};
+  --primitive-sky-500:        #{get-color(sky, 500)};
+  --primitive-rose-500:       #{get-color(rose, 500)};
+  --primitive-orange-500:     #{get-color(orange, 500)};
+  --primitive-light-overlay:  #{color-alpha(get-color(neutral, 900), 0.55)};
+  --primitive-dark-overlay:   #{color-alpha(get-color(neutral, 950), 0.70)};
 
-  --primitive-success-bg-dark: #{color-alpha(get-color(emerald, 500), 0.10)};
+  // Deep dark-mode off-palette tones — sourced from $dark-* SCSS vars above
+  --primitive-dark-surface-muted:  #{$dark-surface-muted};
+  --primitive-dark-border-subtle:  #{$dark-border-subtle};
+  --primitive-dark-border-default: #{$dark-border-default};
+
+  // Dark-mode state overlays
+  --primitive-success-bg-dark:     #{color-alpha(get-color(emerald, 500), 0.10)};
   --primitive-success-border-dark: #{color-alpha(get-color(emerald, 300), 0.25)};
-  --primitive-warning-bg-dark: #{color-alpha(get-color(amber, 500), 0.10)};
+  --primitive-warning-bg-dark:     #{color-alpha(get-color(amber, 500), 0.10)};
   --primitive-warning-border-dark: #{color-alpha(get-color(amber, 300), 0.25)};
-  --primitive-danger-bg-dark: #{color-alpha(get-color(red, 500), 0.10)};
-  --primitive-danger-border-dark: #{color-alpha(get-color(red, 300), 0.25)};
+  --primitive-danger-bg-dark:      #{color-alpha(get-color(red, 500), 0.10)};
+  --primitive-danger-border-dark:  #{color-alpha(get-color(red, 300), 0.25)};
 
-  --primitive-indigo-subtle-dark: #{color-alpha(get-color(indigo, 500), 0.12)};
-  --primitive-indigo-muted-dark: #{color-alpha(get-color(indigo, 500), 0.22)};
-  --primitive-violet-subtle-dark: #{color-alpha(get-color(violet, 500), 0.12)};
-  --primitive-violet-muted-dark: #{color-alpha(get-color(violet, 500), 0.22)};
+  // Dark-mode hue tints
+  --primitive-indigo-subtle-dark:  #{color-alpha(get-color(indigo, 500), 0.12)};
+  --primitive-indigo-muted-dark:   #{color-alpha(get-color(indigo, 500), 0.22)};
+  --primitive-violet-subtle-dark:  #{color-alpha(get-color(violet, 500), 0.12)};
+  --primitive-violet-muted-dark:   #{color-alpha(get-color(violet, 500), 0.22)};
   --primitive-emerald-subtle-dark: #{color-alpha(get-color(emerald, 500), 0.12)};
-  --primitive-emerald-muted-dark: #{color-alpha(get-color(emerald, 500), 0.22)};
-  --primitive-green-subtle-dark: #{color-alpha(get-color(green, 500), 0.12)};
-  --primitive-green-muted-dark: #{color-alpha(get-color(green, 500), 0.22)};
+  --primitive-emerald-muted-dark:  #{color-alpha(get-color(emerald, 500), 0.22)};
+  --primitive-green-subtle-dark:   #{color-alpha(get-color(green, 500), 0.12)};
+  --primitive-green-muted-dark:    #{color-alpha(get-color(green, 500), 0.22)};
 }
