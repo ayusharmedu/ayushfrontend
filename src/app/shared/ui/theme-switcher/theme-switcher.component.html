@@ -3,10 +3,7 @@
     <header class="tweaks-header">
       <span class="tweaks-title">v3 tweaks</span>
       <button class="icon-btn icon-btn-sm" type="button" aria-label="Hide theme switcher" (click)="isVisible.set(false)">
-        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <line x1="18" y1="6" x2="6" y2="18" />
-          <line x1="6" y1="6" x2="18" y2="18" />
-        </svg>
+        <app-icon name="x" strokeWidth="2"></app-icon>
       </button>
     </header>
 
@@ -42,9 +39,7 @@
                 [attr.aria-label]="'Use ' + hue + ' brand color'"
                 (click)="setHue(hue)">
                 @if (theme.hue() === hue) {
-                  <svg viewBox="0 0 14 14" fill="none" aria-hidden="true">
-                    <path d="M3 7.2L5.8 10L11 4.2" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" />
-                  </svg>
+                  <app-icon name="checkChip" className=""></app-icon>
                 }
               </button>
             }
@@ -55,9 +50,6 @@
   </section>
 } @else {
   <button class="theme-restore-btn" type="button" aria-label="Show theme switcher" (click)="isVisible.set(true)">
-    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
-      <circle cx="12" cy="12" r="3" />
-      <path d="M19.4 15a1.7 1.7 0 0 0 .34 1.88l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06A1.7 1.7 0 0 0 15 19.4a1.7 1.7 0 0 0-1 .6 1.7 1.7 0 0 0-.4 1.1V21a2 2 0 1 1-4 0v-.09A1.7 1.7 0 0 0 8.6 19.4a1.7 1.7 0 0 0-1.88.34l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.7 1.7 0 0 0 4.6 15a1.7 1.7 0 0 0-.6-1 1.7 1.7 0 0 0-1.1-.4H3a2 2 0 1 1 0-4h.09A1.7 1.7 0 0 0 4.6 8.6a1.7 1.7 0 0 0-.34-1.88l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.7 1.7 0 0 0 9 4.6a1.7 1.7 0 0 0 1-.6 1.7 1.7 0 0 0 .4-1.1V3a2 2 0 1 1 4 0v.09A1.7 1.7 0 0 0 15.4 4.6a1.7 1.7 0 0 0 1.88-.34l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.7 1.7 0 0 0 19.4 9c.3.16.62.25 1 .25H21a2 2 0 1 1 0 4h-.09A1.7 1.7 0 0 0 19.4 15Z" />
-    </svg>
+    <app-icon name="gear"></app-icon>
   </button>
 }

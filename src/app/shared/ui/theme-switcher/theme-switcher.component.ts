@@ -1,9 +1,10 @@
 import { Component, inject, signal } from '@angular/core';
 import { ThemeHue, ThemeMode, ThemeService } from '../../../core/services/theme.service';
+import { IconComponent } from '../icon/icon.component';
 
 @Component({
   selector: 'app-theme-switcher',
-  imports: [],
+  imports: [IconComponent],
   templateUrl: './theme-switcher.component.html',
   styleUrl: './theme-switcher.component.scss',
 })

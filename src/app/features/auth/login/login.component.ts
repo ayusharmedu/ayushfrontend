@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, computed, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
+import { IconComponent } from '../../../shared/ui/icon/icon.component';
 
 interface PasswordCriterion {
   label: string;
@@ -10,7 +11,7 @@ interface PasswordCriterion {
 
 @Component({
   selector: 'app-login',
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, IconComponent],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss',
 })

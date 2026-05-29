@@ -3,6 +3,7 @@ import { Component, computed, Signal, signal, WritableSignal } from '@angular/co
 import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { metrics, users } from '../../mock-data';
+import { IconComponent } from '../../shared/ui/icon/icon.component';
 type UserTab = 'all' | 'active' | 'invited' | 'inactive' | 'sso' | 'no-mfa';
 type Density = 'compact' | 'comfortable' | 'spacious';
 type SortField = 'name' | 'lastActive';
@@ -10,7 +11,7 @@ type SortOrder = 'asc' | 'desc';
 
 @Component({
   selector: 'app-dashboard',
-  imports: [CommonModule, FormsModule, RouterLink],
+  imports: [CommonModule, FormsModule, RouterLink, IconComponent],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss',
 })
