@@ -73,7 +73,26 @@ $line-heights: (
   normal:  1.4,
   relaxed: 1.5,
   body:    1.55,
-  display: 1.1
+  display: 1.1,
+  page-title: 1.15,
+  login-title: 1.08,
+  control: 1,
+  copy-relaxed: 1.6
+);
+
+$letter-spacing: (
+  none: 0,
+  page-title: -0.5px,
+  metric-value: -0.4px,
+  login-title: -1px,
+  login-brand: -0.2px,
+  login-brand-mark: -0.3px,
+  login-eyebrow: 0.3px,
+  tight: 0.02em,
+  label: 0.03em,
+  meta: 0.05em,
+  section: 0.06em,
+  wide: 0.08em
 );
 
 // ---------------------------------------------------------------------------
@@ -99,6 +118,13 @@ $line-heights: (
     @return map.get($line-heights, $height);
   }
   @error "Line height '#{$height}' not found";
+}
+
+@function tracking($token) {
+  @if map.has-key($letter-spacing, $token) {
+    @return map.get($letter-spacing, $token);
+  }
+  @error "Letter spacing '#{$token}' not found";
 }
 
 // ---------------------------------------------------------------------------
@@ -145,7 +171,7 @@ $typography: (
   --primitive-font-sans: #{$font-family-primary};
   --primitive-font-mono: #{$font-family-mono};
   --primitive-font-feature-ui: "cv11", "ss01", "tnum";
-  --primitive-tracking-none: 0;
+  --primitive-tracking-none: #{tracking(none)};
 
   // Named typography variants
   --primitive-text-caption-size:      #{typography-token(caption,    size)};
@@ -201,6 +227,25 @@ $typography: (
   --primitive-text-ui-lg:           #{font-size(ui-lg)};
   --primitive-text-login-title:     #{font-size(login-title)};
   --primitive-text-wordmark:        #{font-size(wordmark)};
+
+  // Line-height scale exported for semantic consumption
+  --primitive-line-height-page-title: #{line-height(page-title)};
+  --primitive-line-height-login-title: #{line-height(login-title)};
+  --primitive-line-height-control: #{line-height(control)};
+  --primitive-line-height-copy-relaxed: #{line-height(copy-relaxed)};
+
+  // Letter-spacing scale exported for semantic consumption
+  --primitive-tracking-page-title: #{tracking(page-title)};
+  --primitive-tracking-metric-value: #{tracking(metric-value)};
+  --primitive-tracking-login-title: #{tracking(login-title)};
+  --primitive-tracking-login-brand: #{tracking(login-brand)};
+  --primitive-tracking-login-brand-mark: #{tracking(login-brand-mark)};
+  --primitive-tracking-login-eyebrow: #{tracking(login-eyebrow)};
+  --primitive-tracking-tight: #{tracking(tight)};
+  --primitive-tracking-label: #{tracking(label)};
+  --primitive-tracking-meta: #{tracking(meta)};
+  --primitive-tracking-section: #{tracking(section)};
+  --primitive-tracking-wide: #{tracking(wide)};
 
   // Font-weight scale exported for semantic consumption
   --primitive-font-weight-medium:   #{font-weight(medium)};

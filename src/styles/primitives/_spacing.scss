@@ -94,6 +94,36 @@ $layout-spacing: (
   content-xl:   spacing(32)
 );
 
+$breakpoints: (
+  sm:     560px,
+  md:     760px,
+  login:  900px,
+  layout: 1040px
+);
+
+$layout-sizes: (
+  viewport-height: 100vh,
+  mobile-hero-min-height: 50vh,
+  table-min-width: 900px,
+  table-row-comfortable-height: 60px,
+  hero-fluid-scale: 3vw,
+  hero-max-size: 38px,
+  dashboard-page-title: 26px,
+  dashboard-subtitle-max-width: 640px,
+  dashboard-content-gap: 18px,
+  login-panel-min: 420px,
+  panel-width: 300px,
+  notification-dot: 15px,
+  color-chip-icon: 13px,
+  glass-saturate: 180%
+);
+
+$optical-sizes: (
+  xs-gap: 3px,
+  sm-gap: 5px,
+  hairline: 0.5px
+);
+
 $border-radius: (
   none: 0,
   xs:   4px,
@@ -160,6 +190,27 @@ $elevation: (
     @return map.get($layout-spacing, $token);
   }
   @error "Layout spacing token '#{$token}' not found";
+}
+
+@function breakpoint($token) {
+  @if map.has-key($breakpoints, $token) {
+    @return map.get($breakpoints, $token);
+  }
+  @error "Breakpoint token '#{$token}' not found";
+}
+
+@function layout-size($token) {
+  @if map.has-key($layout-sizes, $token) {
+    @return map.get($layout-sizes, $token);
+  }
+  @error "Layout size token '#{$token}' not found";
+}
+
+@function optical-size($token) {
+  @if map.has-key($optical-sizes, $token) {
+    @return map.get($optical-sizes, $token);
+  }
+  @error "Optical size token '#{$token}' not found";
 }
 
 @function border-radius($size) {
@@ -254,6 +305,33 @@ $elevation: (
   --primitive-space-80:  #{spacing(80)};
   --primitive-space-96:  #{spacing(96)};
   --primitive-space-110: #{spacing(110)};
+
+  // Breakpoints
+  --primitive-breakpoint-sm: #{breakpoint(sm)};
+  --primitive-breakpoint-md: #{breakpoint(md)};
+  --primitive-breakpoint-login: #{breakpoint(login)};
+  --primitive-breakpoint-layout: #{breakpoint(layout)};
+
+  // Fixed layout sizes that do not fit the spacing scale
+  --primitive-size-viewport-height: #{layout-size(viewport-height)};
+  --primitive-size-mobile-hero-min-height: #{layout-size(mobile-hero-min-height)};
+  --primitive-size-table-min-width: #{layout-size(table-min-width)};
+  --primitive-size-table-row-comfortable-height: #{layout-size(table-row-comfortable-height)};
+  --primitive-size-hero-fluid-scale: #{layout-size(hero-fluid-scale)};
+  --primitive-size-hero-max: #{layout-size(hero-max-size)};
+  --primitive-size-dashboard-page-title: #{layout-size(dashboard-page-title)};
+  --primitive-size-dashboard-subtitle-max-width: #{layout-size(dashboard-subtitle-max-width)};
+  --primitive-size-dashboard-content-gap: #{layout-size(dashboard-content-gap)};
+  --primitive-size-login-panel-min: #{layout-size(login-panel-min)};
+  --primitive-size-panel-width: #{layout-size(panel-width)};
+  --primitive-size-notification-dot: #{layout-size(notification-dot)};
+  --primitive-size-color-chip-icon: #{layout-size(color-chip-icon)};
+  --primitive-size-glass-saturate: #{layout-size(glass-saturate)};
+
+  // Optical sub-grid sizes
+  --primitive-optical-xs-gap: #{optical-size(xs-gap)};
+  --primitive-optical-sm-gap: #{optical-size(sm-gap)};
+  --primitive-optical-hairline: #{optical-size(hairline)};
 
   // Border radius
   --primitive-radius-none: #{border-radius(none)};

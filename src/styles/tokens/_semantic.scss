@@ -20,10 +20,10 @@
 // ---------------------------------------------------------------------------
 // Breakpoints (SCSS-only — consumed by @media in component files)
 // ---------------------------------------------------------------------------
-$breakpoint-sm: 560px;
-$breakpoint-md: 760px;
-$breakpoint-login: 900px;
-$breakpoint-layout: 1040px;
+$breakpoint-sm: space.breakpoint(sm);
+$breakpoint-md: space.breakpoint(md);
+$breakpoint-login: space.breakpoint(login);
+$breakpoint-layout: space.breakpoint(layout);
 
 // =============================================================================
 // COLOR SEMANTIC MAPS
@@ -62,7 +62,7 @@ $semantic-colors: (
   success-bg: color.get-color(success, 50),
   success-border: color.get-color(success, 200),
   success-dot: color.get-color(success, 500),
-  success-dot-ring: 0 0 0 space.spacing(0.5) color.color-alpha(color.get-color(success, 500), 0.133),
+  success-dot-ring: space.spacing(0) space.spacing(0) space.spacing(0) space.spacing(0.5) color.color-alpha(color.get-color(success, 500), 0.133),
   success-fg-dark: color.get-color(success, 400),
   success-bg-dark: color.color-alpha(color.get-color(success, 500), 0.10),
   success-border-dark: color.color-alpha(color.get-color(success, 300), 0.25),
@@ -99,7 +99,7 @@ $action-colors: (
   cancel: color.get-color(cancel, 500),
   cancel-hover: color.get-color(cancel, 600),
   cancel-active: color.get-color(cancel, 700),
-  cancel-shadow: 0 space.spacing(px) space.spacing(0.5) color.color-alpha(color.get-color(cancel, 500), 0.20),
+  cancel-shadow: space.spacing(0) space.spacing(px) space.spacing(0.5) color.color-alpha(color.get-color(cancel, 500), 0.20),
   cancel-disabled:color.get-color(neutral, 300),
   edit: color.get-color(edit, 500),
   edit-hover: color.get-color(edit, 600),
@@ -409,8 +409,27 @@ $typography-tokens: (
   --space-18: var(--primitive-space-18);
   --space-20: var(--primitive-space-20);
   --space-64: var(--primitive-space-64);
-  // 110 = 440px login-card cap — now sourced from primitive, not raw px
+  // One-off login card cap — sourced from primitives.
   --space-110: var(--primitive-space-110);
+
+  // Fixed layout primitives
+  --primitive-layout-viewport-height: var(--primitive-size-viewport-height);
+  --primitive-layout-mobile-hero-min-height: var(--primitive-size-mobile-hero-min-height);
+  --primitive-layout-table-min-width: var(--primitive-size-table-min-width);
+  --primitive-layout-table-row-comfortable-height: var(--primitive-size-table-row-comfortable-height);
+  --primitive-layout-dashboard-page-title: var(--primitive-size-dashboard-page-title);
+  --primitive-layout-dashboard-subtitle-max-width: var(--primitive-size-dashboard-subtitle-max-width);
+  --primitive-layout-dashboard-content-gap: var(--primitive-size-dashboard-content-gap);
+  --primitive-layout-login-panel-min: var(--primitive-size-login-panel-min);
+  --primitive-layout-panel-width: var(--primitive-size-panel-width);
+  --primitive-layout-notification-dot: var(--primitive-size-notification-dot);
+  --primitive-layout-color-chip-icon: var(--primitive-size-color-chip-icon);
+  --primitive-layout-hero-fluid-scale: var(--primitive-size-hero-fluid-scale);
+  --primitive-layout-hero-max: var(--primitive-size-hero-max);
+  --primitive-layout-glass-saturate: var(--primitive-size-glass-saturate);
+  --primitive-optical-control-inset: var(--primitive-optical-xs-gap);
+  --primitive-optical-subgrid-gap: var(--primitive-optical-xs-gap);
+  --primitive-optical-inline-xs: var(--primitive-optical-sm-gap);
 
   // ── Border radius ──────────────────────────────────────────────────────────
   --radius-none: var(--primitive-radius-none);
@@ -521,7 +540,7 @@ $typography-tokens: (
   --text-login-version-size: var(--text-micro-size);
   --text-logo-size: var(--text-heading-xs-size);
   --text-card-heading-size: var(--text-metric-md-size);
-  --text-hero-size: clamp(var(--size-dashboard-page-title), 3vw, 38px);
+  --text-hero-size: clamp(var(--size-dashboard-page-title), var(--primitive-layout-hero-fluid-scale), var(--primitive-layout-hero-max));
 
   // ── Color — theme-independent globals ─────────────────────────────────────
   --semantic-color-on-accent: #{text-color(on-accent)};
@@ -568,15 +587,15 @@ $typography-tokens: (
   --size-field-md: var(--space-9);
   --size-topbar-height: var(--space-13);
   --size-sidebar-width: var(--space-64);
-  --size-viewport-height: 100vh;
+  --size-viewport-height: var(--primitive-layout-viewport-height);
   --size-filter-search-width: calc(var(--space-64) + var(--space-6));
 
   // Table sizes
-  --size-table-min-width: 900px; // intentional fixed breakout value
+  --size-table-min-width: var(--primitive-layout-table-min-width);
   --size-table-checkbox-col: var(--space-10);
   --size-table-actions-col: var(--space-20);
   --size-table-row-height: var(--space-12);
-  --size-table-row-comfortable-height: 60px; // between space-14(56) & space-16(64)
+  --size-table-row-comfortable-height: var(--primitive-layout-table-row-comfortable-height);
   --size-table-row-spacious-height: var(--space-18);
   --size-table-bulk-pad-y: var(--space-2);
   --size-table-bulk-pad-right: var(--space-3);
@@ -605,9 +624,9 @@ $typography-tokens: (
   --size-topbar-separator-margin: var(--space-1);
 
   // Dashboard sizes
-  --size-dashboard-page-title: 26px; // intentional: between heading-md & lg
-  --size-dashboard-subtitle-max-width: 640px; // prose measure cap
-  --size-dashboard-content-gap: 18px; // between space-4(16) & space-5(20)
+  --size-dashboard-page-title: var(--primitive-layout-dashboard-page-title);
+  --size-dashboard-subtitle-max-width: var(--primitive-layout-dashboard-subtitle-max-width);
+  --size-dashboard-content-gap: var(--primitive-layout-dashboard-content-gap);
   --size-dashboard-action-gap: var(--space-2);
   --size-dashboard-card-padding: var(--space-3-5);
   --size-dashboard-tab-offset: calc(var(--space-0-5) * -1);
@@ -622,7 +641,7 @@ $typography-tokens: (
   --size-dashboard-avatar: calc(var(--space-7) + var(--space-0-5));
 
   // Login sizes
-  --size-login-panel-min: 420px; // intentional fixed min-width
+  --size-login-panel-min: var(--primitive-layout-login-panel-min);
   --size-login-card-max: var(--space-110);
   --size-login-panel-pad-y: var(--space-16);
   --size-login-panel-pad-x: var(--space-18);
@@ -645,13 +664,13 @@ $typography-tokens: (
   --size-login-strength-gap: var(--space-1);
   --size-login-criteria-gap: var(--space-2);
   --size-login-actions-offset: var(--space-3);
-  --size-login-criteria-item-gap: 3px; // sub-grid optical gap (< space-1 = 4px)
-  --size-login-terms-offset: 18px; // between space-4(16) & space-5(20)
-  --size-login-footer-dot: 3px; // separator dot — sub-grid
-  --size-mobile-hero-min-height: 50vh;
+  --size-login-criteria-item-gap: var(--primitive-optical-subgrid-gap);
+  --size-login-terms-offset: var(--primitive-layout-dashboard-content-gap);
+  --size-login-footer-dot: var(--primitive-optical-subgrid-gap);
+  --size-mobile-hero-min-height: var(--primitive-layout-mobile-hero-min-height);
 
   // Misc component sizes
-  --size-panel-width: 300px; // theme-switcher panel — intentional fixed width
+  --size-panel-width: var(--primitive-layout-panel-width);
   --size-avatar-sm: var(--space-6);
   --size-avatar-md: var(--space-8);
   --size-avatar-lg: var(--space-10);
@@ -661,30 +680,30 @@ $typography-tokens: (
   --size-checkbox-border: var(--primitive-border-normal);
   --size-dot-sm: var(--space-1-5);
   --size-sidebar-status-dot: var(--size-dot-sm);
-  --size-notification-dot: 15px; // between space-3(12) & space-4(16), pill shape
+  --size-notification-dot: var(--primitive-layout-notification-dot);
   --size-badge-height: calc(var(--space-5) + var(--space-0-5));
   --size-count-height: calc(var(--space-4) + var(--space-0-5));
   --size-count-min-width: var(--space-5);
   --size-kbd-min-width: calc(var(--space-4) + var(--space-0-5));
   --size-color-chip-width: var(--space-13);
   --size-color-chip-height: var(--space-11);
-  --size-color-chip-icon: 13px; // between ui-xs(11.5) & ui-sm(12.5) — optical
+  --size-color-chip-icon: var(--primitive-layout-color-chip-icon);
   --size-scrollbar-sm: var(--space-1);
   --size-scrollbar-md: var(--space-1-5);
   --size-strength-label-min: var(--space-13);
-  --size-strength-bar-thickness: 3px; // intentional sub-grid line
-  --size-strength-bar-gap: 3px; // intentional sub-grid gap
-  --size-inline-gap-xs: 5px; // between space-1(4) & space-1-5(6)
-  --size-inline-pad-xs: 5px; // intentional optical padding
-  --size-hairline-border: 0.5px; // sub-pixel decorative border
+  --size-strength-bar-thickness: var(--primitive-optical-subgrid-gap);
+  --size-strength-bar-gap: var(--primitive-optical-subgrid-gap);
+  --size-inline-gap-xs: var(--primitive-optical-inline-xs);
+  --size-inline-pad-xs: var(--primitive-optical-inline-xs);
+  --size-hairline-border: var(--primitive-optical-hairline);
   --size-glass-blur: var(--space-5);
-  --size-glass-saturate: 180%;
+  --size-glass-saturate: var(--primitive-layout-glass-saturate);
 
   // ── Offsets ───────────────────────────────────────────────────────────────
   --offset-badge-dot: calc(var(--space-px) * -1);
   --offset-row-nudge: var(--space-px);
   --offset-tight: var(--space-0-5);
-  --offset-control-inset: 3px; // inner padding for segmented controls
+  --offset-control-inset: var(--primitive-optical-control-inset);
   --offset-lift-sm: calc(var(--space-px) * -1);
   --offset-lift-md: calc(var(--space-0-5) * -1);
   --transform-sort-icon-nudge: translateY(var(--offset-row-nudge));
@@ -694,30 +713,28 @@ $typography-tokens: (
 
   // ── Line heights ──────────────────────────────────────────────────────────
   --line-height-hero: var(--text-display-lh);
-  --line-height-page-title: 1.15;
-  --line-height-login-title: 1.08;
-  --line-height-control: 1;
+  --line-height-page-title: var(--primitive-line-height-page-title);
+  --line-height-login-title: var(--primitive-line-height-login-title);
+  --line-height-control: var(--primitive-line-height-control);
   --line-height-dashboard-copy: var(--text-body-lh);
-  --line-height-copy-relaxed: 1.6;
+  --line-height-copy-relaxed: var(--primitive-line-height-copy-relaxed);
 
   // ── Letter spacing ────────────────────────────────────────────────────────
-  --tracking-page-title: -0.5px;
-  --tracking-metric-value: -0.4px;
-  --tracking-login-title: -1px;
-  --tracking-login-brand: -0.2px;
-  --tracking-login-brand-mark: -0.3px;
-  --tracking-login-eyebrow: 0.3px;
+  --tracking-page-title: var(--primitive-tracking-page-title);
+  --tracking-metric-value: var(--primitive-tracking-metric-value);
+  --tracking-login-title: var(--primitive-tracking-login-title);
+  --tracking-login-brand: var(--primitive-tracking-login-brand);
+  --tracking-login-brand-mark: var(--primitive-tracking-login-brand-mark);
+  --tracking-login-eyebrow: var(--primitive-tracking-login-eyebrow);
   --tracking-none: var(--primitive-tracking-none);
-  --tracking-tight: 0.02em;
-  --tracking-label: 0.03em;
-  --tracking-meta: 0.05em;
-  --tracking-section: 0.06em;
-  --tracking-wide: 0.08em;
+  --tracking-tight: var(--primitive-tracking-tight);
+  --tracking-label: var(--primitive-tracking-label);
+  --tracking-meta: var(--primitive-tracking-meta);
+  --tracking-section: var(--primitive-tracking-section);
+  --tracking-wide: var(--primitive-tracking-wide);
 
   // ── Shadows ───────────────────────────────────────────────────────────────
-  // Brand-mark shadow: a branded tint lift for the login logo gradient.
-  // One-off value kept here because it is a single-use brand affordance.
-  --shadow-brand-mark: 0 4px 12px -2px #{color.color-alpha(color.get-color(primary, 500), 0.35)};
+  --shadow-brand-mark: var(--space-0) var(--space-1) var(--space-3) calc(var(--space-0-5) * -1) #{color.color-alpha(color.get-color(primary, 500), 0.35)};
 
   // ── Semantic static color exports ─────────────────────────────────────────
   // Light-mode baseline (overridden per theme in themes/_light|dark.scss)
