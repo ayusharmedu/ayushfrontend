@@ -54,4 +54,7 @@
   --shadow-md: var(--semantic-light-shadow-md);
   --shadow-lg: var(--semantic-light-shadow-lg);
   --focus-ring-brand: 0 0 0 var(--border-focus) var(--color-brand-muted);
+
+  --table-action-opacity-initial: var(--state-interaction-hidden);
+  --table-action-opacity-hover: var(--state-interaction-visible);
 }

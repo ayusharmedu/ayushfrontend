@@ -155,6 +155,12 @@
   align-items: center;
   justify-content: flex-end;
   gap: var(--space-1);
+  opacity: var(--table-action-opacity-initial);
+  transition: opacity var(--motion-fast);
+}
+
+.data-table tr:hover .table-row-actions {
+  opacity: var(--table-action-opacity-hover);
 }
 
 .table-footer {

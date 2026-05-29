@@ -486,6 +486,9 @@ $typography-tokens: (
   --color-scope-dept: #{color.get-color(sky, 500)};
   --color-scope-team: #{color.get-color(amber, 500)};
 
+  --state-interaction-hidden: 0;
+  --state-interaction-visible: 1;
+
   --size-control-xs: var(--space-6);
   --size-control-compact: var(--space-8);
   --size-control-sm: var(--space-7);
