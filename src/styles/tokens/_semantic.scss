@@ -586,6 +586,9 @@ $typography-tokens: (
   --size-table-checkbox-mark: var(--primitive-icon-xxs);
   --size-table-checkbox-mixed-width: var(--space-2);
   --size-table-checkbox-mixed-height: var(--space-0-5);
+  --size-table-role-gap: var(--space-2);
+  --size-table-role-name-min: var(--space-20);
+  --size-table-state-badge-min: var(--space-18);
 
   // Topbar sizes
   --size-topbar-separator-width: var(--space-px);

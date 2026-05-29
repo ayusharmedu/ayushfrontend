@@ -509,16 +509,18 @@
                   </div>
                 </td>
                 <td>
-                  <div class="text-body-sm">{{ user.role }}</div>
-                  <div class="scope-pill" [class.scope-org]="user.scope === 'Org'"
-                    [class.scope-dept]="user.scope === 'Dept'" [class.scope-team]="user.scope === 'Team'">
-                    <span class="scope-dot"></span>
-                    {{ scopeLabel(user.scope) }}
+                  <div class="table-role-cell">
+                    <div class="text-body-sm table-role-name">{{ user.role }}</div>
+                    <div class="scope-pill" [class.scope-org]="user.scope === 'Org'"
+                      [class.scope-dept]="user.scope === 'Dept'" [class.scope-team]="user.scope === 'Team'">
+                      <span class="scope-dot"></span>
+                      {{ scopeLabel(user.scope) }}
+                    </div>
                   </div>
                 </td>
                 <td class="text-body-sm">{{ user.team }}</td>
                 <td>
-                  <span class="badge" [class.badge-success]="user.mfa === 'enrolled'"
+                  <span class="badge table-state-badge" [class.badge-success]="user.mfa === 'enrolled'"
                     [class.badge-warning]="user.mfa === 'missing'">
                     <span class="dot" [class.dot-success]="user.mfa === 'enrolled'"
                       [class.dot-warning]="user.mfa === 'missing'"></span>
@@ -526,7 +528,7 @@
                   </span>
                 </td>
                 <td>
-                  <span class="badge" [class.badge-success]="user.status === 'active'"
+                  <span class="badge table-state-badge" [class.badge-success]="user.status === 'active'"
                     [class.badge-neutral]="user.status === 'inactive'"
                     [class.badge-warning]="user.status === 'invited'">
                     <span class="dot" [class.dot-success]="user.status === 'active'"
