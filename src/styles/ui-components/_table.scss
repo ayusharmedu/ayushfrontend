@@ -71,10 +71,40 @@
 .data-table .col-sort {
   cursor: pointer;
   user-select: none;
+  transition: color var(--motion-fast);
 }
 
 .data-table .col-sort:hover {
   color: var(--color-text-primary);
+}
+
+.header-sort-cell {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+}
+
+.header-sort-cell.justify-end {
+  justify-content: flex-end;
+}
+
+.sort-icon {
+  opacity: 0;
+  transform: translateY(1px);
+  transition: all var(--motion-fast);
+}
+
+.col-sort:hover .sort-icon {
+  opacity: 0.5;
+}
+
+.sort-icon.active {
+  opacity: 1;
+  color: var(--color-brand-accent);
+}
+
+.sort-icon.sort-desc {
+  transform: rotate(180deg);
 }
 
 .data-table .text-row-name {

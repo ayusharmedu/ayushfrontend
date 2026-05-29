@@ -348,12 +348,30 @@
             <thead>
               <tr>
                 <th class="table-checkbox-col"><span class="checkbox"></span></th>
-                <th class="col-sort">User</th>
+                <th class="col-sort" (click)="toggleSort('name')">
+                  <div class="header-sort-cell">
+                    User
+                    <svg class="icon-xs sort-icon" [class.active]="sortField() === 'name'"
+                      [class.sort-desc]="sortField() === 'name' && sortOrder() === 'desc'" viewBox="0 0 24 24"
+                      fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M12 5v14M5 12l7 7 7-7" />
+                    </svg>
+                  </div>
+                </th>
                 <th>Role</th>
                 <th>Team</th>
                 <th>MFA</th>
                 <th>Status</th>
-                <th class="col-sort table-align-right">Last active</th>
+                <th class="col-sort table-align-right" (click)="toggleSort('lastActive')">
+                  <div class="header-sort-cell justify-end">
+                    Last active
+                    <svg class="icon-xs sort-icon" [class.active]="sortField() === 'lastActive'"
+                      [class.sort-desc]="sortField() === 'lastActive' && sortOrder() === 'desc'" viewBox="0 0 24 24"
+                      fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M12 5v14M5 12l7 7 7-7" />
+                    </svg>
+                  </div>
+                </th>
                 <th class="table-actions-col"></th>
               </tr>
             </thead>
