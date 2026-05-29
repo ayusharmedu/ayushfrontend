@@ -644,6 +644,7 @@ $typography-tokens: (
   --size-login-strength-offset: var(--space-2);
   --size-login-strength-gap: var(--space-1);
   --size-login-criteria-gap: var(--space-2);
+  --size-login-actions-offset: var(--space-3);
   --size-login-criteria-item-gap: 3px; // sub-grid optical gap (< space-1 = 4px)
   --size-login-terms-offset: 18px; // between space-4(16) & space-5(20)
   --size-login-footer-dot: 3px; // separator dot — sub-grid

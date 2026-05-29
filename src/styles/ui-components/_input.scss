@@ -186,16 +186,17 @@
 .criteria-list {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--space-1) var(--space-4);
+  gap: var(--size-login-criteria-gap) var(--space-4);
   margin-top: var(--space-1);
 }
 
 .criterion {
-  display: flex;
+  display: inline-flex;
   align-items: center;
   gap: var(--size-inline-gap-xs);
   font-size: var(--text-ui-xs-size);
   font-weight: var(--text-ui-medium-weight);
+  white-space: nowrap;
 }
 
 .criterion.met {
