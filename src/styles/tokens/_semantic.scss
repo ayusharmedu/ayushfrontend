@@ -659,6 +659,7 @@ $typography-tokens: (
   --size-checkbox: var(--space-4);
   --size-checkbox-border: var(--primitive-border-normal);
   --size-dot-sm: var(--space-1-5);
+  --size-sidebar-status-dot: var(--size-dot-sm);
   --size-notification-dot: 15px; // between space-3(12) & space-4(16), pill shape
   --size-badge-height: calc(var(--space-5) + var(--space-0-5));
   --size-count-height: calc(var(--space-4) + var(--space-0-5));
