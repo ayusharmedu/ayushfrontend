@@ -25,6 +25,7 @@
   --color-success-bg: var(--semantic-light-success-bg);
   --color-success-border: var(--semantic-light-success-border);
   --color-success-dot: var(--semantic-light-success-dot);
+  --color-success-dot-ring: var(--semantic-light-success-dot-ring);
   --color-warning-fg: var(--semantic-light-warning-fg);
   --color-warning-bg: var(--semantic-light-warning-bg);
   --color-warning-border: var(--semantic-light-warning-border);
@@ -44,6 +45,10 @@
   --color-table-checkbox-border: var(--color-border-strong);
   --color-table-checkbox-checked-border: var(--color-brand-accent);
   --color-table-checkbox-icon: var(--color-on-solid);
+  --color-table-bulk-danger-bg: var(--color-danger-action);
+  --color-table-bulk-danger-fg: var(--color-on-solid);
+  --color-table-bulk-danger-border: transparent;
+  --shadow-table-bulk-danger: var(--shadow-danger-action);
 
   --color-control-disabled-bg: var(--semantic-light-control-disabled-bg);
   --color-control-disabled-fg: var(--semantic-light-control-disabled-fg);

@@ -144,6 +144,8 @@ $typography: (
 :root {
   --primitive-font-sans: #{$font-family-primary};
   --primitive-font-mono: #{$font-family-mono};
+  --primitive-font-feature-ui: "cv11", "ss01", "tnum";
+  --primitive-tracking-none: 0;
 
   // Named typography variants
   --primitive-text-caption-size:      #{typography-token(caption,    size)};

@@ -165,6 +165,8 @@
 
 .table-state-badge {
   min-width: var(--size-table-state-badge-min);
+  height: var(--size-table-state-badge-height);
+  padding-inline: var(--size-table-state-badge-pad-x);
   justify-content: flex-start;
   vertical-align: middle;
 }
@@ -307,12 +309,26 @@
 }
 
 .bulk-action-danger {
-  color: var(--color-danger-fg);
+  width: auto;
+  height: var(--size-control-sm);
+  padding: 0 var(--space-2-5);
+  background: var(--color-table-bulk-danger-bg);
+  color: var(--color-table-bulk-danger-fg);
+  border: var(--border-thin) solid var(--color-table-bulk-danger-border);
+  border-radius: var(--radius-md);
+  font-family: var(--font-sans);
+  font-size: var(--text-ui-sm-size);
+  font-weight: var(--text-ui-semibold-weight);
+  line-height: var(--text-button-lh);
+  letter-spacing: var(--tracking-none);
+  font-feature-settings: var(--font-feature-ui);
+  gap: var(--space-1-5);
+  box-shadow: var(--shadow-table-bulk-danger);
 }
 
 .bulk-action-danger:hover {
-  background: var(--color-danger-bg);
-  color: var(--color-danger-fg);
+  background: var(--color-danger-action-hover);
+  color: var(--color-table-bulk-danger-fg);
 }
 
 .bulk-action-spacer {

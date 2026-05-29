@@ -62,6 +62,7 @@ $semantic-colors: (
   success-bg: color.get-color(success, 50),
   success-border: color.get-color(success, 200),
   success-dot: color.get-color(success, 500),
+  success-dot-ring: 0 0 0 space.spacing(0.5) color.color-alpha(color.get-color(success, 500), 0.133),
   success-fg-dark: color.get-color(success, 400),
   success-bg-dark: color.color-alpha(color.get-color(success, 500), 0.10),
   success-border-dark: color.color-alpha(color.get-color(success, 300), 0.25),
@@ -97,6 +98,7 @@ $action-colors: (
   cancel: color.get-color(cancel, 500),
   cancel-hover: color.get-color(cancel, 600),
   cancel-active: color.get-color(cancel, 700),
+  cancel-shadow: 0 space.spacing(px) space.spacing(0.5) color.color-alpha(color.get-color(cancel, 500), 0.20),
   cancel-disabled:color.get-color(neutral, 300),
   edit: color.get-color(edit, 500),
   edit-hover: color.get-color(edit, 600),
@@ -439,6 +441,7 @@ $typography-tokens: (
   // ── Typography ─────────────────────────────────────────────────────────────
   --font-sans: var(--primitive-font-sans);
   --font-mono: var(--primitive-font-mono);
+  --font-feature-ui: var(--primitive-font-feature-ui);
 
   // Named variants — proxy to primitives
   --text-caption-size: var(--primitive-text-caption-size);
@@ -527,6 +530,7 @@ $typography-tokens: (
 
   --color-danger-action: #{action-color(cancel)};
   --color-danger-action-hover: #{action-color(cancel-hover)};
+  --shadow-danger-action: #{action-color(cancel-shadow)};
   --color-danger-dot: #{semantic-color(danger-dot)};
   --color-warning-dot: #{semantic-color(warning-dot)};
   --color-strength-danger: #{semantic-color(danger)};
@@ -589,6 +593,8 @@ $typography-tokens: (
   --size-table-role-gap: var(--space-2);
   --size-table-role-name-min: var(--space-20);
   --size-table-state-badge-min: var(--space-18);
+  --size-table-state-badge-pad-x: var(--space-0);
+  --size-table-state-badge-height: auto;
 
   // Topbar sizes
   --size-topbar-separator-width: var(--space-px);
@@ -696,6 +702,7 @@ $typography-tokens: (
   --tracking-login-brand: -0.2px;
   --tracking-login-brand-mark: -0.3px;
   --tracking-login-eyebrow: 0.3px;
+  --tracking-none: var(--primitive-tracking-none);
   --tracking-tight: 0.02em;
   --tracking-label: 0.03em;
   --tracking-meta: 0.05em;
@@ -725,6 +732,7 @@ $typography-tokens: (
   --semantic-light-success-bg: #{semantic-color(success-bg)};
   --semantic-light-success-border: #{semantic-color(success-border)};
   --semantic-light-success-dot: #{semantic-color(success-dot)};
+  --semantic-light-success-dot-ring: #{semantic-color(success-dot-ring)};
   --semantic-light-warning-fg: #{semantic-color(warning-fg)};
   --semantic-light-warning-bg: #{semantic-color(warning-bg)};
   --semantic-light-warning-border: #{semantic-color(warning-border)};
@@ -762,6 +770,7 @@ $typography-tokens: (
   --semantic-dark-success-bg: #{semantic-color(success-bg-dark)};
   --semantic-dark-success-border: #{semantic-color(success-border-dark)};
   --semantic-dark-success-dot: #{semantic-color(success-dot)};
+  --semantic-dark-success-dot-ring: #{semantic-color(success-dot-ring)};
   --semantic-dark-warning-fg: #{semantic-color(warning-fg-dark)};
   --semantic-dark-warning-bg: #{semantic-color(warning-bg-dark)};
   --semantic-dark-warning-border: #{semantic-color(warning-border-dark)};
