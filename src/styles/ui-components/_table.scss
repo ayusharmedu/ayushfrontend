@@ -270,6 +270,7 @@
 .bulk-action-bar {
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
   gap: var(--size-table-bulk-gap);
   padding:
     var(--size-table-bulk-pad-y)
@@ -280,6 +281,7 @@
   border: var(--border-thin) solid var(--color-table-bulk-border);
   border-radius: var(--size-table-bulk-radius);
   color: var(--color-table-bulk-fg);
+  min-width: 0;
 }
 
 .bulk-action-count {
@@ -302,6 +304,7 @@
 
 .bulk-action-btn {
   color: var(--color-text-secondary);
+  flex-shrink: 0;
 }
 
 .bulk-action-btn:hover {
@@ -333,6 +336,7 @@
 
 .bulk-action-spacer {
   flex: 1;
+  min-width: var(--size-table-bulk-min-item);
 }
 
 .bulk-action-clear {
@@ -348,6 +352,8 @@
   font-size: var(--text-ui-sm-size);
   font-weight: var(--text-ui-medium-weight);
   cursor: pointer;
+  flex-shrink: 0;
+  margin-left: auto;
 }
 
 .bulk-action-clear:hover {
