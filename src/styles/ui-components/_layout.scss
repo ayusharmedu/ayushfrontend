@@ -17,21 +17,18 @@
 
 .main-content {
   flex: 1;
+  min-height: 0;
   overflow-y: auto;
   display: flex;
   flex-direction: column;
   padding: var(--space-6) var(--space-8) var(--space-7);
   gap: var(--size-dashboard-content-gap);
-}
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 
-.main-content::-webkit-scrollbar {
-  width: var(--size-scrollbar-md);
-}
-
-.main-content::-webkit-scrollbar-thumb,
-.sidebar-body::-webkit-scrollbar-thumb {
-  background: var(--color-border-default);
-  border-radius: var(--radius-full);
+  &::-webkit-scrollbar {
+    display: none;
+  }
 }
 
 .page-header {

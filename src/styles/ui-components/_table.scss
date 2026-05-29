@@ -1,5 +1,6 @@
 .table-container {
   flex: 1;
+  min-height: 0;
   overflow: hidden;
   background: var(--color-surface-raised);
   border: var(--border-thin) solid var(--color-border-default);
@@ -7,6 +8,18 @@
   box-shadow: var(--shadow-sm);
   display: flex;
   flex-direction: column;
+}
+
+.table-wrapper {
+  flex: 1;
+  overflow: auto;
+  min-height: 0;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+
+  &::-webkit-scrollbar {
+    display: none; /* Chrome, Safari and Opera */
+  }
 }
 
 .data-table {
