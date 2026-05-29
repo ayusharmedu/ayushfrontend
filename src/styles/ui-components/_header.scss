@@ -46,6 +46,15 @@
   gap: var(--space-2);
 }
 
+.topbar-separator {
+  width: var(--size-topbar-separator-width);
+  height: var(--size-topbar-separator-height);
+  background: var(--color-topbar-separator);
+  margin: 0 var(--size-topbar-separator-margin);
+  flex-shrink: 0;
+}
+
+
 @media (max-width: semantic.$breakpoint-md) {
   .topbar {
     height: auto;

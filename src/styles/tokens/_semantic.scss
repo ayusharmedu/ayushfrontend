@@ -506,6 +506,10 @@ $typography-tokens: (
   --size-table-row-height: var(--space-12);
   --size-table-row-comfortable-height: 60px;
   --size-table-row-spacious-height: var(--space-18);
+
+  --size-topbar-separator-width: var(--space-px);
+  --size-topbar-separator-height: var(--space-5);
+  --size-topbar-separator-margin: var(--space-1);
   --size-dashboard-page-title: 26px;
   --size-dashboard-subtitle-max-width: 640px;
   --size-dashboard-content-gap: 18px;
