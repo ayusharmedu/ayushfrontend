@@ -21,6 +21,13 @@ body {
   background: var(--color-surface-canvas);
   color: var(--color-text-primary);
   -webkit-font-smoothing: antialiased;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  display: none;
 }
 
 button,
@@ -65,31 +72,139 @@ svg {
   flex-shrink: 0;
 }
 
-.text-caption { font-size: var(--text-caption-size); font-weight: var(--text-caption-weight); line-height: var(--text-caption-lh); }
-.text-micro { font-size: var(--text-micro-size); font-weight: var(--text-micro-weight); line-height: var(--text-micro-lh); }
-.text-body-xs { font-size: var(--text-body-xs-size); font-weight: var(--text-body-xs-weight); line-height: var(--text-body-xs-lh); }
-.text-body-sm { font-size: var(--text-body-sm-size); font-weight: var(--text-body-sm-weight); line-height: var(--text-body-sm-lh); }
-.text-body { font-size: var(--text-body-size); font-weight: var(--text-body-weight); line-height: var(--text-body-lh); }
-.text-label { font-size: var(--text-label-size); font-weight: var(--text-label-weight); line-height: var(--text-label-lh); }
-.text-button { font-size: var(--text-button-size); font-weight: var(--text-button-weight); line-height: var(--text-button-lh); }
-.text-row-name { font-size: var(--text-row-name-size); font-weight: var(--text-row-name-weight); line-height: var(--text-row-name-lh); }
-.text-heading-xs { font-size: var(--text-heading-xs-size); font-weight: var(--text-heading-xs-weight); line-height: var(--text-heading-xs-lh); }
-.text-heading-sm { font-size: var(--text-heading-sm-size); font-weight: var(--text-heading-sm-weight); line-height: var(--text-heading-sm-lh); }
-.text-heading-md { font-size: var(--text-heading-md-size); font-weight: var(--text-heading-md-weight); line-height: var(--text-heading-md-lh); }
-.text-heading-lg { font-size: var(--text-heading-lg-size); font-weight: var(--text-heading-lg-weight); line-height: var(--text-heading-lg-lh); }
-.text-display { font-size: var(--text-display-size); font-weight: var(--text-display-weight); line-height: var(--text-display-lh); }
-.text-metric-md { font-size: var(--text-heading-lg-size); font-weight: var(--text-ui-strong-weight); line-height: var(--text-metric-md-lh); letter-spacing: var(--tracking-metric-value); font-variant-numeric: tabular-nums; }
-.text-code { font-family: var(--primitive-font-mono); font-size: var(--text-body-xs-size); font-weight: var(--text-ui-medium-weight); }
+.text-caption {
+  font-size: var(--text-caption-size);
+  font-weight: var(--text-caption-weight);
+  line-height: var(--text-caption-lh);
+}
 
-.text-primary { color: var(--color-text-primary); }
-.text-secondary { color: var(--color-text-secondary); }
-.text-tertiary { color: var(--color-text-tertiary); }
-.text-muted { color: var(--color-text-muted); }
-.text-link { color: var(--color-text-link); text-decoration: none; }
-.text-success { color: var(--color-success-fg); }
-.text-warning { color: var(--color-warning-fg); }
-.text-danger { color: var(--color-danger-fg); }
+.text-micro {
+  font-size: var(--text-micro-size);
+  font-weight: var(--text-micro-weight);
+  line-height: var(--text-micro-lh);
+}
 
-.surface-raised { background-color: var(--color-surface-raised); }
-.surface-canvas { background-color: var(--color-surface-canvas); }
-.surface-sunken { background-color: var(--color-surface-sunken); }
+.text-body-xs {
+  font-size: var(--text-body-xs-size);
+  font-weight: var(--text-body-xs-weight);
+  line-height: var(--text-body-xs-lh);
+}
+
+.text-body-sm {
+  font-size: var(--text-body-sm-size);
+  font-weight: var(--text-body-sm-weight);
+  line-height: var(--text-body-sm-lh);
+}
+
+.text-body {
+  font-size: var(--text-body-size);
+  font-weight: var(--text-body-weight);
+  line-height: var(--text-body-lh);
+}
+
+.text-label {
+  font-size: var(--text-label-size);
+  font-weight: var(--text-label-weight);
+  line-height: var(--text-label-lh);
+}
+
+.text-button {
+  font-size: var(--text-button-size);
+  font-weight: var(--text-button-weight);
+  line-height: var(--text-button-lh);
+}
+
+.text-row-name {
+  font-size: var(--text-row-name-size);
+  font-weight: var(--text-row-name-weight);
+  line-height: var(--text-row-name-lh);
+}
+
+.text-heading-xs {
+  font-size: var(--text-heading-xs-size);
+  font-weight: var(--text-heading-xs-weight);
+  line-height: var(--text-heading-xs-lh);
+}
+
+.text-heading-sm {
+  font-size: var(--text-heading-sm-size);
+  font-weight: var(--text-heading-sm-weight);
+  line-height: var(--text-heading-sm-lh);
+}
+
+.text-heading-md {
+  font-size: var(--text-heading-md-size);
+  font-weight: var(--text-heading-md-weight);
+  line-height: var(--text-heading-md-lh);
+}
+
+.text-heading-lg {
+  font-size: var(--text-heading-lg-size);
+  font-weight: var(--text-heading-lg-weight);
+  line-height: var(--text-heading-lg-lh);
+}
+
+.text-display {
+  font-size: var(--text-display-size);
+  font-weight: var(--text-display-weight);
+  line-height: var(--text-display-lh);
+}
+
+.text-metric-md {
+  font-size: var(--text-heading-lg-size);
+  font-weight: var(--text-ui-strong-weight);
+  line-height: var(--text-metric-md-lh);
+  letter-spacing: var(--tracking-metric-value);
+  font-variant-numeric: tabular-nums;
+}
+
+.text-code {
+  font-family: var(--primitive-font-mono);
+  font-size: var(--text-body-xs-size);
+  font-weight: var(--text-ui-medium-weight);
+}
+
+.text-primary {
+  color: var(--color-text-primary);
+}
+
+.text-secondary {
+  color: var(--color-text-secondary);
+}
+
+.text-tertiary {
+  color: var(--color-text-tertiary);
+}
+
+.text-muted {
+  color: var(--color-text-muted);
+}
+
+.text-link {
+  color: var(--color-text-link);
+  text-decoration: none;
+}
+
+.text-success {
+  color: var(--color-success-fg);
+}
+
+.text-warning {
+  color: var(--color-warning-fg);
+}
+
+.text-danger {
+  color: var(--color-danger-fg);
+}
+
+.surface-raised {
+  background-color: var(--color-surface-raised);
+}
+
+.surface-canvas {
+  background-color: var(--color-surface-canvas);
+}
+
+.surface-sunken {
+  background-color: var(--color-surface-sunken);
+}
