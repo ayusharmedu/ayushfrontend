@@ -35,14 +35,17 @@
 }
 
 .data-table th {
-  background: var(--color-surface-muted);
-  color: var(--color-text-tertiary);
+  background: var(--color-table-header-bg);
+  color: var(--color-table-header-fg);
   font-size: var(--text-ui-xs-size);
   font-weight: var(--text-ui-semibold-weight);
   text-align: left;
   padding: var(--space-2-5) var(--space-4);
-  border-bottom: var(--border-thin) solid var(--color-border-subtle);
+  border-bottom: var(--border-thin) solid var(--color-table-header-border);
   white-space: nowrap;
+  transition:
+    color var(--motion-fast),
+    border-color var(--motion-fast);
 }
 
 .data-table td {

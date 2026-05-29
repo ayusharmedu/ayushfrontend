@@ -31,7 +31,9 @@ export class ThemeService {
 
   setMode(mode: ThemeMode, persist = true): void {
     this.mode.set(mode);
-    this.document.documentElement.setAttribute('data-theme', mode);
+    this.withoutThemeTransition(() => {
+      this.document.documentElement.setAttribute('data-theme', mode);
+    });
 
     if (persist && isPlatformBrowser(this.platformId)) {
       window.localStorage.setItem(MODE_KEY, mode);
@@ -40,7 +42,9 @@ export class ThemeService {
 
   setHue(hue: ThemeHue, persist = true): void {
     this.hue.set(hue);
-    this.document.documentElement.setAttribute('data-hue', hue);
+    this.withoutThemeTransition(() => {
+      this.document.documentElement.setAttribute('data-hue', hue);
+    });
 
     if (persist && isPlatformBrowser(this.platformId)) {
       window.localStorage.setItem(HUE_KEY, hue);
@@ -53,5 +57,20 @@ export class ThemeService {
 
   private isHue(value: string | null): value is ThemeHue {
     return value === 'indigo' || value === 'violet' || value === 'emerald' || value === 'green';
+  }
+
+  private withoutThemeTransition(updateTheme: () => void): void {
+    const root = this.document.documentElement;
+    root.classList.add('theme-switching');
+    updateTheme();
+
+    if (!isPlatformBrowser(this.platformId)) {
+      root.classList.remove('theme-switching');
+      return;
+    }
+
+    window.requestAnimationFrame(() => {
+      window.requestAnimationFrame(() => root.classList.remove('theme-switching'));
+    });
   }
 }

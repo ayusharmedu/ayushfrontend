@@ -14,6 +14,13 @@
   padding: 0;
 }
 
+.theme-switching,
+.theme-switching *,
+.theme-switching *::before,
+.theme-switching *::after {
+  transition: none !important;
+}
+
 html,
 body {
   min-height: 100%;
