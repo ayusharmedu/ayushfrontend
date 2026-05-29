@@ -22,6 +22,7 @@ export class DashboardComponent {
   readonly density: WritableSignal<Density> = signal<Density>('compact');
   readonly sortField: WritableSignal<SortField> = signal<SortField>('name');
   readonly sortOrder: WritableSignal<SortOrder> = signal<SortOrder>('asc');
+  readonly selectedUsers: WritableSignal<Set<string>> = signal(new Set<string>());
 
   readonly tabs: Array<{ id: UserTab; label: string; count: string }> = [
     { id: 'all', label: 'All users', count: '218' },
@@ -71,6 +72,21 @@ export class DashboardComponent {
     });
   });
 
+  readonly selectedCount = computed(() => this.selectedUsers().size);
+  readonly allVisibleSelected = computed(() => {
+    const visibleUsers = this.filteredUsers();
+    const selected = this.selectedUsers();
+
+    return visibleUsers.length > 0 && visibleUsers.every((user) => selected.has(user.email));
+  });
+  readonly partiallySelected = computed(() => {
+    const visibleUsers = this.filteredUsers();
+    const selected = this.selectedUsers();
+    const visibleSelectedCount = visibleUsers.filter((user) => selected.has(user.email)).length;
+
+    return visibleSelectedCount > 0 && visibleSelectedCount < visibleUsers.length;
+  });
+
   setSearch(value: string): void {
     this.search.set(value);
   }
@@ -92,6 +108,44 @@ export class DashboardComponent {
     }
   }
 
+  isSelected(email: string): boolean {
+    return this.selectedUsers().has(email);
+  }
+
+  toggleUser(email: string): void {
+    this.selectedUsers.update((selected) => {
+      const next = new Set(selected);
+
+      if (next.has(email)) {
+        next.delete(email);
+      } else {
+        next.add(email);
+      }
+
+      return next;
+    });
+  }
+
+  toggleAllVisible(): void {
+    const visibleUsers = this.filteredUsers();
+
+    this.selectedUsers.update((selected) => {
+      const next = new Set(selected);
+
+      if (visibleUsers.length > 0 && visibleUsers.every((user) => next.has(user.email))) {
+        visibleUsers.forEach((user) => next.delete(user.email));
+      } else {
+        visibleUsers.forEach((user) => next.add(user.email));
+      }
+
+      return next;
+    });
+  }
+
+  clearSelection(): void {
+    this.selectedUsers.set(new Set<string>());
+  }
+
   scopeLabel(scope: 'Org' | 'Dept' | 'Team'): string {
     return {
       Org: 'Organization',
@@ -100,4 +154,3 @@ export class DashboardComponent {
     }[scope];
   }
 }
-

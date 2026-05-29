@@ -33,6 +33,16 @@
   --color-info-fg: var(--color-brand-300);
   --color-info-bg: var(--color-brand-subtle);
   --color-info-border: var(--color-brand-muted);
+  --color-table-row-selected: var(--color-brand-subtle);
+  --color-table-row-selected-hover: var(--color-surface-muted);
+  --color-table-bulk-bg: var(--color-brand-subtle);
+  --color-table-bulk-border: var(--color-info-border);
+  --color-table-bulk-fg: var(--color-info-fg);
+  --color-table-checkbox-bg: var(--color-surface-raised);
+  --color-table-checkbox-checked-bg: var(--color-brand-accent);
+  --color-table-checkbox-border: var(--color-border-strong);
+  --color-table-checkbox-checked-border: var(--color-brand-accent);
+  --color-table-checkbox-icon: var(--color-on-solid);
 
   --color-control-disabled-bg: var(--semantic-dark-control-disabled-bg);
   --color-control-disabled-fg: var(--semantic-dark-control-disabled-fg);

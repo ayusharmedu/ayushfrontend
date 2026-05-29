@@ -572,6 +572,20 @@ $typography-tokens: (
   --size-table-row-height: var(--space-12);
   --size-table-row-comfortable-height: 60px; // between space-14(56) & space-16(64)
   --size-table-row-spacious-height: var(--space-18);
+  --size-table-bulk-pad-y: var(--space-2);
+  --size-table-bulk-pad-right: var(--space-3);
+  --size-table-bulk-pad-left: var(--space-3-5);
+  --size-table-bulk-gap: var(--space-2);
+  --size-table-bulk-radius: var(--radius-lg);
+  --size-table-bulk-separator-width: var(--border-thin);
+  --size-table-bulk-separator-height: var(--space-4);
+  --size-table-bulk-separator-margin: var(--space-1-5);
+  --size-table-bulk-clear-gap: var(--space-1);
+  --size-table-bulk-clear-pad-y: var(--space-1);
+  --size-table-bulk-clear-pad-x: var(--space-2);
+  --size-table-checkbox-mark: var(--primitive-icon-xxs);
+  --size-table-checkbox-mixed-width: var(--space-2);
+  --size-table-checkbox-mixed-height: var(--space-0-5);
 
   // Topbar sizes
   --size-topbar-separator-width: var(--space-px);
@@ -631,7 +645,7 @@ $typography-tokens: (
   --size-logo-sm: var(--space-7);
   --size-logo-md: var(--space-9);
   --size-checkbox: var(--space-4);
-  --size-checkbox-border: 1.5px; // optical — between border-thin(1) & thick(2)
+  --size-checkbox-border: var(--primitive-border-normal);
   --size-dot-sm: var(--space-1-5);
   --size-notification-dot: 15px; // between space-3(12) & space-4(16), pill shape
   --size-badge-height: calc(var(--space-5) + var(--space-0-5));
@@ -659,6 +673,7 @@ $typography-tokens: (
   --offset-control-inset: 3px; // inner padding for segmented controls
   --offset-lift-sm: calc(var(--space-px) * -1);
   --offset-lift-md: calc(var(--space-0-5) * -1);
+  --transform-sort-icon-nudge: translateY(var(--offset-row-nudge));
 
   // ── Motion ────────────────────────────────────────────────────────────────
   --motion-page-enter: 220ms var(--motion-enter);
