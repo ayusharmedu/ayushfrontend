@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, computed, signal } from '@angular/core';
+import { Component, computed, Signal, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { metrics, users } from '../../mock-data';
@@ -17,6 +17,7 @@ export class DashboardComponent {
   readonly users = users;
   readonly search = signal('');
   readonly activeTab = signal<UserTab>('all');
+  readonly density = signal<'compact' | 'comfortable' | 'spacious'>('compact');
 
   readonly tabs: Array<{ id: UserTab; label: string; count: string }> = [
     { id: 'all', label: 'All users', count: '218' },
@@ -27,7 +28,7 @@ export class DashboardComponent {
     { id: 'no-mfa', label: 'No MFA', count: '28' },
   ];
 
-  readonly filteredUsers = computed(() => {
+  readonly filteredUsers: Signal<typeof users> = computed(() => {
     const query = this.search().trim().toLowerCase();
     const tab = this.activeTab();
 
@@ -56,6 +57,10 @@ export class DashboardComponent {
 
   setTab(tab: UserTab): void {
     this.activeTab.set(tab);
+  }
+
+  setDensity(value: 'compact' | 'comfortable' | 'spacious'): void {
+    this.density.set(value);
   }
 
   scopeLabel(scope: 'Org' | 'Dept' | 'Team'): string {

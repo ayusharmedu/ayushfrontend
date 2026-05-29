@@ -53,7 +53,15 @@
   font-size: var(--text-dashboard-cell-size);
   border-bottom: var(--border-thin) solid var(--color-border-subtle);
   white-space: nowrap;
-  transition: background var(--motion-fast);
+  transition: all var(--motion-fast);
+}
+
+.data-table.table-comfortable td {
+  height: var(--size-table-row-comfortable-height);
+}
+
+.data-table.table-spacious td {
+  height: var(--size-table-row-spacious-height);
 }
 
 .data-table tr:hover td {

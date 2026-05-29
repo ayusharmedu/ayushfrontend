@@ -294,7 +294,8 @@
         </button>
         <div class="filter-actions">
           <div class="density-toggle" aria-label="Density">
-            <button class="density-btn active" type="button" aria-label="Compact density">
+            <button class="density-btn" type="button" [class.active]="density() === 'compact'"
+              (click)="setDensity('compact')" aria-label="Compact density">
               <svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
                 stroke-linecap="round" stroke-linejoin="round">
                 <line x1="5" y1="7" x2="19" y2="7" />
@@ -302,12 +303,22 @@
                 <line x1="5" y1="17" x2="19" y2="17" />
               </svg>
             </button>
-            <button class="density-btn" type="button" aria-label="Comfortable density">
+            <button class="density-btn" type="button" [class.active]="density() === 'comfortable'"
+              (click)="setDensity('comfortable')" aria-label="Comfortable density">
               <svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
                 stroke-linecap="round" stroke-linejoin="round">
                 <line x1="5" y1="6" x2="19" y2="6" />
                 <line x1="5" y1="12" x2="19" y2="12" />
                 <line x1="5" y1="18" x2="19" y2="18" />
+              </svg>
+            </button>
+            <button class="density-btn" type="button" [class.active]="density() === 'spacious'"
+              (click)="setDensity('spacious')" aria-label="Spacious density">
+              <svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
+                stroke-linecap="round" stroke-linejoin="round">
+                <line x1="5" y1="5" x2="19" y2="5" />
+                <line x1="5" y1="12" x2="19" y2="12" />
+                <line x1="5" y1="19" x2="19" y2="19" />
               </svg>
             </button>
           </div>
@@ -332,7 +343,8 @@
 
       <section class="table-container">
         <div class="table-wrapper">
-          <table class="data-table">
+          <table class="data-table" [class.table-comfortable]="density() === 'comfortable'"
+            [class.table-spacious]="density() === 'spacious'">
             <thead>
               <tr>
                 <th class="table-checkbox-col"><span class="checkbox"></span></th>
