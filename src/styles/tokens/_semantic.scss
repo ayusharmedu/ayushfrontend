@@ -69,6 +69,7 @@ $semantic-colors: (
   warning: color.get-color(warning, 500),
   warning-hover: color.get-color(warning, 600),
   warning-fg: color.get-color(warning, 700),
+  warning-emphasis: color.get-color(warning, 400),
   warning-bg: color.get-color(warning, 50),
   warning-border: color.get-color(warning, 200),
   warning-dot: color.get-color(warning, 500),
@@ -533,6 +534,7 @@ $typography-tokens: (
   --shadow-danger-action: #{action-color(cancel-shadow)};
   --color-danger-dot: #{semantic-color(danger-dot)};
   --color-warning-dot: #{semantic-color(warning-dot)};
+  --color-warning-emphasis: #{semantic-color(warning-emphasis)};
   --color-strength-danger: #{semantic-color(danger)};
   --color-strength-warning: #{semantic-color(warning)};
   --color-strength-success: #{semantic-color(success)};

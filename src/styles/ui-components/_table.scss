@@ -177,6 +177,10 @@
   background: transparent;
 }
 
+.data-table .badge-warning {
+  color: var(--color-table-state-warning-fg);
+}
+
 .table-checkbox-col {
   width: var(--size-table-checkbox-col);
 }

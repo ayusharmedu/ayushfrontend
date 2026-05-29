@@ -9,7 +9,7 @@
   font-weight: var(--text-ui-medium-weight);
   border: var(--border-thin) solid transparent;
   white-space: nowrap;
-}   
+}
 
 .badge-success {
   background: var(--color-success-bg);
@@ -25,7 +25,7 @@
 
 .badge-danger {
   background: var(--color-danger-bg);
-  color: var(--color-danger-fg);
+  color: var(--color-warning-fg);
   border-color: var(--color-danger-border);
 }
 
