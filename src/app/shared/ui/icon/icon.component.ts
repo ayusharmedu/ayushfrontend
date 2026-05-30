@@ -82,5 +82,5 @@ export class IconComponent {
     return ICONS[this.name as keyof typeof ICONS] || ICONS.circle;
   }
 
-  protected readonly iconParts = (_: number, part: IconPart) => part;
+  // protected readonly iconParts = (_: number, part: IconPart) => part;
 }
