@@ -412,25 +412,6 @@ $typography-tokens: (
   // One-off login card cap — sourced from primitives.
   --space-110: var(--primitive-space-110);
 
-  // Fixed layout primitives
-  --primitive-layout-viewport-height: var(--primitive-size-viewport-height);
-  --primitive-layout-mobile-hero-min-height: var(--primitive-size-mobile-hero-min-height);
-  --primitive-layout-table-min-width: var(--primitive-size-table-min-width);
-  --primitive-layout-table-row-comfortable-height: var(--primitive-size-table-row-comfortable-height);
-  --primitive-layout-dashboard-page-title: var(--primitive-size-dashboard-page-title);
-  --primitive-layout-dashboard-subtitle-max-width: var(--primitive-size-dashboard-subtitle-max-width);
-  --primitive-layout-dashboard-content-gap: var(--primitive-size-dashboard-content-gap);
-  --primitive-layout-login-panel-min: var(--primitive-size-login-panel-min);
-  --primitive-layout-panel-width: var(--primitive-size-panel-width);
-  --primitive-layout-notification-dot: var(--primitive-size-notification-dot);
-  --primitive-layout-color-chip-icon: var(--primitive-size-color-chip-icon);
-  --primitive-layout-hero-fluid-scale: var(--primitive-size-hero-fluid-scale);
-  --primitive-layout-hero-max: var(--primitive-size-hero-max);
-  --primitive-layout-glass-saturate: var(--primitive-size-glass-saturate);
-  --primitive-optical-control-inset: var(--primitive-optical-xs-gap);
-  --primitive-optical-subgrid-gap: var(--primitive-optical-xs-gap);
-  --primitive-optical-inline-xs: var(--primitive-optical-sm-gap);
-
   // ── Border radius ──────────────────────────────────────────────────────────
   --radius-none: var(--primitive-radius-none);
   --radius-xs: var(--primitive-radius-xs);
@@ -540,7 +521,7 @@ $typography-tokens: (
   --text-login-version-size: var(--text-micro-size);
   --text-logo-size: var(--text-heading-xs-size);
   --text-card-heading-size: var(--text-metric-md-size);
-  --text-hero-size: clamp(var(--size-dashboard-page-title), var(--primitive-layout-hero-fluid-scale), var(--primitive-layout-hero-max));
+  --text-hero-size: clamp(var(--size-dashboard-page-title), var(--primitive-size-hero-fluid-scale), var(--primitive-size-hero-max));
 
   // ── Color — theme-independent globals ─────────────────────────────────────
   --semantic-color-on-accent: #{text-color(on-accent)};
@@ -587,15 +568,15 @@ $typography-tokens: (
   --size-field-md: var(--space-9);
   --size-topbar-height: var(--space-13);
   --size-sidebar-width: var(--space-64);
-  --size-viewport-height: var(--primitive-layout-viewport-height);
+  --size-viewport-height: var(--primitive-size-viewport-height);
   --size-filter-search-width: calc(var(--space-64) + var(--space-6));
 
   // Table sizes
-  --size-table-min-width: var(--primitive-layout-table-min-width);
+  --size-table-min-width: var(--primitive-size-table-min-width);
   --size-table-checkbox-col: var(--space-10);
   --size-table-actions-col: var(--space-20);
   --size-table-row-height: var(--space-12);
-  --size-table-row-comfortable-height: var(--primitive-layout-table-row-comfortable-height);
+  --size-table-row-comfortable-height: var(--primitive-size-table-row-comfortable-height);
   --size-table-row-spacious-height: var(--space-18);
   --size-table-bulk-pad-y: var(--space-2);
   --size-table-bulk-pad-right: var(--space-3);
@@ -624,9 +605,9 @@ $typography-tokens: (
   --size-topbar-separator-margin: var(--space-1);
 
   // Dashboard sizes
-  --size-dashboard-page-title: var(--primitive-layout-dashboard-page-title);
-  --size-dashboard-subtitle-max-width: var(--primitive-layout-dashboard-subtitle-max-width);
-  --size-dashboard-content-gap: var(--primitive-layout-dashboard-content-gap);
+  --size-dashboard-page-title: var(--primitive-size-dashboard-page-title);
+  --size-dashboard-subtitle-max-width: var(--primitive-size-dashboard-subtitle-max-width);
+  --size-dashboard-content-gap: var(--primitive-size-dashboard-content-gap);
   --size-dashboard-action-gap: var(--space-2);
   --size-dashboard-card-padding: var(--space-3-5);
   --size-dashboard-tab-offset: calc(var(--space-0-5) * -1);
@@ -641,7 +622,7 @@ $typography-tokens: (
   --size-dashboard-avatar: calc(var(--space-7) + var(--space-0-5));
 
   // Login sizes
-  --size-login-panel-min: var(--primitive-layout-login-panel-min);
+  --size-login-panel-min: var(--primitive-size-login-panel-min);
   --size-login-card-max: var(--space-110);
   --size-login-panel-pad-y: var(--space-16);
   --size-login-panel-pad-x: var(--space-18);
@@ -664,13 +645,13 @@ $typography-tokens: (
   --size-login-strength-gap: var(--space-1);
   --size-login-criteria-gap: var(--space-2);
   --size-login-actions-offset: var(--space-3);
-  --size-login-criteria-item-gap: var(--primitive-optical-subgrid-gap);
-  --size-login-terms-offset: var(--primitive-layout-dashboard-content-gap);
-  --size-login-footer-dot: var(--primitive-optical-subgrid-gap);
-  --size-mobile-hero-min-height: var(--primitive-layout-mobile-hero-min-height);
+  --size-login-criteria-item-gap: var(--primitive-optical-xs-gap);
+  --size-login-terms-offset: var(--primitive-size-dashboard-content-gap);
+  --size-login-footer-dot: var(--primitive-optical-xs-gap);
+  --size-mobile-hero-min-height: var(--primitive-size-mobile-hero-min-height);
 
   // Misc component sizes
-  --size-panel-width: var(--primitive-layout-panel-width);
+  --size-panel-width: var(--primitive-size-panel-width);
   --size-avatar-sm: var(--space-6);
   --size-avatar-md: var(--space-8);
   --size-avatar-lg: var(--space-10);
@@ -680,30 +661,30 @@ $typography-tokens: (
   --size-checkbox-border: var(--primitive-border-normal);
   --size-dot-sm: var(--space-1-5);
   --size-sidebar-status-dot: var(--size-dot-sm);
-  --size-notification-dot: var(--primitive-layout-notification-dot);
+  --size-notification-dot: var(--primitive-size-notification-dot);
   --size-badge-height: calc(var(--space-5) + var(--space-0-5));
   --size-count-height: calc(var(--space-4) + var(--space-0-5));
   --size-count-min-width: var(--space-5);
   --size-kbd-min-width: calc(var(--space-4) + var(--space-0-5));
   --size-color-chip-width: var(--space-13);
   --size-color-chip-height: var(--space-11);
-  --size-color-chip-icon: var(--primitive-layout-color-chip-icon);
+  --size-color-chip-icon: var(--primitive-size-color-chip-icon);
   --size-scrollbar-sm: var(--space-1);
   --size-scrollbar-md: var(--space-1-5);
   --size-strength-label-min: var(--space-13);
-  --size-strength-bar-thickness: var(--primitive-optical-subgrid-gap);
-  --size-strength-bar-gap: var(--primitive-optical-subgrid-gap);
-  --size-inline-gap-xs: var(--primitive-optical-inline-xs);
-  --size-inline-pad-xs: var(--primitive-optical-inline-xs);
+  --size-strength-bar-thickness: var(--primitive-optical-xs-gap);
+  --size-strength-bar-gap: var(--primitive-optical-xs-gap);
+  --size-inline-gap-xs: var(--primitive-optical-sm-gap);
+  --size-inline-pad-xs: var(--primitive-optical-sm-gap);
   --size-hairline-border: var(--primitive-optical-hairline);
   --size-glass-blur: var(--space-5);
-  --size-glass-saturate: var(--primitive-layout-glass-saturate);
+  --size-glass-saturate: var(--primitive-size-glass-saturate);
 
   // ── Offsets ───────────────────────────────────────────────────────────────
   --offset-badge-dot: calc(var(--space-px) * -1);
   --offset-row-nudge: var(--space-px);
   --offset-tight: var(--space-0-5);
-  --offset-control-inset: var(--primitive-optical-control-inset);
+  --offset-control-inset: var(--primitive-optical-xs-gap);
   --offset-lift-sm: calc(var(--space-px) * -1);
   --offset-lift-md: calc(var(--space-0-5) * -1);
   --transform-sort-icon-nudge: translateY(var(--offset-row-nudge));

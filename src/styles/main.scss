@@ -1,17 +1,52 @@
+// =============================================================================
+// MAIN STYLES ENTRY POINT - Design System Architecture
+// =============================================================================
+// Layer order:
+//   1. Primitives     - raw palettes, spacing, typography, icons
+//   2. Semantic       - purpose-driven token maps and exports
+//   3. Themes         - light/dark/custom CSS variable mappings
+//   4. Mixins         - reusable utilities and component recipes
+//   5. Integrations   - third-party library token bridges
+//   6. UI classes     - application-facing .ui-* abstractions
+//   7. Vendors        - isolated external overrides
+
+// =============================================================================
+// LAYER 1: PRIMITIVES
+// =============================================================================
 @use './primitives/colors';
 @use './primitives/spacing';
 @use './primitives/_typography';
 @use './primitives/icons';
 
+// =============================================================================
+// LAYER 2: SEMANTIC TOKENS
+// =============================================================================
 @use './tokens/_semantic';
 
+// =============================================================================
+// LAYER 3: THEMES
+// =============================================================================
 @use './themes/_light';
 @use './themes/_dark';
 @use './themes/_custom';
 
+// =============================================================================
+// LAYER 4: MIXINS
+// =============================================================================
 @use './mixins/utilities';
 @use './mixins/components';
 
-@use './ui-components';
+// =============================================================================
+// LAYER 5: INTEGRATIONS
+// =============================================================================
 @use './integrations';
+
+// =============================================================================
+// LAYER 6: UI ABSTRACTION CLASSES
+// =============================================================================
+@use './ui-components';
+
+// =============================================================================
+// LAYER 7: VENDOR OVERRIDES
+// =============================================================================
 @use './vendors/primeng';
